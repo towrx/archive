@@ -1,0 +1,56 @@
+name: Deploy Multi Apps to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    # repo sẽ build lại nếu file thay đổi trong folder
+    # VD: - 'music/**', 'film/**', 'comics/**', 'index.html'
+    paths:
+      - 'iptv-player/**'
+      - 'jsdom/**'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      # chỉ copy static files + build output nếu có
+      # VD: cp -r music public/, cp -r film public/, cp -r comics public/, cp -r index.html public/
+      - name: Prepare site
+        run: |
+          mkdir -p public
+          cp -r iptv-player public/
+          cp -r jsdom public/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
