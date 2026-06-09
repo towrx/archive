@@ -7,7 +7,7 @@ on:
     # repo sẽ build lại nếu file thay đổi trong folder
     # VD: - 'music/**', 'film/**', 'comics/**', 'index.html'
     paths:
-      - 'iptv-player/**'
+      - 'iptv/player/**'
       - 'jsdom/**'
 
 permissions:
@@ -35,7 +35,7 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p public
-          cp -r iptv-player public/
+          cp -r iptv/player public/
           cp -r jsdom public/
 
       - name: Upload artifact
