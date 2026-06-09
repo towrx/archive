@@ -32,10 +32,11 @@ jobs:
 
       # chỉ copy static files + build output nếu có
       # VD: cp -r music public/, cp -r film public/, cp -r comics public/, cp -r index.html public/
+      # cp -r iptv/player public/iptv-player đổi link (player sang iptv-player) cụ thể https://towrx.github.io/archive/player/ (mặc định theo tên repo) thành https://towrx.github.io/archive/iptv-player/
       - name: Prepare site
         run: |
           mkdir -p public
-          cp -r iptv/player public/
+          cp -r iptv/player public/iptv-player
           cp -r jsdom public/
 
       - name: Upload artifact
