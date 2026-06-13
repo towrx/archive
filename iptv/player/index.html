@@ -2121,10 +2121,10 @@
                   // Khi đã có ClearKey, ưu tiên dùng nó và vô hiệu hóa các DRM khác
                   // để tránh Shaka cố gọi Widevine/PlayReady license server rồi thất bại
                   servers: {},
-                  advanced: {
-                    "com.widevine.alpha": { serverCertificate: null },
-                    "com.microsoft.playready": { serverCertificate: null },
-                  },
+                  // advanced: {
+                  //   "com.widevine.alpha": { serverCertificate: null },
+                  //   "com.microsoft.playready": { serverCertificate: null },
+                  // },
                 },
               });
               console.log("Configured ClearKey DRM (hex):", clearKeys);
