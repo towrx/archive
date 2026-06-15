@@ -677,7 +677,7 @@
                 </h2>
                 <div class="flex items-center gap-1">
                   <button
-                    onclick="fetchEPG()"
+                    onclick="//fetchEPG();"
                     class="p-1.5 hover:bg-white/10 rounded-lg transition-colors tooltip"
                     data-tip="Tải lại lịch"
                   >
@@ -1042,15 +1042,15 @@
         let currentChannel = null;
 
         // Extract Global EPG URL from #EXTM3U line
-        const m3uHeader = lines.find((l) => l.toUpperCase().startsWith("#EXTM3U"));
-        if (m3uHeader) {
-          const epgMatch = m3uHeader.match(/x-tvg-url="([^"]+)"/i) || m3uHeader.match(/url-tvg="([^"]+)"/i);
-          if (epgMatch && epgMatch[1]) {
-            globalEPGUrl = epgMatch[1];
-            console.log("Tìm thấy EPG URL từ playlist:", globalEPGUrl);
-            fetchEPG(globalEPGUrl);
-          }
-        }
+        // const m3uHeader = lines.find((l) => l.toUpperCase().startsWith("#EXTM3U"));
+        // if (m3uHeader) {
+        //   const epgMatch = m3uHeader.match(/x-tvg-url="([^"]+)"/i) || m3uHeader.match(/url-tvg="([^"]+)"/i);
+        //   if (epgMatch && epgMatch[1]) {
+        //     globalEPGUrl = epgMatch[1];
+        //     console.log("Tìm thấy EPG URL từ playlist:", globalEPGUrl);
+        //     fetchEPG(globalEPGUrl);
+        //   }
+        // }
 
         for (let i = 0; i < lines.length; i++) {
           const line = lines[i].trim();
