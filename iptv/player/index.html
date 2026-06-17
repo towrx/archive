@@ -775,13 +775,13 @@
             <button
               onclick="
                 loadPredefinedUrl(
-                  'https://raw.githubusercontent.com/thcoban/ththethao/refs/heads/main/thethao-base.m3u',
+                  'https://raw.githubusercontent.com/thcoban/ththethao/refs/heads/main/ttthethao.m3u',
                 )
               "
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
               <span class="text-[12px] font-bold text-white group-hover:text-red-400 transition-colors">
-                INTERNATIONAL SPORTS
+                THTHETHAO
               </span>
             </button>
             <button
@@ -789,7 +789,7 @@
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
               <span class="text-[12px] font-bold text-white group-hover:text-emerald-400 transition-colors">
-                NATIONAL SPORTS
+                HAILAB
               </span>
             </button>
           </div>
@@ -1215,10 +1215,10 @@
                             ${logoHtml}
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="text-xs font-semibold leading-tight truncate ${isPlaying ? "text-indigo-400" : "text-white/80"}">
+                            <h3 class="text-xs font-semibold leading-tight mb-[6px] ${isPlaying ? "text-indigo-400" : "text-white/80"}">
                                 ${channel.name}
                             </h3>
-                            <p class="text-[9px] text-muted mt-0.5 uppercase tracking-tighter">${channel.group || "Khác"}</p>
+                            <p class="text-[9px] text-muted mt-0.5 uppercase tracking-tighter italic"> ${channel.group || "Khác"}</p>
                         </div>
                         ${
                           isPlaying
@@ -1342,7 +1342,8 @@
           ? [""]
           : [
               "", // 1: Thử trực tiếp đầu tiên (Phù hợp Github)
-              "https://proxy.nupakachi11191.workers.dev/?url=", 
+              "https://tv.hminhhosting.io.vn/proxy?url=",
+              "https://proxy.nupakachi11191.workers.dev/?url=",
               "https://api.allorigins.win/raw?url=", // 2: Proxy Allorigins phổ biến
               "https://corsproxy.io/?url=", // 3: Corsproxy IO
               "https://crossorigin.me/", // 4: Crossorigin fallback
@@ -1453,7 +1454,7 @@
                             ${logoHtml}
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="text-xs font-semibold leading-tight truncate ${isPlaying ? "text-indigo-400" : "text-white/80"}">
+                            <h3 class="text-xs font-semibold leading-tight mb-[6px] ${isPlaying ? "text-indigo-400" : "text-white/80"}">
                                 ${channel.name}
                             </h3>
                             ${
@@ -1464,7 +1465,7 @@
                                 </p>
                             `
                                 : `
-                                <p class="text-[9px] text-muted mt-0.5 uppercase tracking-tighter">${channel.group || "Khác"}</p>
+                                <p class="text-[9px] text-muted mt-0.5 uppercase tracking-tighter italic">${channel.group || "Khác"}</p>
                             `
                             }
                         </div>
@@ -1595,6 +1596,31 @@
         showToast("Đã dừng phát.", "success");
       }
 
+      // Fix lỗi ko tự xoay màn hình fullscreen trên smartphone android 
+      function lockLandscape() {
+        const lock =
+          screen.orientation?.lock ||
+          screen.webkitLockOrientation ||
+          screen.mozLockOrientation ||
+          screen.msLockOrientation;
+
+        if (lock) {
+          try {
+            const p = screen.orientation.lock?.("landscape");
+            if (p && p.catch) p.catch(() => {});
+          } catch (e) {}
+        }
+      }
+
+      function unlockOrientation() {
+        const unlock = screen.orientation?.unlock;
+        if (unlock) {
+          try {
+            unlock();
+          } catch (e) {}
+        }
+      }
+
       function toggleFullscreen() {
         const fsElement =
           document.fullscreenElement ||
@@ -1621,6 +1647,8 @@
                   if (docReqFS) docReqFS.call(document.documentElement);
                 });
               }
+              // ✅ THÊM: lock xoay ngang khi fullscreen 
+              lockLandscape();
             } catch (e) {
               const docReqFS =
                 document.documentElement.requestFullscreen ||
@@ -1642,6 +1670,8 @@
           if (exitFS) {
             exitFS.call(document);
           }
+          // ✅ THÊM: unlock khi thoát fullscreen 
+          unlockOrientation();
         }
       }
 
@@ -1999,7 +2029,10 @@
 
         if (window.stallTimeout) clearTimeout(window.stallTimeout);
         if (window.stallInterval) clearInterval(window.stallInterval);
-        const url = channel.url;
+        // Fix đối với chanel link bị CORS
+        const url = !/\.(m3u8|mpd|ts)/i.test(channel.url)
+          ? "https://tv.hminhhosting.io.vn/proxy?url=" + encodeURIComponent(channel.url)
+          : channel.url;
         currentPlayingUrl = url;
 
         // Stall detection — chỉ reload khi stall nghiêm trọng (không nudge để tránh audio pop)
@@ -2223,7 +2256,7 @@
           }
         }
         // --- Case 2: HLS / M3U8 (Using Hls.js) ---
-        else if (typeof Hls !== "undefined" && Hls.isSupported() && !isMPD) {
+        else if (typeof Hls !== "undefined" && Hls.isSupported() && !isMPD && !isRawTS) {
           hlsInstance = new Hls({
             enableWorker: true,
             lowLatencyMode: false,
