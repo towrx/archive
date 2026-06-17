@@ -677,7 +677,7 @@
                 </h2>
                 <div class="flex items-center gap-1">
                   <button
-                    onclick="//fetchEPG();"
+                    onclick="fetchEPG();"
                     class="p-1.5 hover:bg-white/10 rounded-lg transition-colors tooltip"
                     data-tip="Tải lại lịch"
                   >
@@ -1460,7 +1460,7 @@
                             ${
                               currentProgram
                                 ? `
-                                <p class="text-[10px] text-indigo-300/80 truncate mt-0.5 font-medium">
+                                <p class="text-[10px] text-indigo-300/80 mt-0.5 font-medium">
                                     <span class="text-white/40 mr-1">•</span>${currentProgram.title}
                                 </p>
                             `
@@ -1695,31 +1695,31 @@
         epgFetchStatus = "fetching";
 
         // Ưu tiên đọc từ file local (đã được C# tải về, không có CORS)
-        const localUrl = "http://data.local/epg.xml";
+        // const localUrl = "http://data.local/epg.xml";
         const remoteUrl = url || DEFAULT_EPG_URL;
 
         let text = "";
         let success = false;
 
         // Thử local trước
-        try {
-          const localResponse = await fetch(localUrl);
-          if (localResponse.ok) {
-            text = await localResponse.text();
-            if (text.length > 1000 && text.includes("<?xml")) {
-              success = true;
-              console.log("[EPG] Đọc từ local epg.xml thành công, kích thước:", text.length);
-            }
-          }
-        } catch (e) {
-          console.log("[EPG] Không có file local, thử tải từ mạng...");
-        }
+        // try {
+        //   const localResponse = await fetch(localUrl);
+        //   if (localResponse.ok) {
+        //     text = await localResponse.text();
+        //     if (text.length > 1000 && text.includes("<?xml")) {
+        //       success = true;
+        //       console.log("[EPG] Đọc từ local epg.xml thành công, kích thước:", text.length);
+        //     }
+        //   }
+        // } catch (e) {
+        //   console.log("[EPG] Không có file local, thử tải từ mạng...");
+        // }
 
         // Nếu local thất bại, fetch trực tiếp (có thể bị CORS)
         if (!success) {
           console.log("[EPG] Đang tải EPG từ:", remoteUrl);
           try {
-            const response = await fetch(`https://proxy.nupakachi11191.workers.dev/?url=${remoteUrl}`);
+            const response = await fetch(`https://tv.hminhhosting.io.vn/proxy?url=${encodeURIComponent(remoteUrl)}`);
             if (response.ok) {
               text = await response.text();
               if (text.length > 1000 && text.includes("<?xml")) success = true;
@@ -2557,7 +2557,7 @@
       // Tự động tải mặc định danh sách kênh cục bộ khi vừa vào web
       window.addEventListener("DOMContentLoaded", () => {
         // Tải EPG mặc định sau khi trang đã tải xong UI
-        // setTimeout(() => fetchEPG(), 100);
+        setTimeout(() => fetchEPG(), 100);
 
         setTimeout(async () => {
           try {
