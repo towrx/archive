@@ -1337,6 +1337,7 @@
           ? [""]
           : [
               "", // 1: Thử trực tiếp đầu tiên (Phù hợp Github)
+              "https://iptv-player.nupakachi.dpdns.org/proxy.php?url=",
               "https://proxy.nupakachi11191.workers.dev/?url=",
               "https://api.allorigins.win/raw?url=", // 2: Proxy Allorigins phổ biến
               "https://corsproxy.io/?url=", // 3: Corsproxy IO
@@ -2120,7 +2121,7 @@
               // Attempt 1: JSON format {"keys":[{"kid":"...","k":"..."}]} or {"kid":"...","k":"..."}
               // 1.1: Nếu keyString phải lấy qua qua url
               if (/^http/.test(keyString)) {
-                keyString = "https://proxy.nupakachi11191.workers.dev/?url=" + keyString;
+                keyString = "https://iptv-player.nupakachi.dpdns.org/proxy.php?url=" + encodeURIComponent(keyString);
                 const response = await fetch(keyString);
                 if (response.ok) {
                   keyString = await response.text();
