@@ -1394,12 +1394,11 @@
 
       // Tìm kiếm & Lọc theo Category
       function filterChannels() {
-        console.log("vao function filterChannels");
         const query = searchInput.value.toLowerCase().trim();
         const clearBtn = document.getElementById("clear-search-btn");
         if (clearBtn) clearBtn.classList.toggle("hidden", query === "");
         let filtered = allChannels;
-        
+
         // 1. Lọc theo Category hiện tại
         if (currentCategory !== "Tất cả") {
           filtered = filtered.filter((c) => (c.group || "Khác") === currentCategory);
@@ -1419,11 +1418,19 @@
 
       // Hàm render list không filter (để dùng trong filterChannels)
       function renderChannelsExplicit(channels) {
-        console.log("vao function renderChannelsExplicit");
+
+        // khi dùng clearList()
         if (channels.length === 0) {
+          channelListEl.innerHTML = `<div id="empty-state" class="h-full flex flex-col items-center justify-center text-center p-6 opacity-40">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-list" aria-hidden="true" class="lucide lucide-layout-list w-12 h-12 mb-4"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect><path d="M14 4h7"></path><path d="M14 9h7"></path><path d="M14 15h7"></path><path d="M14 20h7"></path></svg>
+              <h3 class="font-medium text-sm">Chưa có kênh nào</h3>
+              <p class="text-[11px] mt-1">Nhấn dấu cộng để thêm playlist của bạn</p>
+            </div>`;
           emptyStateEl.style.display = "flex";
           return;
         }
+
+        // làm sạch channelListEl trước khi render
         channelListEl.innerHTML = "";
         emptyStateEl.style.display = "none";
 
@@ -2036,7 +2043,6 @@
         let tempUrl = channel.url;
         // /\.(proxy?url=)/i.test(tempUrl) , do ta channel.url = url để khắc phục lỗi ko hightlight channel in list. ngay bên dưới
         if (!/\.(m3u8|mpd|ts)/i.test(tempUrl) && !/proxy\?url=/i.test(tempUrl)) {
-          console.log("tempUrl", tempUrl);
           // Case 1: get final url;
           let flagGetFinalUrl = false;
           for (let countGetFinalUrl = 5; countGetFinalUrl > 0; countGetFinalUrl--) {
@@ -2046,7 +2052,7 @@
               );
               let text = "";
               if (response.ok) text = await response.text();
-              console.log(`Get final url lần ${5 - countGetFinalUrl + 1}: `, text);
+              console.log(`Try get the final URL for the ${5 - countGetFinalUrl + 1}th time. : `, text);
               if (/\.(m3u8|mpd|ts)/i.test(text)) {
                 tempUrl = text;
                 flagGetFinalUrl = true;
@@ -2101,7 +2107,7 @@
         videoPlayer.preservesPitch = true;
         if ("mozPreservesPitch" in videoPlayer) videoPlayer.mozPreservesPitch = true;
         if ("webkitPreservesPitch" in videoPlayer) videoPlayer.webkitPreservesPitch = true;
-        
+
         // Highlight in list
         filterChannels();
 
