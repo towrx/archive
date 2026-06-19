@@ -1418,7 +1418,6 @@
 
       // Hàm render list không filter (để dùng trong filterChannels)
       function renderChannelsExplicit(channels) {
-
         // khi dùng clearList()
         if (channels.length === 0) {
           channelListEl.innerHTML = `<div id="empty-state" class="h-full flex flex-col items-center justify-center text-center p-6 opacity-40">
@@ -2331,6 +2330,8 @@
             nudgeOffset: 0.2,
             nudgeMaxRetry: 5,
             appendErrorMaxRetry: 5, // Cho phép thử lại 5 lần khi gặp lỗi append buffer
+            maxAudioFramesDrift: 1, // ep đồng bộ âm thnah và hinh
+            initialLiveManifestSize: 3, // tải đủ 3 segment mới bắt đầu play, tránh với play sẽ bị giật
           });
           hlsInstance.loadSource(url);
           hlsInstance.attachMedia(videoPlayer);
@@ -2414,7 +2415,7 @@
             }
           });
 
-          // === Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo) ===
+          // cách 2 === Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo) ===
           // FRAG_PARSING_INIT_SEGMENT bắt lửa ngay khi HLS.js phát hiện init segment mới
           // (xảy ra mỗi lần qua #EXT-X-DISCONTINUITY) — đây là thời điểm đúng để swap codec
           let initSegmentCount = 0;
@@ -2430,6 +2431,14 @@
               /* ignore */
             }
           });
+
+          // cách 2 === Xử lý khi qua discontinuity (quảng cáo/chuyển bài) ===
+          // hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
+          //   if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
+          //     console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
+          //   }
+          // });
+
           let hlsErrorRecoveries = 0;
           let hlsNetworkRecoveries = 0;
 
