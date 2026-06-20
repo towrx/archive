@@ -1005,15 +1005,20 @@
       });
 
       // Hàm Toast
-      function showToast(message, type = "success") {
+      function showToast(message, type = "info") {
         const container = document.getElementById("toast-container");
         const toast = document.createElement("div");
         toast.className = `toast ${type}`;
-        const iconName = type === "success" ? "check" : "alert-circle";
+        const iconName = {
+          "warning": "triangle-alert",
+          "error": "circle-x",
+          "success": "circle-check",
+          "info": "info"
+        };
 
         toast.innerHTML = `
                     <div class="toast-icon">
-                        <i data-lucide="${iconName}" class="w-4 h-4"></i>
+                        <i data-lucide="${iconName[type]}" class="w-4 h-4"></i>
                     </div>
                     <span>${message}</span>
                 `;
@@ -1022,7 +1027,7 @@
 
         setTimeout(() => {
           if (container.contains(toast)) container.removeChild(toast);
-        }, 3300);
+        }, 4000);
       }
 
       // Logic Parse
@@ -1269,7 +1274,7 @@
         currentCategory = "Tất cả";
         renderCategoryTabs();
         filterChannels();
-        showToast(`Đã tải thành công ${allChannels.length} kênh.`);
+        showToast(`Đã tải thành công ${allChannels.length} kênh.`, "success");
       }
 
       // Tải File Local
@@ -1300,7 +1305,7 @@
       // Tải qua URL
       async function loadFromUrl() {
         const urlInput = document.getElementById("url-input").value.trim();
-        if (!urlInput) return showToast("Vui lòng dán đường dẫn URL!", "error");
+        if (!urlInput) return showToast("Vui lòng dán đường dẫn URL!", "warning");
 
         // === Phát hiện link luồng trực tiếp (.m3u8, .mpd, .ts) ===
         // Các link này là stream cần phát, KHÔNG phải playlist IPTV cần parse
@@ -1317,7 +1322,7 @@
           } catch (e) {
             var streamName = "Luồng trực tiếp";
           }
-          showToast(`Đang phát: ${streamName}`, "success");
+          showToast(`Đang phát: ${streamName}`, "info");
           playChannel({
             name: streamName,
             url: urlInput,
@@ -1328,7 +1333,7 @@
           return;
         }
 
-        showToast("Đang kết nối URL...", "success");
+        showToast("Đang kết nối URL...", "info");
         let text = "";
 
         // Danh sách các proxy để thử nghiệm vượt rào CORS
@@ -1599,7 +1604,7 @@
         if (audioVis) audioVis.classList.add("hidden");
 
         filterChannels();
-        showToast("Đã dừng phát.", "success");
+        showToast("Đã dừng phát.", "info");
       }
 
       // Fix lỗi ko tự xoay màn hình fullscreen trên smartphone android
@@ -1779,7 +1784,7 @@
           epgData = tempEpgData;
           epgFetchStatus = "success";
           console.log(`Đã tải xong EPG cho ${epgData.size} kênh.`);
-          showToast(`Đã cập nhật lịch phát sóng (${epgData.size} kênh)`);
+          showToast(`Đã cập nhật lịch phát sóng (${epgData.size} kênh)`, "success");
 
           // Refresh UI if needed
           filterChannels();
@@ -2038,12 +2043,15 @@
         if (window.stallTimeout) clearTimeout(window.stallTimeout);
         if (window.stallInterval) clearInterval(window.stallInterval);
 
-        // Fix đối với channel link bị CORS
+        // Fix đối với channel link bị CORS hoặc ở dạng redirect
         let tempUrl = channel.url;
-        // /\.(proxy?url=)/i.test(tempUrl) , do ta channel.url = url để khắc phục lỗi ko hightlight channel in list. ngay bên dưới
-        if (!/\.(m3u8|mpd|ts)/i.test(tempUrl) && !/proxy\?url=/i.test(tempUrl)) {
-          // Case 1: get final url;
+        // /\.(proxy?url=)/i.test(tempUrl) , do ta channel.url = url để khắc phục lỗi ko hightlight channel in list. ngay bên dưới,
+        // /quanlehong539/i.test(tempUrl), mặc dù link tvpub .m3u8 nhưng nó lại redirect sang link khác
+        if ((!/\.(m3u8|mpd|ts)/i.test(tempUrl) && !/proxy\?url=/i.test(tempUrl)) || /quanlehong539/i.test(tempUrl)) {
+          // step 1: get final url; để khắc phục redirect link
           let flagGetFinalUrl = false;
+          showToast(`Link của kênh [${channel.name}] là redirect link. Đang tiến hành lấy link gốc! Vui lòng chờ...`, "info");
+
           for (let countGetFinalUrl = 5; countGetFinalUrl > 0; countGetFinalUrl--) {
             try {
               const response = await fetch(
@@ -2051,10 +2059,22 @@
               );
               let text = "";
               if (response.ok) text = await response.text();
-              console.log(`Try get the final URL for the ${5 - countGetFinalUrl + 1}th time. : `, text);
-              if (/\.(m3u8|mpd|ts)/i.test(text)) {
+              console.log(
+                `get-final-url: attempt [${5 - countGetFinalUrl + 1}] → resolving final [${channel.name}] URL`,
+                text,
+              );
+              // !/^https:\/\/rumble\.com\/hls-vod\/73vp6u\/playlist\.m3u8, do redirect ngẫu nhiên đến các link, mà cái link lại link báo lỗi.
+              if (
+                /\.(m3u8|mpd|ts)/i.test(text) &&
+                !/^https:\/\/rumble\.com\/hls-vod\/73vp6u\/playlist\.m3u8$/i.test(text)
+              ) {
                 tempUrl = text;
                 flagGetFinalUrl = true;
+
+                showToast(
+                  `Đã lấy được link gốc của kênh [${channel.name}] thành công!`,
+                  "success",
+                );
                 break;
               }
             } catch (e) {
@@ -2062,10 +2082,12 @@
             }
           }
 
-          // Case 2: Dung proxy de playing channel link
+          // step 2: sau khi có được link real từ get-final-url mà lại bị CROS thì dùng proxy (dùng luôn cho redirect link)
           // 1 số trường hợp có domain có lấy được m3u8 nhưng vẫn bị CROS
-          if (/\.(vieon.vn)/i.test(tempUrl) || !flagGetFinalUrl)
+          if (/\.(vieon.vn)/i.test(tempUrl) || !flagGetFinalUrl) {
             tempUrl = "https://tv.hminhhosting.io.vn/proxy?url=" + encodeURIComponent(channel.url);
+            showToast(`Link của kênh [${channel.name}] bị chặn quyền truy cập CORS. Tiến hành dùng proxy để vượt qua!`, "info");
+          }
         }
 
         const url = tempUrl;
@@ -2164,7 +2186,6 @@
                 const response = await fetch(keyString);
                 if (response.ok) {
                   keyString = await response.text();
-                  showToast("Tải ClearKeys thành công!", "success");
                 }
               }
               const keyData = JSON.parse(keyString);
@@ -2199,8 +2220,11 @@
                   // },
                 },
               });
-              console.log("Configured ClearKey DRM (hex):", clearKeys);
+              console.log(`Configured ClearKey DRM (hex) for ${channel.name}} channel: `, clearKeys);
+              showToast(`Cấu hình ClearKey DRM (hex) cho kênh ${channel.name} thành công!`, "success");
             }
+            else 
+              showToast(`Cấu hình ClearKey DRM (hex) cho kênh ${channel.name} thất bại!`, "error");
           }
 
           shakaInstance.addEventListener("error", (event) => {
@@ -2362,7 +2386,7 @@
 
           hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
             videoPlayer.play().catch((e) => {
-              showToast("Nhấn nút Play để chạy luồng.", "warning");
+              showToast("Nhấn nút Play để chạy luồng.", "info");
               loadingOverlay.classList.add("hidden");
             });
 
@@ -2479,7 +2503,7 @@
                     hlsNetworkRecoveries = 0;
                     hlsInstance.startLoad();
                   } else {
-                    showToast("Lỗi mạng kéo dài, đang tải lại luồng...", "warning");
+                    showToast("Lỗi mạng kéo dài, đang tải lại luồng...", "error");
                     setTimeout(() => {
                       if (currentPlayingUrl === url) playChannel(channel);
                     }, 5000);
@@ -2535,7 +2559,7 @@
           mpegtsInstance.attachMediaElement(videoPlayer);
           mpegtsInstance.load();
           mpegtsInstance.play().catch((e) => {
-            showToast("Nhấn nút Play để chạy luồng TS.", "warning");
+            showToast("Nhấn nút Play để chạy luồng TS.", "info");
             loadingOverlay.classList.add("hidden");
           });
 
@@ -2618,7 +2642,7 @@
             if (match) shakaInstance.selectVariantTrack(match, true);
           }
         }
-        showToast(`Chất lượng: ${label}`, "success");
+        showToast(`Chất lượng: ${label}`, "info");
       });
 
       // === Keyboard Shortcuts ===
