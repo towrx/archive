@@ -2297,41 +2297,65 @@
         // --- Case 2: HLS / M3U8 (Using Hls.js) ---
         else if (typeof Hls !== "undefined" && Hls.isSupported() && !isMPD && !isRawTS) {
           hlsInstance = new Hls({
+            // Worker
             enableWorker: true,
+
+            // Live mode
             lowLatencyMode: false,
+            liveSyncDurationCount: 3,
+            liveMaxLatencyDurationCount: 8,
+            initialLiveManifestSize: 3,
+
+            // Buffer
             backBufferLength: 10,
-            maxBufferLength: 30,
-            maxMaxBufferLength: 60,
-            maxBufferSize: 60 * 1000 * 1000,
+            maxBufferLength: 20,
+            maxMaxBufferLength: 40,
+            maxBufferSize: 50 * 1000 * 1000,
+
+            // Retry
             manifestLoadingMaxRetry: 10,
             manifestLoadingRetryDelay: 1000,
             manifestLoadingMaxRetryTimeout: 64000,
+
             levelLoadingMaxRetry: 10,
+
             fragLoadingMaxRetry: 10,
             fragLoadingRetryDelay: 1000,
+
+            // Startup
             startLevel: -1,
-            // === ABR Tuning ===
+
+            // ABR
             abrEwmaFastLive: 3,
             abrEwmaSlowLive: 9,
             abrEwmaFastVoD: 3,
             abrEwmaSlowVoD: 9,
-            abrBandWidthFactor: 0.7,
-            abrBandWidthUpFactor: 0.5,
+
+            abrBandWidthFactor: 0.8,
+            abrBandWidthUpFactor: 0.7,
+
             abrMaxWithRealBitrate: true,
-            abrEwmaDefaultEstimate: 500000,
-            abrEwmaDefaultEstimateMax: 5000000,
-            // === Discontinuity / Anti-distortion ===
-            liveSyncDurationCount: 3,
-            liveMaxLatencyDurationCount: 6,
-            stretchShortVideoTrack: true,
+
+            abrEwmaDefaultEstimate: 5000000,
+            abrEwmaDefaultEstimateMax: 12000000,
+
+            // Buffer gap handling
             maxBufferHole: 0.5,
+
+            // Discontinuity
             forceKeyFrameOnDiscontinuity: true,
-            progressive: false,
+            stretchShortVideoTrack: true,
+
+            // Recovery
             nudgeOffset: 0.2,
             nudgeMaxRetry: 5,
-            appendErrorMaxRetry: 5, // Cho phép thử lại 5 lần khi gặp lỗi append buffer
-            maxAudioFramesDrift: 1, // ep đồng bộ âm thnah và hinh
-            initialLiveManifestSize: 3, // tải đủ 3 segment mới bắt đầu play, tránh với play sẽ bị giật
+            appendErrorMaxRetry: 5,
+
+            // Audio sync
+            maxAudioFramesDrift: 2,
+
+            // MSE
+            progressive: false,
           });
           hlsInstance.loadSource(url);
           hlsInstance.attachMedia(videoPlayer);
