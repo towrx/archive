@@ -2348,7 +2348,6 @@
         }
         // --- Case 2: Raw MPEG-TS stream (Using mpegts.js) ---
         else if (typeof mpegts !== "undefined" && mpegts.isSupported() && isRawTS) {
-          console.log("vao case 2");
           mpegtsInstance = mpegts.createPlayer(
             {
               type: "mpegts",
