@@ -1009,16 +1009,16 @@
         const container = document.getElementById("toast-container");
         const toast = document.createElement("div");
         toast.className = `toast ${type}`;
-        const iconName = {
-          "warning": "triangle-alert",
-          "error": "circle-x",
-          "success": "circle-check",
-          "info": "info"
+        const icon = {
+          warning: ["triangle-alert", "#FF9800"],
+          error: ["circle-x", "#F44336"],
+          success: ["circle-check", "#4CAF50"],
+          info: ["info", "#2196F3"],
         };
 
         toast.innerHTML = `
                     <div class="toast-icon">
-                        <i data-lucide="${iconName[type]}" class="w-4 h-4"></i>
+                        <i data-lucide="${icon[type][0]}" class="w-4 h-4" style="color:${icon[type][1]};"></i>
                     </div>
                     <span>${message}</span>
                 `;
@@ -1027,7 +1027,7 @@
 
         setTimeout(() => {
           if (container.contains(toast)) container.removeChild(toast);
-        }, 4000);
+        }, 3000);
       }
 
       // Logic Parse
@@ -2050,7 +2050,7 @@
         if ((!/\.(m3u8|mpd|ts)/i.test(tempUrl) && !/proxy\?url=/i.test(tempUrl)) || /quanlehong539/i.test(tempUrl)) {
           // step 1: get final url; để khắc phục redirect link
           let flagGetFinalUrl = false;
-          showToast(`Link của kênh [${channel.name}] là redirect link. Đang tiến hành lấy link gốc! Vui lòng chờ...`, "info");
+          showToast(`Link kênh [<b>${channel.name}</b>] là redirect link! Vui lòng chờ...`, "info");
 
           for (let countGetFinalUrl = 5; countGetFinalUrl > 0; countGetFinalUrl--) {
             try {
@@ -2060,7 +2060,7 @@
               let text = "";
               if (response.ok) text = await response.text();
               console.log(
-                `get-final-url: attempt [${5 - countGetFinalUrl + 1}] → resolving final [${channel.name}] URL`,
+                `get-final-url: attempt [${5 - countGetFinalUrl + 1}] → resolving final [<b>${channel.name}</b>] URL`,
                 text,
               );
               // !/^https:\/\/rumble\.com\/hls-vod\/73vp6u\/playlist\.m3u8, do redirect ngẫu nhiên đến các link, mà cái link lại link báo lỗi.
@@ -2071,10 +2071,7 @@
                 tempUrl = text;
                 flagGetFinalUrl = true;
 
-                showToast(
-                  `Đã lấy được link gốc của kênh [${channel.name}] thành công!`,
-                  "success",
-                );
+                showToast(`Link gốc kênh [<b>${channel.name}</b>] lấy thành công!`, "success");
                 break;
               }
             } catch (e) {
@@ -2082,11 +2079,14 @@
             }
           }
 
-          // step 2: sau khi có được link real từ get-final-url mà lại bị CROS thì dùng proxy (dùng luôn cho redirect link)
-          // 1 số trường hợp có domain có lấy được m3u8 nhưng vẫn bị CROS
+          // step 2: sau khi có được link real từ get-final-url mà lại bị CORS thì dùng proxy (dùng luôn cho redirect link)
+          // 1 số trường hợp có domain có lấy được m3u8 nhưng vẫn bị CORS
           if (/\.(vieon.vn)/i.test(tempUrl) || !flagGetFinalUrl) {
             tempUrl = "https://tv.hminhhosting.io.vn/proxy?url=" + encodeURIComponent(channel.url);
-            showToast(`Link của kênh [${channel.name}] bị chặn quyền truy cập CORS. Tiến hành dùng proxy để vượt qua!`, "info");
+            showToast(
+              `Dùng proxy vượt qua CORS cho kênh [<b>${channel.name}</b>]`,
+              "info",
+            );
           }
         }
 
@@ -2220,106 +2220,154 @@
                   // },
                 },
               });
-              console.log(`Configured ClearKey DRM (hex) for ${channel.name}} channel: `, clearKeys);
-              showToast(`Cấu hình ClearKey DRM (hex) cho kênh ${channel.name} thành công!`, "success");
-            }
-            else 
-              showToast(`Cấu hình ClearKey DRM (hex) cho kênh ${channel.name} thất bại!`, "error");
-          }
+              console.log(`Configured ClearKey DRM (hex) for ${channel.name} channel: `, clearKeys);
+              showToast(`Cấu hình ClearKey DRM (hex) kênh <b>${channel.name}</b> thành công!`, "success");
 
-          shakaInstance.addEventListener("error", (event) => {
-            console.error("Shaka Error:", event.detail);
-          });
-
-          try {
-            await shakaInstance.load(url);
-            videoPlayer.play();
-
-            // Live stream handling
-            if (shakaInstance.isLive()) {
-              videoPlayer.classList.add("is-live");
-              // Seek đến live edge
-              const seekRange = shakaInstance.seekRange();
-              videoPlayer.currentTime = seekRange.end;
-            } else {
-              videoPlayer.classList.remove("is-live");
-            }
-
-            // Populate quality selector from Shaka variant tracks
-            const qualitySelector = document.getElementById("quality-selector");
-            const tracks = shakaInstance.getVariantTracks();
-            // Lấy danh sách độ phân giải duy nhất, sắp xếp từ cao xuống thấp
-            const uniqueHeights = [...new Set(tracks.map((t) => t.height).filter((h) => h > 0))].sort((a, b) => b - a);
-            if (uniqueHeights.length > 1) {
-              // Lấy resolution hiện tại đang active
-              const activeTrack = tracks.find((t) => t.active);
-              const activeH = activeTrack ? activeTrack.height : uniqueHeights[0];
-              qualitySelector.innerHTML = `<option value="auto">Auto${activeH ? " (" + activeH + "p)" : ""}</option>`;
-              uniqueHeights.forEach((h) => {
-                const opt = document.createElement("option");
-                opt.value = h;
-                opt.textContent = `${h}p`;
-                qualitySelector.appendChild(opt);
+              shakaInstance.addEventListener("error", (event) => {
+                console.error("Shaka Error:", event.detail);
               });
-              qualitySelector.classList.remove("hidden");
-
-              // === Cập nhật dropdown khi Shaka ABR tự chuyển chất lượng ===
-              shakaInstance.addEventListener("adaptation", () => {
-                if (!shakaInstance) return;
-                const abrConfig = shakaInstance.getConfiguration().abr;
-                // Chỉ cập nhật khi đang ở chế độ Auto
-                if (abrConfig && abrConfig.enabled && qualitySelector.value === "auto") {
-                  const currentTrack = shakaInstance.getVariantTracks().find((t) => t.active);
-                  const h = currentTrack ? currentTrack.height : 0;
-                  const autoOpt = qualitySelector.querySelector('option[value="auto"]');
-                  if (autoOpt) {
-                    autoOpt.textContent = h ? `Auto (${h}p)` : "Auto";
-                  }
-                }
-              });
-            } else {
-              // Nếu chỉ có 1 luồng hoặc không đọc được metadata từ manifest
-              const h = uniqueHeights.length === 1 ? uniqueHeights[0] : 0;
-              qualitySelector.innerHTML = `<option value="${h || 0}" id="single-quality-opt">${h ? h + "p" : "Đang tải..."}</option>`;
-              qualitySelector.classList.remove("hidden");
-
-              // Lấy độ phân giải thực khi video bắt đầu kết xuất (render)
-              videoPlayer.addEventListener("resize", function updateRes() {
-                const realHeight = videoPlayer.videoHeight;
-                const opt = document.getElementById("single-quality-opt");
-                if (realHeight && opt && opt.textContent === "Đang tải...") {
-                  opt.textContent = `${realHeight}p`;
-                  videoPlayer.removeEventListener("resize", updateRes);
-                }
-              });
-            }
-          } catch (e) {
-            showToast("Lỗi phát DASH/DRM: " + e.message, "error");
-          }
-
-          // === Shaka Live Edge Recovery (Anti audio drift cho DASH) ===
-          if (shakaInstance && shakaInstance.isLive && shakaInstance.isLive()) {
-            if (liveEdgeCheckInterval) clearInterval(liveEdgeCheckInterval);
-            liveEdgeCheckInterval = setInterval(() => {
-              if (!shakaInstance || !shakaInstance.isLive()) return;
               try {
-                const seekRange = shakaInstance.seekRange();
-                const currentPos = videoPlayer.currentTime;
-                const liveEdge = seekRange.end;
-                const drift = liveEdge - currentPos;
+                await shakaInstance.load(url);
+                videoPlayer.play();
 
-                if (drift > 15 && !videoPlayer.paused) {
-                  console.warn(`[Audio Fix][Shaka] Drift ${drift.toFixed(1)}s, seeking to live edge...`);
-                  videoPlayer.currentTime = liveEdge - 2;
+                // Live stream handling
+                if (shakaInstance.isLive()) {
+                  videoPlayer.classList.add("is-live");
+                  // Seek đến live edge
+                  const seekRange = shakaInstance.seekRange();
+                  videoPlayer.currentTime = seekRange.end;
+                } else {
+                  videoPlayer.classList.remove("is-live");
+                }
+
+                // Populate quality selector from Shaka variant tracks
+                const qualitySelector = document.getElementById("quality-selector");
+                const tracks = shakaInstance.getVariantTracks();
+                // Lấy danh sách độ phân giải duy nhất, sắp xếp từ cao xuống thấp
+                const uniqueHeights = [...new Set(tracks.map((t) => t.height).filter((h) => h > 0))].sort(
+                  (a, b) => b - a,
+                );
+                if (uniqueHeights.length > 1) {
+                  // Lấy resolution hiện tại đang active
+                  const activeTrack = tracks.find((t) => t.active);
+                  const activeH = activeTrack ? activeTrack.height : uniqueHeights[0];
+                  qualitySelector.innerHTML = `<option value="auto">Auto${activeH ? " (" + activeH + "p)" : ""}</option>`;
+                  uniqueHeights.forEach((h) => {
+                    const opt = document.createElement("option");
+                    opt.value = h;
+                    opt.textContent = `${h}p`;
+                    qualitySelector.appendChild(opt);
+                  });
+                  qualitySelector.classList.remove("hidden");
+
+                  // === Cập nhật dropdown khi Shaka ABR tự chuyển chất lượng ===
+                  shakaInstance.addEventListener("adaptation", () => {
+                    if (!shakaInstance) return;
+                    const abrConfig = shakaInstance.getConfiguration().abr;
+                    // Chỉ cập nhật khi đang ở chế độ Auto
+                    if (abrConfig && abrConfig.enabled && qualitySelector.value === "auto") {
+                      const currentTrack = shakaInstance.getVariantTracks().find((t) => t.active);
+                      const h = currentTrack ? currentTrack.height : 0;
+                      const autoOpt = qualitySelector.querySelector('option[value="auto"]');
+                      if (autoOpt) {
+                        autoOpt.textContent = h ? `Auto (${h}p)` : "Auto";
+                      }
+                    }
+                  });
+                } else {
+                  // Nếu chỉ có 1 luồng hoặc không đọc được metadata từ manifest
+                  const h = uniqueHeights.length === 1 ? uniqueHeights[0] : 0;
+                  qualitySelector.innerHTML = `<option value="${h || 0}" id="single-quality-opt">${h ? h + "p" : "Đang tải..."}</option>`;
+                  qualitySelector.classList.remove("hidden");
+
+                  // Lấy độ phân giải thực khi video bắt đầu kết xuất (render)
+                  videoPlayer.addEventListener("resize", function updateRes() {
+                    const realHeight = videoPlayer.videoHeight;
+                    const opt = document.getElementById("single-quality-opt");
+                    if (realHeight && opt && opt.textContent === "Đang tải...") {
+                      opt.textContent = `${realHeight}p`;
+                      videoPlayer.removeEventListener("resize", updateRes);
+                    }
+                  });
                 }
               } catch (e) {
-                /* Shaka may be destroyed */
+                showToast("Lỗi phát DASH/DRM: " + e.message, "error");
               }
-            }, 30000);
+
+              // === Shaka Live Edge Recovery (Anti audio drift cho DASH) ===
+              if (shakaInstance && shakaInstance.isLive && shakaInstance.isLive()) {
+                if (liveEdgeCheckInterval) clearInterval(liveEdgeCheckInterval);
+                liveEdgeCheckInterval = setInterval(() => {
+                  if (!shakaInstance || !shakaInstance.isLive()) return;
+                  try {
+                    const seekRange = shakaInstance.seekRange();
+                    const currentPos = videoPlayer.currentTime;
+                    const liveEdge = seekRange.end;
+                    const drift = liveEdge - currentPos;
+
+                    if (drift > 15 && !videoPlayer.paused) {
+                      console.warn(`[Audio Fix][Shaka] Drift ${drift.toFixed(1)}s, seeking to live edge...`);
+                      videoPlayer.currentTime = liveEdge - 2;
+                    }
+                  } catch (e) {
+                    /* Shaka may be destroyed */
+                  }
+                }, 30000);
+              }
+            } else showToast(`Cấu hình ClearKey DRM (hex) kênh <b>${channel.name}</b> thất bại!`, "error");
           }
         }
-        // --- Case 2: HLS / M3U8 (Using Hls.js) ---
+        // --- Case 2: Raw MPEG-TS stream (Using mpegts.js) ---
+        else if (typeof mpegts !== "undefined" && mpegts.isSupported() && isRawTS) {
+          console.log("vao case 2");
+          mpegtsInstance = mpegts.createPlayer(
+            {
+              type: "mpegts",
+              isLive: true,
+              url: url,
+            },
+            {
+              enableWorker: true,
+              liveBufferLatencyChasing: false,
+              liveBufferLatencyMaxLatency: 5,
+              liveBufferLatencyMinRemain: 1.0,
+              autoCleanupSourceBuffer: true, // Tự động dọn buffer cũ
+              autoCleanupMaxBackwardDuration: 30, // Chỉ giữ 30s buffer phía sau
+              autoCleanupMinBackwardDuration: 15, // Bắt đầu dọn khi >15s
+              fixAudioTimestampGap: true, // Sửa audio gap tự động
+            },
+          );
+
+          mpegtsInstance.attachMediaElement(videoPlayer);
+          mpegtsInstance.load();
+          mpegtsInstance.play().catch((e) => {
+            showToast("Nhấn nút Play để chạy luồng TS.", "info");
+            loadingOverlay.classList.add("hidden");
+          });
+
+          let mpegtsRetries = 0;
+          mpegtsInstance.on(mpegts.Events.ERROR, (errorType, errorDetail, errorInfo) => {
+            console.error("mpegts.js Error:", errorType, errorDetail, errorInfo);
+            if (errorType === mpegts.ErrorTypes.NETWORK_ERROR) {
+              if (mpegtsRetries < 3) {
+                mpegtsRetries++;
+                console.log(`Mpegts network error, retry ${mpegtsRetries}...`);
+                // Mpegts.js handles some retries internally if configured,
+                // but here we manually reload after a delay if it stays dead
+              } else {
+                showToast("Lỗi mạng luồng TS. Đang thử lại...", "error");
+                setTimeout(() => {
+                  if (currentPlayingUrl === url) playChannel(channel);
+                }, 5000);
+              }
+            }
+          });
+
+          document.getElementById("quality-selector").classList.add("hidden");
+        }
+        // --- Case 3: HLS / M3U8 (Using Hls.js) ---
         else if (typeof Hls !== "undefined" && Hls.isSupported() && !isMPD && !isRawTS) {
+          console.log("ssssscao case 3333");
           hlsInstance = new Hls({
             // Worker
             enableWorker: true,
@@ -2390,7 +2438,7 @@
               loadingOverlay.classList.add("hidden");
             });
 
-            // === Kiểm tra Audio-Only từ HLS manifest (chính xác nhất) ===
+            // === Kiểm tra Audio-Only (Radio) từ HLS manifest (chính xác nhất) ===
             if (hlsInstance.levels && hlsInstance.levels.length > 0) {
               const allAudioOnly = hlsInstance.levels.every((l) => !l.videoCodec || l.videoCodec === "");
               if (allAudioOnly) {
@@ -2536,53 +2584,6 @@
             }
           });
         }
-        // --- Case 3: Raw MPEG-TS stream (Using mpegts.js) ---
-        else if (typeof mpegts !== "undefined" && mpegts.isSupported() && isRawTS) {
-          mpegtsInstance = mpegts.createPlayer(
-            {
-              type: "mpegts",
-              isLive: true,
-              url: url,
-            },
-            {
-              enableWorker: true,
-              liveBufferLatencyChasing: false,
-              liveBufferLatencyMaxLatency: 5,
-              liveBufferLatencyMinRemain: 1.0,
-              autoCleanupSourceBuffer: true, // Tự động dọn buffer cũ
-              autoCleanupMaxBackwardDuration: 30, // Chỉ giữ 30s buffer phía sau
-              autoCleanupMinBackwardDuration: 15, // Bắt đầu dọn khi >15s
-              fixAudioTimestampGap: true, // Sửa audio gap tự động
-            },
-          );
-
-          mpegtsInstance.attachMediaElement(videoPlayer);
-          mpegtsInstance.load();
-          mpegtsInstance.play().catch((e) => {
-            showToast("Nhấn nút Play để chạy luồng TS.", "info");
-            loadingOverlay.classList.add("hidden");
-          });
-
-          let mpegtsRetries = 0;
-          mpegtsInstance.on(mpegts.Events.ERROR, (errorType, errorDetail, errorInfo) => {
-            console.error("mpegts.js Error:", errorType, errorDetail, errorInfo);
-            if (errorType === mpegts.ErrorTypes.NETWORK_ERROR) {
-              if (mpegtsRetries < 3) {
-                mpegtsRetries++;
-                console.log(`Mpegts network error, retry ${mpegtsRetries}...`);
-                // Mpegts.js handles some retries internally if configured,
-                // but here we manually reload after a delay if it stays dead
-              } else {
-                showToast("Lỗi mạng luồng TS. Đang thử lại...", "error");
-                setTimeout(() => {
-                  if (currentPlayingUrl === url) playChannel(channel);
-                }, 5000);
-              }
-            }
-          });
-
-          document.getElementById("quality-selector").classList.add("hidden");
-        }
         // --- Case 4: Fallback (Native browser playback) ---
         else {
           videoPlayer.src = url;
@@ -2593,16 +2594,16 @@
         }
 
         videoPlayer.onplaying = () => {
+          // 
           loadingOverlay.classList.add("hidden");
-
           // Kiểm tra nguồn audio đã biết qua domain/đuôi file (cho native/fallback player)
-          const isKnownAudioSource =
-            currentPlayingUrl.includes("zmp3.zmdcdn.me") ||
-            currentPlayingUrl.includes("mp3.zing.vn") ||
-            /\.(mp3|aac|ogg|flac|opus)(\?|$)/i.test(currentPlayingUrl);
-          if (isKnownAudioSource) {
-            showAudioVisualizer(channel);
-          }
+          // const isKnownAudioSource =
+          //   currentPlayingUrl.includes("zmp3.zmdcdn.me") ||
+          //   currentPlayingUrl.includes("mp3.zing.vn") ||
+          //   /\.(mp3|aac|ogg|flac|opus)(\?|$)/i.test(currentPlayingUrl);
+          // if (isKnownAudioSource) {
+          //   showAudioVisualizer(channel);
+          // }
         };
 
         videoPlayer.onwaiting = () => {
