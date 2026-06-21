@@ -812,11 +812,7 @@
               </span>
             </button>
             <button
-              onclick="
-                loadPredefinedUrl(
-                  'https://raw.githubusercontent.com/hieu-TQS/TV/refs/heads/main/TV.m3u',
-                )
-              "
+              onclick="loadPredefinedUrl('https://raw.githubusercontent.com/hieu-TQS/TV/refs/heads/main/TV.m3u')"
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
               <span class="text-[12px] font-bold text-white group-hover:text-emerald-400 transition-colors">
@@ -2400,7 +2396,6 @@
         }
         // --- Case 3: HLS / M3U8 (Using Hls.js) ---
         else if (typeof Hls !== "undefined" && Hls.isSupported() && !isMPD && !isRawTS) {
-          console.log("ssssscao case 3333");
           hlsInstance = new Hls({
             // Worker
             enableWorker: true,
@@ -2474,11 +2469,10 @@
             // === Kiểm tra Audio-Only (Radio) từ HLS manifest (chính xác nhất) ===
             if (hlsInstance.levels && hlsInstance.levels.length > 0) {
               const allAudioOnly = hlsInstance.levels.every((l) => !l.videoCodec || l.videoCodec === "");
-              if (allAudioOnly) {
-                showAudioVisualizer(channel);
-              }
+              if (allAudioOnly) showAudioVisualizer(channel);
             }
 
+            
             // Populate quality selector from HLS levels
             const qualitySelector = document.getElementById("quality-selector");
             if (hlsInstance.levels && hlsInstance.levels.length > 1) {
@@ -2630,13 +2624,9 @@
           //
           loadingOverlay.classList.add("hidden");
           // Kiểm tra nguồn audio đã biết qua domain/đuôi file (cho native/fallback player)
-          // const isKnownAudioSource =
-          //   currentPlayingUrl.includes("zmp3.zmdcdn.me") ||
-          //   currentPlayingUrl.includes("mp3.zing.vn") ||
-          //   /\.(mp3|aac|ogg|flac|opus)(\?|$)/i.test(currentPlayingUrl);
-          // if (isKnownAudioSource) {
-          //   showAudioVisualizer(channel);
-          // }
+          // kiểm tra xem channel link có phải là radio hay không
+          if (/(zmdcdn|zing|vov|audio)|\.(mp3|aac|ogg|flac|opus)(\?|$)/i.test(currentPlayingUrl))
+              showAudioVisualizer(channel);
         };
 
         videoPlayer.onwaiting = () => {
