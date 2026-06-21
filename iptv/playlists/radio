@@ -6,34 +6,23 @@
 #--*.*--1. VOV RADIO--*.*--#
 
 
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/BG_VOV1.jpg", VOV1 - Ban thời sự
-https://str.vov.gov.vn/vovlive/vov1vov5Viettitlese.sdp_aac/playlist.m3u8
-#https://audio-lss.vov.vn/han/live/vov1/audio/haudio-eng.m3u8
+#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://media.vov.vn/shv/_next/static/media/vov1.6cecb8b8.jpg", VOV1 - Thời Sự
+https://audio-lss.vov.vn/han/live/vov1/audio/haudio-eng.m3u8
 
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/BG_VOV2.jpg", VOV2 - Ban văn hóa - x&#227; hội
-https://str.vov.gov.vn/vovlive/vov2.sdp_aac/playlist.m3u8
-#https://audio-lss.vov.vn/han/live/vov2/audio/haudio-eng.m3u8
+#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://media.vov.vn/shv/_next/static/media/vov2.ebc7e533.jpg", VOV2 - Văn hóa - Xã hội và Dân tộc
+https://audio-lss.vov.vn/han/live/vov2/audio/haudio-eng.m3u8
 
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/BG_VOV3.jpg", VOV3 - Ban âm nhạc
-https://str.vov.gov.vn/vovlive/vov3.sdp_aac/playlist.m3u8
-#https://audio-lss.vov.vn/han/live/vov3/audio/haudio-eng.m3u8
+#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://media.vov.vn/shv/_next/static/media/vovgiaitri.0e7ff937.jpg", VOV3 - Văn học - Nghệ thuật - Âm nhạc
+https://audio-lss.vov.vn/han/live/vov3/audio/haudio-eng.m3u8
 
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/BG_VOV5.jpg", VOV5 - Đối ngoại
-https://str.vov.gov.vn/vovlive/vov247vov5English.sdp_aac/playlist.m3u8
-#https://media-audio.vov.vn/vov5.sdp_aac/playlist.m3u8
+#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://media.vov.vn/shv/_next/static/media/vovphathanhquocte.3f5ae88f.jpg", VOV5 - Đối ngoại
+https://media-audio.vov.vn/vov5.sdp_aac/playlist.m3u8
 
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="", VOV5 - English 24/7
+#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://media.vov.vn/shv/_next/static/media/vovtiengncngoai.7dc49612.jpg", VOV5 - English 24/7
 https://audio-lss.vov.vn/han/live/vov24_7/audio/haudio-eng.m3u8
 
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/VOVGTHCM.jpg", VOV giao thông HCM
-https://str.vov.gov.vn/vovlive/vovGTHCM.sdp_aac/playlist.m3u8
-
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/VOVGTHN.jpg", VOVGT Hà Nội
-https://str.vov.gov.vn/vovlive/vovGTHN.sdp_aac/playlist.m3u8
+#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://media.vov.vn/shv/_next/static/media/vovgiaothong.3dde5020.jpg", VOV Giao thông
 https://media-audio.vov.vn/vovGTHN.sdp_aac/playlist.m3u8
-
-#EXTINF:-1 group-title="VOV RADIO" tvg-id="" tvg-logo="https://admin.vov.gov.vn/UploadFolder/DonVi_Image/VOVGTMeKong.jpg", VOVGT Mê Kông
-https://str.vov.gov.vn/vovlive/vovgtMeKong.sdp_aac/playlist.m3u8
 
 
 
@@ -191,6 +180,7 @@ https://multi-playlist-zmp3.zmdcdn.me/UKk_cQEl314/zhls/playback-realtime/ef512af
 
 #EXTINF:-1 group-title="ZING RADIO" tvg-logo="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/e/d/d/6/edd6b56e8f79898dd98acfcf55c5564a.jpg", ZingRadio 12 - Nhạc Không Lời
 https://vnno-pt-16-tf-multi-playlist-zmp3.zmdcdn.me/4WEUr_3aq8I/zhls/playback-realtime/1f36d59ae9df008159ce/index.m3u8
+
 
 
 
