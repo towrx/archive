@@ -2209,7 +2209,7 @@
 
             try {
               // Attempt 1: JSON format {"keys":[{"kid":"...","k":"..."}]} or {"kid":"...","k":"..."}
-              // 1.1: Nếu keyString phải lấy qua qua url
+              // Nếu keyString phải lấy qua qua url
               if (/^http/.test(keyString)) {
                 keyString =
                   "https://iptv-player.nupakachi.dpdns.org/proxy.php?url=" +
@@ -2221,6 +2221,8 @@
                   keyString = await response.text();
                 }
               }
+              // kiểm tra keyString có là JSON format thì là Attempt 1 hay không!
+              // nếu ko phải sẽ bắn lỗi và nhảy vào Attempt 2.
               const keyData = JSON.parse(keyString);
               if (keyData.keys && Array.isArray(keyData.keys)) {
                 keyData.keys.forEach((k) => {
