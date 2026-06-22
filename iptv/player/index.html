@@ -2211,7 +2211,11 @@
               // Attempt 1: JSON format {"keys":[{"kid":"...","k":"..."}]} or {"kid":"...","k":"..."}
               // 1.1: Nếu keyString phải lấy qua qua url
               if (/^http/.test(keyString)) {
-                keyString = "https://iptv-player.nupakachi.dpdns.org/proxy.php?url=" + encodeURIComponent(keyString);
+                keyString =
+                  "https://iptv-player.nupakachi.dpdns.org/proxy.php?url=" +
+                  encodeURIComponent(keyString) +
+                  "&au=" +
+                  encodeURIComponent("Dalvik/2.1.0");
                 const response = await fetch(keyString);
                 if (response.ok) {
                   keyString = await response.text();
@@ -2471,7 +2475,6 @@
               if (allAudioOnly) showAudioVisualizer(channel);
             }
 
-            
             // Populate quality selector from HLS levels
             const qualitySelector = document.getElementById("quality-selector");
             if (hlsInstance.levels && hlsInstance.levels.length > 1) {
@@ -2625,7 +2628,7 @@
           // Kiểm tra nguồn audio đã biết qua domain/đuôi file (cho native/fallback player)
           // kiểm tra xem channel link có phải là radio hay không
           if (/(zmdcdn|zing|vov|audio)|\.(mp3|aac|ogg|flac|opus)(\?|$)/i.test(currentPlayingUrl))
-              showAudioVisualizer(channel);
+            showAudioVisualizer(channel);
         };
 
         videoPlayer.onwaiting = () => {
