@@ -7,7 +7,6 @@
     <link rel="icon" href="./favicon.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script> -->
     <script src="
 https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.js
 "></script>
@@ -2549,28 +2548,28 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
           // cách 1 === Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo) ===
           // FRAG_PARSING_INIT_SEGMENT bắt lửa ngay khi HLS.js phát hiện init segment mới
           // (xảy ra mỗi lần qua #EXT-X-DISCONTINUITY) — đây là thời điểm đúng để swap codec
-          let initSegmentCount = 0;
-          hlsInstance.on(Hls.Events.FRAG_PARSING_INIT_SEGMENT, (event, data) => {
-            initSegmentCount++;
-            // Init segment đầu tiên là lúc khởi động, bỏ qua
-            if (initSegmentCount <= 1) return;
-            // Từ init segment thứ 2 trở đi = discontinuity đã xảy ra
-            console.warn("[Anti-Distortion] New init segment detected (discontinuity), swapping audio codec...");
-            try {
-              hlsInstance.swapAudioCodec();
-            } catch (e) {
-              /* ignore */
-            }
-          });
+          // let initSegmentCount = 0;
+          // hlsInstance.on(Hls.Events.FRAG_PARSING_INIT_SEGMENT, (event, data) => {
+          //   initSegmentCount++;
+          //   // Init segment đầu tiên là lúc khởi động, bỏ qua
+          //   if (initSegmentCount <= 1) return;
+          //   // Từ init segment thứ 2 trở đi = discontinuity đã xảy ra
+          //   console.warn("[Anti-Distortion] New init segment detected (discontinuity), swapping audio codec...");
+          //   try {
+          //     hlsInstance.swapAudioCodec();
+          //   } catch (e) {
+          //     /* ignore */
+          //   }
+          // });
 
           // cách 2 === Xử lý khi qua discontinuity (quảng cáo/chuyển bài) ===
-          hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
-            if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
-              console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
-            }
-          });
+          // hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
+          //   if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
+          //     console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
+          //   }
+          // });
 
-          // ✅ cách 3 - Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo)
+          // cách 3 - Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo)
           // Tối ưu: Kiểm tra discontinuity flag + so sánh codec + throttle + check video đang phát
           // Lưu trữ hash của init segment lần trước để so sánh
           // Chỉ swap khi thực sự cần (tránh cảnh báo sai như cách 1)
