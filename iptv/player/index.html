@@ -7,7 +7,10 @@
     <link rel="icon" href="./favicon.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.compiled.js"></script> -->
+    <script src="
+https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.js
+"></script>
     <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -1354,7 +1357,7 @@
           } catch (e) {
             var streamName = "Luồng trực tiếp";
           }
-          showToast(`Đang phát: ${streamName}`, "info");
+          showToast(`Đang phát kênh: ${streamName}...`, "info");
           playChannel({
             name: streamName,
             url: urlInput,
@@ -1816,7 +1819,7 @@
           epgData = tempEpgData;
           epgFetchStatus = "success";
           console.log(`Đã tải xong EPG cho ${epgData.size} kênh.`);
-          showToast(`Đã cập nhật lịch phát sóng (${epgData.size} kênh)`, "success");
+          showToast(`Đã cập nhật lịch phát sóng (${epgData.size} kênh).`, "success");
 
           // Refresh UI if needed
           filterChannels();
@@ -2103,7 +2106,7 @@
                 tempUrl = text;
                 flagGetFinalUrl = true;
 
-                showToast(`Link gốc kênh [<b>${channel.name}</b>] lấy thành công!`, "success");
+                showToast(`Link gốc kênh [<b>${channel.name}</b>] lấy thành công.`, "success");
                 break;
               }
             } catch (e) {
@@ -2115,7 +2118,7 @@
           // 1 số trường hợp có domain có lấy được m3u8 nhưng vẫn bị CORS
           if (/\.(vieon.vn)/i.test(tempUrl) || !flagGetFinalUrl) {
             tempUrl = "https://tv.hminhhosting.io.vn/proxy?url=" + encodeURIComponent(channel.url);
-            showToast(`Dùng proxy vượt qua CORS cho kênh [<b>${channel.name}</b>]`, "info");
+            showToast(`Kênh [<b>${channel.name}</b>] bị CORS, dùng proxy để vượt qua...`, "info");
           }
         }
 
@@ -2200,7 +2203,8 @@
 
         // --- Case 1: DASH / MPD (Using Shaka Player) ---
         if (typeof shaka !== "undefined" && isMPD && shaka.Player.isBrowserSupported()) {
-          shakaInstance = new shaka.Player(videoPlayer);
+          shakaInstance = new shaka.Player();
+          await shakaInstance.attach(videoPlayer);
 
           // Handle ClearKey DRM
           if (channel.props && channel.props["inputstream.adaptive.license_type"] === "clearkey") {
@@ -2256,7 +2260,7 @@
                 },
               });
               console.log(`Configured ClearKey DRM (hex) for ${channel.name} channel: `, clearKeys);
-              showToast(`Cấu hình ClearKey DRM (hex) kênh <b>${channel.name}</b> thành công!`, "success");
+              showToast(`Cấu hình ClearKey DRM (hex) kênh <b>${channel.name}</b> thành công.`, "success");
 
               shakaInstance.addEventListener("error", (event) => {
                 console.error("Shaka Error:", event.detail);
@@ -2326,7 +2330,7 @@
                   });
                 }
               } catch (e) {
-                showToast("Lỗi phát DASH/DRM: " + e.message, "error");
+                showToast("Lỗi phát DASH/DRM: " + e.message + "!", "error");
               }
 
               // === Shaka Live Edge Recovery (Anti audio drift cho DASH) ===
@@ -2560,11 +2564,39 @@
           });
 
           // cách 2 === Xử lý khi qua discontinuity (quảng cáo/chuyển bài) ===
-          // hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
-          //   if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
-          //     console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
-          //   }
-          // });
+          hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
+            if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
+              console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
+            }
+          });
+
+          // ✅ cách 3 - Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo)
+          // Tối ưu: Kiểm tra discontinuity flag + so sánh codec + throttle + check video đang phát
+          // Lưu trữ hash của init segment lần trước để so sánh
+          // Chỉ swap khi thực sự cần (tránh cảnh báo sai như cách 1)
+          let lastInitHash = null;
+          let lastSwapTime = 0;
+
+          hlsInstance.on(Hls.Events.FRAG_PARSING_INIT_SEGMENT, (event, data) => {
+            const frag = data.frag;
+            const initSegment = data.initSegment;
+            if (!frag || !initSegment) return;
+            // 1. Throttle
+            if (Date.now() - lastSwapTime < 1000) return;
+            // 2. Chỉ swap khi có discontinuity flag
+            if (!frag.discontinuity) return;
+            // 3. So sánh init segment
+            const hash = new Uint8Array(initSegment).slice(0, 32).join("-");
+            if (lastInitHash === hash) return;
+            // 4. Chỉ swap khi audio đang phát
+            const video = document.querySelector("video");
+            if (video?.paused) return;
+            // ✅ Swap!
+            console.warn("[Anti-Distortion] Real codec change detected, swapping...");
+            hlsInstance.swapAudioCodec?.();
+            lastInitHash = hash;
+            lastSwapTime = Date.now();
+          });
 
           let hlsErrorRecoveries = 0;
           let hlsNetworkRecoveries = 0;
@@ -2670,7 +2702,7 @@
             if (match) shakaInstance.selectVariantTrack(match, true);
           }
         }
-        showToast(`Chất lượng: ${label}`, "info");
+        showToast(`Chất lượng video: ${label}.`, "info");
       });
 
       // === Keyboard Shortcuts ===
