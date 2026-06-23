@@ -2125,9 +2125,6 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
 
         const url = channel.url;
         currentPlayingUrl = url;
-        // update link của channel luôn, fix lỗi ko hightlight channel in list khi playing bên trong funtion filterChannels() renderChannelsExplicit chạy ngay bên dưới bên dưới;
-        // lý do isPlaying = currentPlayingUrl === channel.url ben trong function renderChannelsExplicit mang giá trị false(mặc định true) do Fix đối với channel link bị CORS error
-        channel.url = url;
 
         // Stall detection — chỉ reload khi stall nghiêm trọng (không nudge để tránh audio pop)
         let lastVideoTime = -1;
