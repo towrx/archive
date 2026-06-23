@@ -2200,7 +2200,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
         // Case 2: Sử dụng trình phát cho channel
         // --- Case 2.1: DASH / MPD (Using Shaka Player) ---
         if (typeof shaka !== "undefined" && isMPD && shaka.Player.isBrowserSupported()) {
-          const licenseType = channel.props ? channel.props["inputstream.adaptive.license_type"].toLowerCase() : null;
+          const licenseType = channel.props && channel.props["inputstream.adaptive.license_type"] ? channel.props["inputstream.adaptive.license_type"].toLowerCase() : null;
           let enableAdvancedPlayback = false;
           shakaInstance = new shaka.Player();
           await shakaInstance.attach(videoPlayer);
