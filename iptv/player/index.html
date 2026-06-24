@@ -1160,10 +1160,10 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
 
       function parseJSON(data) {
         // Auto-upgrade links to HTTPS
-        let dataStr = JSON.stringify(data);
+        // let dataStr = JSON.stringify(data);
         // dataStr = dataStr.replace(/http:\/\/vietanhtv\.id\.vn/g, "https://vietanhtv.id.vn");
         // dataStr = dataStr.replace(/http:\/\/xem\.hoiquan\.click/g, "https://tinyurl.com/HoiQuanClick");
-        data = JSON.parse(dataStr);
+        // data = JSON.parse(dataStr);
 
         // Trường hợp 1: Định dạng Hailab Cloud (Có 'groups')
         if (data && data.groups && Array.isArray(data.groups)) {
@@ -1172,20 +1172,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
             if (group.channels && Array.isArray(group.channels)) {
               group.channels.forEach((channel) => {
                 // Lấy link stream đầu tiên có thể tìm thấy
-                let streamUrl = "";
-                if (
-                  channel.sources &&
-                  channel.sources[0] &&
-                  channel.sources[0].contents &&
-                  channel.sources[0].contents[0] &&
-                  channel.sources[0].contents[0].streams &&
-                  channel.sources[0].contents[0].streams[0] &&
-                  channel.sources[0].contents[0].streams[0].stream_links &&
-                  channel.sources[0].contents[0].streams[0].stream_links[0]
-                ) {
-                  streamUrl = channel.sources[0].contents[0].streams[0].stream_links[0].url;
-                }
-
+                const streamUrl = channel?.sources?.[0]?.contents?.[0]?.streams?.[0]?.stream_links?.[0]?.url;
                 if (streamUrl) {
                   channels.push({
                     name: channel.name || "Kênh Live Sport",
@@ -2194,13 +2181,13 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
         videoPlayer.removeAttribute("src");
         videoPlayer.load();
 
-        const isMPD =
-          url.includes(".mpd") || (channel.props && channel.props["inputstream.adaptive.manifest_type"] === "mpd");
+        const isMPD = url.includes(".mpd") || channel?.props?.["inputstream.adaptive.manifest_type"] === "mpd";
         const isRawTS = /\.ts(\?|$)/i.test(url) || /extension=ts/i.test(url);
         // Case 2: Sử dụng trình phát cho channel
         // --- Case 2.1: DASH / MPD (Using Shaka Player) ---
         if (typeof shaka !== "undefined" && isMPD && shaka.Player.isBrowserSupported()) {
-          const licenseType = channel.props && channel.props["inputstream.adaptive.license_type"] ? channel.props["inputstream.adaptive.license_type"].toLowerCase() : null;
+          const licenseType = channel?.props?.["inputstream.adaptive.license_type"]?.toLowerCase();
+          const licenseKey = channel?.props?.["inputstream.adaptive.license_key"];
           let enableAdvancedPlayback = false;
           shakaInstance = new shaka.Player();
           await shakaInstance.attach(videoPlayer);
@@ -2208,7 +2195,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
           // Case 2.1.1 licenseType === clearkey
           // Handle ClearKey DRM
           if (licenseType === "clearkey") {
-            let keyString = channel.props["inputstream.adaptive.license_key"];
+            let keyString = licenseKey;
             const clearKeys = {};
 
             try {
@@ -2268,22 +2255,22 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
           else if (licenseType === "widevine") {
             const licenseServerUrl =
               "https://iptv-player.nupakachi.dpdns.org/widevine-proxy.php?url=" +
-              encodeURIComponent(channel.props["inputstream.adaptive.license_key"]) +
+              encodeURIComponent(licenseKey) +
               "&au=" +
               encodeURIComponent("Dalvik/2.1.0");
             // const response = await fetch(licenseServerUrl);
             // if (response.ok) {
-              enableAdvancedPlayback = true;
+            enableAdvancedPlayback = true;
 
-              shakaInstance.configure({
-                drm: {
-                  preferredKeySystems: ["com.widevine.alpha"],
-                  servers: {
-                    "com.widevine.alpha": licenseServerUrl,
-                  },
+            shakaInstance.configure({
+              drm: {
+                preferredKeySystems: ["com.widevine.alpha"],
+                servers: {
+                  "com.widevine.alpha": licenseServerUrl,
                 },
-              });
-              showToast(`Cấu hình Widevine DRM kênh <b>${channel.name}</b> thành công.`, "success");
+              },
+            });
+            showToast(`Cấu hình Widevine DRM kênh <b>${channel.name}</b> thành công.`, "success");
             // } else
             //   showToast(
             //     `Cấu hình Widevine DRM kênh <b>${channel.name}</b> thất bại Code: ${response.status}!`,
