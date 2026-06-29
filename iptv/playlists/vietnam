@@ -8,7 +8,7 @@
 
 #EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv1hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv1.png", VTV1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-https://vips-livecdn.fptplay.net/live/media/vtv1/live247-hls-avc/index.m3u8
+https://vips-livecdn.fptplay.net/live/media/vtv1/live247-hls-avc/vtv1-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://blvbatman.dpdns.org/kenh/vtv1.m3u8
 #https://live-a.fptplay53.net/live/media/vtv1/live247-hls-avc/index.m3u8
 #http://pk79.io.vn/tv360/play.php?id=2
@@ -48,7 +48,7 @@ https://vips-livecdn.fptplay.net/live/media/v3abr/live247-hls-avc/v3abr-avc1_560
 
 #EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv4hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv4.png", VTV4
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-https://vips-livecdn.fptplay.net/live/media/vtv4/live247-hls-avc/index.m3u8
+https://vips-livecdn.fptplay.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://blvbatman.dpdns.org/kenh/vtv4.m3u8
 #https://live-a.fptplay53.net/live/media/vtv4/live247-hls-avc/index.m3u8
 #http://pk79.io.vn/tv360/play.php?id=108
@@ -60,7 +60,7 @@ https://vips-livecdn.fptplay.net/live/media/vtv4/live247-hls-avc/index.m3u8
 
 #EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv5.png", VTV5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-https://vips-livecdn.fptplay.net/live/media/vtv5/live247-hls-avc/index.m3u8
+https://vips-livecdn.fptplay.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://blvbatman.dpdns.org/kenh/vtv5.m3u8
 #https://live-a.fptplay53.net/live/media/vtv5/live247-hls-avc/index.m3u8
 #http://pk79.io.vn/tv360/play.php?id=110
@@ -1371,3 +1371,27 @@ https://kubolive.ddns.net/play/cHdzS0paajVTemp3ZTNGVjVRUXhBVjRJL3Zjc1Q2NTBFZjNxV
 #EXTINF:0 tvg-id="vtv10hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/8.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV10
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
 https://kubolive.ddns.net/play/cHdzS0paajVTemp3ZTNGVjVRUXhBVjRJL3Zjc1Q2NTBFZjNxV1k0NGpzVUdWbmU4YUdWd3ZxbTE5SFZBcHhXRWFvSjVnZzVVM2xWaC9hZ0xQNDdLUkoxOTBjVU5RSnNuREpWZ1hMQ1Y1ZGM9/master.m3u8
+
+
+
+
+#--*.*--👑 FIFA WORLD CUP 2026 👑--*.*--#
+
+
+#EXTINF:-1 group-title="👑 FIFA WORLD CUP 2026 👑" tvg-logo="https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20260613/2026061323/TsjjtHjSSt-Logo-BLCX_3_11zon.webp", Bình Luận Cảm Xúc 01
+https://hoiquan.dpdns.org/VTVGo/?BinhLuanCamXuc
+
+#EXTINF:-1 group-title="👑 FIFA WORLD CUP 2026 👑" tvg-logo="https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20260613/2026061323/FMxAbJrF0Q-Logo-NGUYENBAN_6_11zon.webp", Tín Hiệu Nguyên Bản 01
+https://hoiquan.dpdns.org/VTVGo/?WC-FiFa
+
+#EXTINF:-1 group-title="👑 FIFA WORLD CUP 2026 👑" tvg-logo="https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20260617/2026061723/owe8ceyOCM-logo.webp", Kênh Tiếng Anh 01
+https://hoiquan.dpdns.org/VTVGo/?kenh-tieng-anh-1
+
+#EXTINF:-1 group-title="👑 FIFA WORLD CUP 2026 👑" tvg-logo="https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20260613/2026061323/TsjjtHjSSt-Logo-BLCX_3_11zon.webp", Bình Luận Cảm Xúc 02
+https://hoiquan.dpdns.org/VTVGo/?BinhLuanCamXuc2
+
+#EXTINF:-1 group-title="👑 FIFA WORLD CUP 2026 👑" tvg-logo="https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20260613/2026061323/FMxAbJrF0Q-Logo-NGUYENBAN_6_11zon.webp", Tín Hiệu Nguyên Bản 02
+https://hoiquan.dpdns.org/VTVGo/?WC-FiFa2
+
+#EXTINF:-1 group-title="👑 FIFA WORLD CUP 2026 👑" tvg-logo="https://vtvgo-assets.vtvdigital.vn/assets/images/v2/channel/20260617/2026061723/owe8ceyOCM-logo.webp", Kênh Tiếng Anh 02
+https://hoiquan.dpdns.org/VTVGo/?kenh-tieng-anh-2
