@@ -2584,39 +2584,40 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
           // });
 
           // cách 2.3.1.2: === Xử lý khi qua discontinuity (quảng cáo/chuyển bài) ===
-          // hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
-          //   if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
-          //     console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
-          //   }
-          // });
+          hlsInstance.on(Hls.Events.FRAG_CHANGED, (event, data) => {
+            if (data.frag && data.frag.tagList && data.frag.tagList.includes("DISCONTINUITY")) {
+              console.warn("[Audio-Fix] Discontinuity detected, letting Hls.js sync...");
+            }
+          });
 
           // cách 2.3.1.3: - Chống méo tiếng khi qua discontinuity (chuyển bài/quảng cáo)
           // Tối ưu: Kiểm tra discontinuity flag + so sánh codec + throttle + check video đang phát
           // Lưu trữ hash của init segment lần trước để so sánh
           // Chỉ swap khi thực sự cần (tránh cảnh báo sai như cách 1)
-          let lastInitHash = null;
-          let lastSwapTime = 0;
+          // let lastInitHash = null;
+          // let lastSwapTime = 0;
 
-          hlsInstance.on(Hls.Events.FRAG_PARSING_INIT_SEGMENT, (event, data) => {
-            const frag = data.frag;
-            const initSegment = data.initSegment;
-            if (!frag || !initSegment) return;
-            // 1. Throttle
-            if (Date.now() - lastSwapTime < 1000) return;
-            // 2. Chỉ swap khi có discontinuity flag
-            if (!frag.discontinuity) return;
-            // 3. So sánh init segment
-            const hash = new Uint8Array(initSegment).slice(0, 32).join("-");
-            if (lastInitHash === hash) return;
-            // 4. Chỉ swap khi audio đang phát
-            const video = document.querySelector("video");
-            if (video?.paused) return;
-            // ✅ Swap!
-            console.warn("[Anti-Distortion] Real codec change detected, swapping...");
-            hlsInstance.swapAudioCodec?.();
-            lastInitHash = hash;
-            lastSwapTime = Date.now();
-          });
+          // hlsInstance.on(Hls.Events.FRAG_PARSING_INIT_SEGMENT, (event, data) => {
+          //   const frag = data.frag;
+          //   console.log("NHAY VAO>>>>>>>>>>>>");
+          //   const initSegment = data.initSegment;
+          //   if (!frag || !initSegment) return;
+          //   // 1. Throttle
+          //   if (Date.now() - lastSwapTime < 1000) return;
+          //   // 2. Chỉ swap khi có discontinuity flag
+          //   if (!frag.discontinuity) return;
+          //   // 3. So sánh init segment
+          //   const hash = new Uint8Array(initSegment).slice(0, 32).join("-");
+          //   if (lastInitHash === hash) return;
+          //   // 4. Chỉ swap khi audio đang phát
+          //   const video = document.querySelector("video");
+          //   if (video?.paused) return;
+          //   // ✅ Swap!
+          //   console.warn("[Anti-Distortion] Real codec change detected, swapping...");
+          //   hlsInstance.swapAudioCodec?.();
+          //   lastInitHash = hash;
+          //   lastSwapTime = Date.now();
+          // });
 
           let hlsErrorRecoveries = 0;
           let hlsNetworkRecoveries = 0;
