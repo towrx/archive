@@ -914,183 +914,309 @@ https://live.fptplay53.net/fnxsd1/tuyenquang_hls.smil/chunklist_b2500000.m3u8
 
 
 
-#--*.*--06. 📌 VTV - BACKUP--*.*--#
+#--*.*--06. 🔴 BÓNG ĐÁ--*.*--#
 
 
-#--*.*--06. 📌 VTV - BACKUP - TVPub--*.*--#
+#--*.*--06. ⚽ HỘI QUÁN TV--*.*--#
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv1hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv1.webp", VTV1 TVPub
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Củ Hành
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phando/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Lương Bổng
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanliem/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Anh
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phananh/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Bách
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanchuot/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Bống
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanbong/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Ca
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanca/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Cáo
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phancao/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Chớp
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phanchop/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Hải(Phan Gầy)
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanhai/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Hà Linh
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phanhalinh/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Lâm
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phanlam/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Mã
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanma/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Mão
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phanbap/playlist.m3u8
+# #https://hqlive.yarncdn.live/live/hqtv_blv_phanchanh/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Phép
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phanphep/playlist.m3u8
+# #https://hqlive.yarncdn.live/live/hqtv_blv_phanbanh/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", BLV Phan Quẩy
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanquay/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Sóc(Phan Dậu)
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phanbao/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Tô
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_phanto/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Phan Từ
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://hqlive.yarncdn.live/live/hqtv_blv_phantu/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/hq.png", 🎙️ BLV Thiên Lôi
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://hqlive.yarncdn.live/live/hqtv_blv_thienloi/playlist.m3u8
+
+
+#--*.*--06. ⚽ THIÊN ĐÌNH TV--*.*--#
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Ngọc Hoàng(A Cháo)
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://tdlive.yarncdn.live/live/tdtv_blv_ngochoang/playlist.m3u8
+# #https://w9lt1225.edgemaxcdn.org/live/tdtv_blv_ngochoang/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Chè 
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://tdlive.yarncdn.live/live/tdtv_blv_taoche/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Già(Táo Tỉnh Táo)
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://tdlive.yarncdn.live/live/tdtv_blv_taotinhtao/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Kinh Tế(A Tích)
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://tdlive.yarncdn.live/live/tdtv_blv_taokinhte/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Tàu
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://tdlive.yarncdn.live/live/tdtv_blv_taotau/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Thiên Vương
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://tdlive.yarncdn.live/live/tdtv_blv_taothienvuong/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Văn Hóa(Nam Tào - A Bí)
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://tdlive.yarncdn.live/live/tdtv_blv_taovanhoa/playlist.m3u8
+
+# #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Mèo
+# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# https://tdlive.yarncdn.live/live/tdtv_blv_taomeo/playlist.m3u8
+
+#EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Thần Thông(Táo Văn Nghệ)
+#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+https://tdlive.yarncdn.live/live/tdtv_blv_taovannghe/playlist.m3u8
+
+
+
+
+#--*.*--07. 📌 VTV - BACKUP--*.*--#
+
+
+#--*.*--07. 📌 VTV - BACKUP - TVPub--*.*--#
+
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv1hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv1.webp", VTV1 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv1/live247-hls-avc/vtv1-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv2hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv2.webp", VTV2 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv2hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv2.webp", VTV2 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv2-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv3hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv3.webp", VTV3 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv3hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv3.webp", VTV3 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv3-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv4hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv4.webp", VTV4 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv4hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv4.webp", VTV4 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5.webp", VTV5 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv5hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5.webp", VTV5 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hdtnb" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5-tnb.webp", VTV5 Tây Nam Bộ TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv5hdtnb" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5-tnb.webp", VTV5 Tây Nam Bộ TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv5tnb/live-hls-avc/vtv5tnb-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hdtn" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5-tn.webp", VTV5 Tây Nguyên TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv5hdtn" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5-tn.webp", VTV5 Tây Nguyên TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv5tn/live-hls-avc/vtv5tn-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv6hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv6.webp", VTV6 TVPUB
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv6hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv6.webp", VTV6 TVPUB
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
 https://vtv6-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv7hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv7.webp", VTV7 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv7hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv7.webp", VTV7 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv7-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv8hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv8.webp", VTV8 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv8hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv8.webp", VTV8 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv8/live-hls-avc/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv9hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv9.webp", VTV9 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv9hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv9.webp", VTV9 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv9-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv10hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv10.webp", VTV10 TVPub
+#EXTINF:-1 group-title="07. 📌 VTV - BACKUP" tvg-id="vtv10hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv10.webp", VTV10 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv10-autom3u.quanlehong539.workers.dev/index.m3u8
 
 
-#--*.*--06. 📌 VTV - BACKUP - HOIQUANCLICK--*.*--#
+#--*.*--07. 📌 VTV - BACKUP - HOIQUANCLICK--*.*--#
 
-#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv1.png",VTV1 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv1hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv1.png",VTV1 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv1-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv2.png",VTV2 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv2hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv2.png",VTV2 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv2-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv3.png",VTV3 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv3hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv3.png",VTV3 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv3-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv4.png",VTV4 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv4hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv4.png",VTV4 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv4-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5.png",VTV5 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv5hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5.png",VTV5 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv5-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5-tnb.png",VTV5 Tây Nam Bộ HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5-tnb.png",VTV5 Tây Nam Bộ HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv5-tay-nam-bo/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5-tn.png",VTV5 Tây Nguyên HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv5hdtn" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5-tn.png",VTV5 Tây Nguyên HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv5-tay-nguyen/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv6hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv6.png",VTV6 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv6hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv6.png",VTV6 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv6-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv7.png",VTV7 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv7hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv7.png",VTV7 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv7-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv8.png",VTV8 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv8hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv8.png",VTV8 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv8-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv9.png",VTV9 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv9hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv9.png",VTV9 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv9-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv10.png",VTV10 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv10hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv10.png",VTV10 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv10-hd/KenhCoBan.m3u8
 
 
-#--*.*--06. 📌 VTV - BACKUP - SGCHILL--*.*--#
+#--*.*--07. 📌 VTV - BACKUP - SGCHILL--*.*--#
 
-#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv1.png", VTV1 SGCHILL
+#EXTINF:-1 tvg-id="vtv1hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv1.png", VTV1 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv1
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv2.png", VTV2 SGCHILL
+#EXTINF:-1 tvg-id="vtv2hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv2.png", VTV2 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv2
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv3.png", VTV3 SGCHILL
+#EXTINF:-1 tvg-id="vtv3hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv3.png", VTV3 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv3
 
-#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv4.png", VTV4 SGCHILL
+#EXTINF:-1 tvg-id="vtv4hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv4.png", VTV4 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv4
 
-#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv5.png", VTV5 SGCHILL
+#EXTINF:-1 tvg-id="vtv5hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv5.png", VTV5 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv5
 
-#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv5tnb.png", VTV5 Tây Nam Bộ SGCHILL
+#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv5tnb.png", VTV5 Tây Nam Bộ SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv5tnb
 
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv5tn.png", VTV5 Tây Nguyên SGCHILL
+#EXTINF:-1 tvg-id="vtv5hdtn" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv5tn.png", VTV5 Tây Nguyên SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv5tn
 
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv7.png", VTV7 SGCHILL
+#EXTINF:-1 tvg-id="vtv7hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv7.png", VTV7 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv7
 
-#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv8.png", VTV8 SGCHILL
+#EXTINF:-1 tvg-id="vtv8hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv8.png", VTV8 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv8
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv9.png", VTV9 SGCHILL
+#EXTINF:-1 tvg-id="vtv9hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv9.png", VTV9 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv9
 
-#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv10.png", VTV10 SGCHILL
+#EXTINF:-1 tvg-id="vtv10hd" group-title="07. 📌 VTV - BACKUP" group-logo="https://sgchill.duckdns.org/logo/vtv.png" tvg-logo="https://sgchill.duckdns.org/logo/vtv10.png", VTV10 SGCHILL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
 https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv10
 
 
-#--*.*--06. 📌 VTV - BACKUP - VIETANHTV--*.*--#
+#--*.*--07. 📌 VTV - BACKUP - VIETANHTV--*.*--#
 
-#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv1.webp", VTV1 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv1hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv1.webp", VTV1 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv1/live247-hls-avc/vtv1-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv2.webp", VTV2 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv2hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv2.webp", VTV2 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v2abr/live247-hls-avc/v2abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv3.webp", VTV3 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv3hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv3.webp", VTV3 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v3abr/live247-hls-avc/v3abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv4.webp", VTV4 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv4hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv4.webp", VTV4 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5.webp", VTV5 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv5hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5.webp", VTV5 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://vpsttt.vietanhtv.top/tv360/tv360.php?id=110
 
-#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5-tnb.webp", VTV5 HD - Tây Nam Bộ  VIETANHTV
+#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5-tnb.webp", VTV5 HD - Tây Nam Bộ  VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv5tnb/live-hls-avc/vtv5tnb-avc1_4000000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5-tn.webp", VTV5 HD - Tây Nguyên  VIETANHTV
+#EXTINF:-1 tvg-id="vtv5hdtn" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5-tn.webp", VTV5 HD - Tây Nguyên  VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv5tn/live-hls-avc/vtv5tn-avc1_4000000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv6hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv6.webp", VTV6 VIETANHTV
+#EXTINF:-1 tvg-id="vtv6hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv6.webp", VTV6 VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v6abr/live247-hls-avc/v6abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
 #https://vpsttt.vietanhtv.top/tv360/tv360.php?id=98
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv7.webp", VTV7 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv7hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv7.webp", VTV7 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
@@ -1098,88 +1224,88 @@ https://vips-livecdn.fptplay.net/live/media/v6abr/live247-hls-avc/v6abr-avc1_560
 https://live-a.fptplay53.net/live/media/vtv7_drm/dash_247_avc_drm/index.mpd
 
 #https://vpsttt.vietanhtv.top/tv360/tv360.php?id=6
-#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv8.webp", VTV8 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv8hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv8.webp", VTV8 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/fnxhd1/vtv8hd_vhls.smil/chunklist.m3u8
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv9.webp", VTV9 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv9hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv9.webp", VTV9 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=40b6534806e047eaa9db2d6cc711087e:4b8129275739df5cc04f8145b2fa2b86
 https://live-a.fptplay53.net/live/media/vtv9_drm/dash_247_avc_drm/index.mpd
 
-#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv10.webp", VTV10 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv10hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv10.webp", VTV10 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v10abr/live247-hls-avc/v10abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv2.webp" , VTV2 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv2hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv2.webp" , VTV2 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7485.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv451/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv3.webp" , VTV3 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv3hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv3.webp" , VTV3 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv262/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv7.webp" , VTV7 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv7hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv7.webp" , VTV7 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7485.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv516/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv9.webp" , VTV9 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv9hd" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv9.webp" , VTV9 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7486.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv455/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv1hd0" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv10.webp" , VTV10 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv1hd0" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv10.webp" , VTV10 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7486.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv263/manifest.mpd
 
-#EXTINF:-1 tvg-id="SPOTV" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/sports/spotv.png", SPOTV VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="SPOTV" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/sports/spotv.png", SPOTV VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv587/manifest.mpd
 
-#EXTINF:-1 tvg-id="SPOTV2" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/sports/spotv2.png", SPOTV2 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="SPOTV2" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/sports/spotv2.png", SPOTV2 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv588/manifest.mpd
 
-#EXTINF:-1 tvg-id="onsports" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/hq/posters/_ports_ng_logo_04202212.jpg", ON Sport VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="onsports" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/hq/posters/_ports_ng_logo_04202212.jpg", ON Sport VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv264/manifest.mpd
 
-#EXTINF:-1 tvg-id="onsportsplus" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/hq/posters/onsportscongmoi1.jpg", ON Sport Plus VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="onsportsplus" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/hq/posters/onsportscongmoi1.jpg", ON Sport Plus VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv311/manifest.mpd
 
-#EXTINF:-1 tvg-id="onsportsnews" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/v2/channel/20220613/2022061306/Logo_ONSPORTSNEWS_150x904_1675158858.webp", ON Sport News VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="onsportsnews" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/v2/channel/20220613/2022061306/Logo_ONSPORTSNEWS_150x904_1675158858.webp", ON Sport News VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv496/manifest.mpd
 
-#EXTINF:-1 tvg-id="onfootball" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/hq/posters/_ootball_-_opyright_by_cab_logo_202212.jpg", ON Football VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="onfootball" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/hq/posters/_ootball_-_opyright_by_cab_logo_202212.jpg", ON Football VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv265/manifest.mpd
 
-#EXTINF:-1 tvg-id="ongolf" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/v2/channel/20220613/2022061306/Logo_ONGOLF_150x903_1675158871.webp",ON Golf VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="ongolf" group-title="07. 📌 VTV - BACKUP" tvg-logo="https://assets-vtvcab.gviet.vn/images/v2/channel/20220613/2022061306/Logo_ONGOLF_150x903_1675158871.webp",ON Golf VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
@@ -1197,15 +1323,15 @@ http://kubolive.ddns.net:8000/VTV1/index.m3u8
 
 #EXTINF:0 tvg-id="vtv2hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/2.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV2
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocU5KLzVIUS80K3pyTUJteGl6T0lJRUZjeStuRnRjcFNvdU91ZFJieUdteTg9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VW8rTFlIRUlIMGkvSkpnWkhqUFNBQnZUNUdtYjRFdnUvK2VuSGx0c3g2UU09/master.m3u8
 
 #EXTINF:0 tvg-id="vtv3hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/3.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV3
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocTYxSmFJWlNKOGtMZ24xSlNzZmVjZWMxOHpaTS9nZ2pvVm05WC8wVEUzRlU9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VTRwTkdHWnMraGZBZTlKTGcvS2hlZHovaTJ6Y1ZUM3pITElxZmpLL0hDTEU9/master.m3u8
 
 #EXTINF:0 tvg-id="vtv4hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/4.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV4
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocXYxOTRueTg1OEJkUjVnY0I5N1Rnd0lLZmdwTnZJcUZZNGVXOHI5OE54ZEk9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VXhFQTJwNXExUDhsa0FBTzdaSjJpdi9NS1BTQ1FJTUR6OXdwdVZDdUI0S2M9/master.m3u8
 
 #EXTINF:0 tvg-id="vtv5hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/5.png" catchup-type="flussonic" catchup-days="2", VTV5
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
@@ -1213,28 +1339,28 @@ http://kubolive.ddns.net:8000/VTV5/index.m3u8
 
 #EXTINF:0 tvg-id="vtv5hdtnb" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/6.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV5 Tây Nam Bộ
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocSszcm4vVDROYlBvckpxbnF0ZlRta0piTVcyMjBYR0cxTzM2RXJpVW1mWkE9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VUp0bEZ4UzdXakFCOG5tWlBZcExGTG82b1JwY21PV3BkNUlTb0YrQnBCVkU9/master.m3u8
 
 #EXTINF:-1 tvg-id="vtv5hdtn" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/7.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV5 Tây Nguyên
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocUdYcDJLM1gzcjlDYWRJcXRGZWVBaUhZbnk2Y3gzdUJxd0Q3bnJ0OXlFamc9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VTV4M2ZIclVJcmFZRlludm5obzFDS1VvK2hJRzBsTnRjeDlYQ0RzUCtVNDQ9/master.m3u8
 
 #EXTINF:0 tvg-id="vtv6hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/113.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV6
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocXYxOTRueTg1OEJkUjVnY0I5N1Rnd0ZTamhrKzlkajQzTEVxRlRqb1F4TTA9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VXhFQTJwNXExUDhsa0FBTzdaSjJpdndSQzNnL1hBU05CaFVzRzUxRU04eUE9/master.m3u8
 
 #EXTINF:0 tvg-id="vtv7hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/9.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV7
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocVdzZWlXQ0ZlUjBiOC9TSktFZE95aGhBRDZPOVZvR24rd3Bxc2lzdnR0UUk9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VVFkSit6ajBLeCttdW81ejBFOFdUakVIZHdSRVVhZ3E0TzRDV3IzOWJmVE09/master.m3u8
 
 #EXTINF:0 tvg-id="vtv8hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/10.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV8
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocUsveCtOT3RrSDcrRnk2Mk5iMVJEQUI3eXJieHRvQU9OWDVsWUtqT0JTQXM9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VXZTMXduQW8xME1iK3VKVDlxN3NUV0lhYTBzSERZQjR4MzRKaE1TelAzelU9/master.m3u8
 
 #EXTINF:0 tvg-id="vtv9hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/11.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV9
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocUFnUXpKZXVuYkFjaVR4b2pjTXMrVW03eDUrRFJpTzRGY25Jbmt2MitUODQ9/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VVpkcjdBYXJ3RmxDQUVzR0xnL3NRQkZia2krTTQrSFZmU1EzQTh5RWt4cW89/master.m3u8
 
 #EXTINF:0 tvg-id="vtv10hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/8.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV10
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBb0VNRFpjQU00LytFVTZLbzlyZ1l0K0ExUmZVRkFHYW1BeUdqbC9Bem5ocUQ5UE5obzAvVjdQRjZ3Qzd5UFUvL080cVRMV2VGN203YjNIcHFaTWdQbk09/master.m3u8
+https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VSt3d0pyQTRlVzFHUTZLcjNraXZUSVFBT2lKYWVyOWFNam9KaE5sazJ3Tk09/master.m3u8
