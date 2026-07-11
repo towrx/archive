@@ -2104,7 +2104,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
           // Case 1.2: sau khi có được link real từ get-final-url mà lại bị CORS error thì dùng proxy (dùng luôn cho redirect link)
           // /\.(vieon.vn)/i.test(channel.url) - một số th đặc biệt có lấy được link có .m3u8 nhưng vẫn bị CORS error
           if (/\.(vieon.vn)/i.test(channel.url) || !flagGetFinalUrl) {
-            channel.url = "https://tv.hminhhosting.io.vn/proxy?url=" + encodeURIComponent(channel.url);
+            channel.url = "https://iptv-player.nupakachi.dpdns.org/stream-proxy.php?url=" + encodeURIComponent(channel.url);
             showToast(`Kênh [<b>${channel.name}</b>] bị CORS error, đang dùng proxy để vượt qua...`, "info");
           }
         }
