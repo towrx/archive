@@ -2108,7 +2108,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
             showToast(`Kênh [<b>${channel.name}</b>] bị CORS error, đang dùng proxy để vượt qua...`, "info");
           }
         }
-        // Case 1,2: fix hotlink protection - sử dụng stream-proxy + truyền http-referrer
+        // Case 1.2: fix hotlink protection - sử dụng stream-proxy + truyền http-referrer
         if(channel?.props?.["http-referrer"]) 
           channel.url = !/stream-proxy.php\?url=/i.test(channel.url) ? "https://iptv-player.nupakachi.dpdns.org/stream-proxy.php?url=" + encodeURIComponent(channel.url) + "&ref=" + encodeURIComponent(channel.props["http-referrer"]) : channel.url + "&ref=" + encodeURIComponent(channel.props["http-referrer"]);
 
