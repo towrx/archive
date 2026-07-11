@@ -782,14 +782,14 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
                 THTHETHAO
               </span>
             </button>
-            <button
+            <!-- <button
               onclick="loadPredefinedUrl('https://livesport.hailab.cloud/')"
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
               <span class="text-[12px] font-bold text-white group-hover:text-emerald-400 transition-colors">
                 HAILAB
               </span>
-            </button>
+            </button> -->
             <button
               onclick="
                 loadPredefinedUrl(
@@ -2067,10 +2067,10 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
         // /\.(proxy?url=)/i.test(channel.url) - tránh việc loop redirect link (xay ra channel link bị CORS error + redirect link)
         // /quanlehong539/i.test(channel.url) - khắc phục channel link là redirect link mặc dù có đuôi .m3u8 (cái này ko có khuôn mẫu trung nên phải làm thủ công)
         if (
-          (!/\.(m3u8|mpd|ts)/i.test(channel.url) && !/proxy\?url=/i.test(channel.url)) ||
+          (!/\.(m3u8|mpd|ts)/i.test(channel.url) && !/stream-proxy.php\?url=/i.test(channel.url)) ||
           /quanlehong539/i.test(channel.url)
         ) {
-          // Case 1.1:  Channel link  là thuộc dạng redirect link, sử dụng URL resolver
+          // Case 1.1.1:  Channel link  là thuộc dạng redirect link, sử dụng URL resolver
           let flagGetFinalUrl = false;
           showToast(`Link kênh [<b>${channel.name}</b>] là redirect link! Vui lòng chờ...`, "info");
 
@@ -2101,13 +2101,16 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
             }
           }
 
-          // Case 1.2: sau khi có được link real từ get-final-url mà lại bị CORS error thì dùng proxy (dùng luôn cho redirect link)
+          // Case 1.1.2: sau khi có được link real từ get-final-url mà lại bị CORS error thì dùng proxy (dùng luôn cho redirect link)
           // /\.(vieon.vn)/i.test(channel.url) - một số th đặc biệt có lấy được link có .m3u8 nhưng vẫn bị CORS error
           if (/\.(vieon.vn)/i.test(channel.url) || !flagGetFinalUrl) {
             channel.url = "https://iptv-player.nupakachi.dpdns.org/stream-proxy.php?url=" + encodeURIComponent(channel.url);
             showToast(`Kênh [<b>${channel.name}</b>] bị CORS error, đang dùng proxy để vượt qua...`, "info");
           }
         }
+        // Case 1,2: fix hotlink protection - sử dụng stream-proxy + truyền http-referrer
+        if(channel?.props?.["http-referrer"]) 
+          channel.url = !/stream-proxy.php\?url=/i.test(channel.url) ? "https://iptv-player.nupakachi.dpdns.org/stream-proxy.php?url=" + encodeURIComponent(channel.url) + "&ref=" + encodeURIComponent(channel.props["http-referrer"]) : channel.url + "&ref=" + encodeURIComponent(channel.props["http-referrer"]);
 
         const url = channel.url;
         currentPlayingUrl = url;
