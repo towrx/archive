@@ -1001,40 +1001,40 @@ https://hqlive.yarncdn.live/live/hqtv_blv_phantu/playlist.m3u8
 #--*.*--06. ⚽ THIÊN ĐÌNH TV--*.*--#
 
 # #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Ngọc Hoàng(A Cháo)
-# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# #EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 # https://tdlive.yarncdn.live/live/tdtv_blv_ngochoang/playlist.m3u8
 # #https://w9lt1225.edgemaxcdn.org/live/tdtv_blv_ngochoang/playlist.m3u8
 
 # #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Chè 
-# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# #EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 # https://tdlive.yarncdn.live/live/tdtv_blv_taoche/playlist.m3u8
 
 #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Già(Táo Tỉnh Táo)
-#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+#EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 https://tdlive.yarncdn.live/live/tdtv_blv_taotinhtao/playlist.m3u8
 
 #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Kinh Tế(A Tích)
-#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+#EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 https://tdlive.yarncdn.live/live/tdtv_blv_taokinhte/playlist.m3u8
 
 # #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Tàu
-# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# #EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 # https://tdlive.yarncdn.live/live/tdtv_blv_taotau/playlist.m3u8
 
 # #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Thiên Vương
-# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# #EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 # https://tdlive.yarncdn.live/live/tdtv_blv_taothienvuong/playlist.m3u8
 
 # #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Văn Hóa(Nam Tào - A Bí)
-# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# #EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 # https://tdlive.yarncdn.live/live/tdtv_blv_taovanhoa/playlist.m3u8
 
 # #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Táo Mèo
-# #EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+# #EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 # https://tdlive.yarncdn.live/live/tdtv_blv_taomeo/playlist.m3u8
 
 #EXTINF:-1 group-title="06. 🔴 BÓNG ĐÁ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/td.png", 🎙️ BLV Thần Thông(Táo Văn Nghệ)
-#EXTVLCOPT:http-referrer=https://sv2.hoiquan11.live/
+#EXTVLCOPT:http-referrer=https://sv2.thiendinh5.live/
 https://tdlive.yarncdn.live/live/tdtv_blv_taovannghe/playlist.m3u8
 
 
@@ -1317,50 +1317,50 @@ https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv485/manifest.mpd
 #--*.*--POINT--*.*--#
 
 
-#EXTINF:0 tvg-id="vtv1hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/1.png" catchup-type="flussonic" catchup-days="2", VTV1
+#EXTINF:0 tvg-id="vtv1hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/1.png" catchup-type="flussonic" catchup-days="2", VTV1
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
 http://kubolive.ddns.net:8000/VTV1/index.m3u8
 
-#EXTINF:0 tvg-id="vtv2hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/2.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV2
+#EXTINF:0 tvg-id="vtv2hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/2.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV2
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VW8rTFlIRUlIMGkvSkpnWkhqUFNBQnZUNUdtYjRFdnUvK2VuSGx0c3g2UU09/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSjVUbWN2Tm5iOGNGWjNyWGNPalJiM289/master.m3u8
 
-#EXTINF:0 tvg-id="vtv3hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/3.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV3
+#EXTINF:0 tvg-id="vtv3hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/3.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV3
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VTRwTkdHWnMraGZBZTlKTGcvS2hlZHovaTJ6Y1ZUM3pITElxZmpLL0hDTEU9/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSno4Z004bnVnYUVhTEEyYTh4bFl4S1E9/master.m3u8
 
-#EXTINF:0 tvg-id="vtv4hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/4.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV4
+#EXTINF:0 tvg-id="vtv4hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/4.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV4
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VXhFQTJwNXExUDhsa0FBTzdaSjJpdi9NS1BTQ1FJTUR6OXdwdVZDdUI0S2M9/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSnovYkQ2dmc5dEM3aXhyTUNMQUlDNEU9/master.m3u8
 
-#EXTINF:0 tvg-id="vtv5hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/5.png" catchup-type="flussonic" catchup-days="2", VTV5
+#EXTINF:0 tvg-id="vtv5hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/5.png" catchup-type="flussonic" catchup-days="2", VTV5
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
 http://kubolive.ddns.net:8000/VTV5/index.m3u8
 
-#EXTINF:0 tvg-id="vtv5hdtnb" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/6.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV5 Tây Nam Bộ
+#EXTINF:0 tvg-id="vtv5hdtnb" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/6.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV5 Tây Nam Bộ
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VUp0bEZ4UzdXakFCOG5tWlBZcExGTG82b1JwY21PV3BkNUlTb0YrQnBCVkU9/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSjhESStVcnE3em5yOE9BeXYrRWpaQUU9/master.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/7.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV5 Tây Nguyên
+#EXTINF:-1 tvg-id="vtv5hdtn" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/7.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV5 Tây Nguyên
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VTV4M2ZIclVJcmFZRlludm5obzFDS1VvK2hJRzBsTnRjeDlYQ0RzUCtVNDQ9/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSjN6MWtYeTIwRjFkTlBydGZVVzQ1ZlE9/master.m3u8
 
-#EXTINF:0 tvg-id="vtv6hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/113.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV6
+#EXTINF:0 tvg-id="vtv6hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/113.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV6
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VXhFQTJwNXExUDhsa0FBTzdaSjJpdndSQzNnL1hBU05CaFVzRzUxRU04eUE9/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSjZNbm94Qi9CTVl4c0ZVQy9OWnpFaW89/master.m3u8
 
-#EXTINF:0 tvg-id="vtv7hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/9.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV7
+#EXTINF:0 tvg-id="vtv7hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/9.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV7
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VVFkSit6ajBLeCttdW81ejBFOFdUakVIZHdSRVVhZ3E0TzRDV3IzOWJmVE09/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSjd0bWdmaG5CcVFwWjJXQ3FmdnkxQU09/master.m3u8
 
-#EXTINF:0 tvg-id="vtv8hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/10.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV8
+#EXTINF:0 tvg-id="vtv8hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/10.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV8
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VXZTMXduQW8xME1iK3VKVDlxN3NUV0lhYTBzSERZQjR4MzRKaE1TelAzelU9/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSnlnYk15SzJlanZvUmJxV3JZYzk3L1U9/master.m3u8
 
-#EXTINF:0 tvg-id="vtv9hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/11.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV9
+#EXTINF:0 tvg-id="vtv9hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://kubolive.ddns.net/image/11.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV9
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VVpkcjdBYXJ3RmxDQUVzR0xnL3NRQkZia2krTTQrSFZmU1EzQTh5RWt4cW89/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSi90WXRISkxWeTR5NjV5MExLdVNSSzg9/master.m3u8
 
-#EXTINF:0 tvg-id="vtv10hd" group-title="07. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/8.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV10
+#EXTINF:0 tvg-id="vtv10hd" group-title="08. 🏳️‍🌈 VTV - SIÊU NÉT" tvg-logo="https://vnepg.site/logos/8.png" catchup-type="append" catchup-days="7" catchup-source="?st=${start}&end=${end}", VTV10
 #EXTVLCOPT:http-user-agent=KhanggTivi/2.1(private,2.1.1)
-https://kubolive.ddns.net/play/dWp1eG45NHJwWFBIUWhFUVZndUxBaTJyamVmamhRaHJmV2NlRDFQQUdvc0NRTG5sSVJzRkU5b01WYXJNRk11VSt3d0pyQTRlVzFHUTZLcjNraXZUSVFBT2lKYWVyOWFNam9KaE5sazJ3Tk09/master.m3u8
+https://kubolive.ddns.net/play/YVcrMXYrd1Y0QjRsSmxoTGtBb3BIVDdOUGJTZyt1Ty9McDlFZUQ1RmkxN3JRTlowMm1zOEdTU1FvTnhYVlZ0MnQ3aFhtbnhJaUVzUVRyZFJYL0tQSjI5QVBqOWtjeXRXcWlCUE1vM201YmM9/master.m3u8
