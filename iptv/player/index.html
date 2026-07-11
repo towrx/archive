@@ -903,8 +903,8 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
       let bufferCleanupInterval = null;
 
       // EPG State
-      const DEFAULT_EPG_URL = "https://vnepg.site/epgu.xml";
-      // const DEFAULT_EPG_URL = "https://lichphatsong.site/schedule/epg.xml";
+      // const DEFAULT_EPG_URL = "https://vnepg.site/epgu.xml";
+      const DEFAULT_EPG_URL = "https://lichphatsong.site/schedule/epg.xml";
       let epgData = new Map(); // channelId -> [programs]
       let epgChannels = new Map(); // channelId -> name
       let isEPGPanelOpen = false;
@@ -2065,10 +2065,10 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
 
         // Case 1: fix với channel link bị CORS error link và channel link thuộc dạng redirect link
         // /\.(proxy?url=)/i.test(channel.url) - tránh việc loop redirect link (xay ra channel link bị CORS error + redirect link)
-        // /quanlehong539/i.test(channel.url) - khắc phục channel link là redirect link mặc dù có đuôi .m3u8 (cái này ko có khuôn mẫu trung nên phải làm thủ công)
+        // /quanlehong539/i.test(channel.url) - khắc phục channel link là redirect link mặc dù có đuôi .m3u8 (cái này ko có khuôn mẫu trung nên phải làm thủ công), dpdns.org, duckdns.org
         if (
           (!/\.(m3u8|mpd|ts)/i.test(channel.url) && !/stream-proxy.php\?url=/i.test(channel.url)) ||
-          /quanlehong539/i.test(channel.url)
+          /workers.dev/i.test(channel.url) || /dpdns.org/i.test(channel.url) || /duckdns.org/i.test(channel.url)
         ) {
           // Case 1.1.1:  Channel link  là thuộc dạng redirect link, sử dụng URL resolver
           let flagGetFinalUrl = false;
