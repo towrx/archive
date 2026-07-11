@@ -21,26 +21,26 @@ https://hoiquan.dpdns.org/VTVGo/?WC-FiFa
 #--*.*--00. ⭐ VTV--*.*--#
 
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv1hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv1.png", VTV1
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv1hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv1.png", VTV1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vtv1/live247-hls-avc/vtv1-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://live-a.fptplay53.net/live/media/vtv1/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv1-hd
 #https://live.fptplay53.net/live/media/vtv1/live247-hls-avc/index.m3u8
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv2hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv2.png", VTV2
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv2hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv2.png", VTV2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/v2abr/live247-hls-avc/v2abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 #https://live.fptplay53.net/live/media/v2abr/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv2-hd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv3hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv3.png", VTV3
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv3hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv3.png", VTV3
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/v3abr/live247-hls-avc/v3abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 #https://live.fptplay53.net/live/media/v3abr/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv3-hd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv4hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv4.png", VTV4
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv4hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv4.png", VTV4
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://live-a.fptplay53.net/live/media/vtv4/live247-hls-avc/index.m3u8
@@ -48,7 +48,7 @@ https://vips-livecdn.fptplay.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_56000
 #https://live.fptplay53.net/live/media/vtv4/live247-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd1/vtv4hd_vhls.smil/chunklist.m3u8
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv5.png", VTV5
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv5.png", VTV5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://live-a.fptplay53.net/live/media/vtv5/live247-hls-avc/index.m3u8
@@ -56,19 +56,19 @@ https://vips-livecdn.fptplay.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_56000
 #https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd1/vtv5hd_vhls.smil/chunklist.m3u8
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv6hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv6.png" , VTV6
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv6hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv6.png" , VTV6
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0
 https://vips-livecdn.fptplay.net/live/media/v6abr/live247-hls-avc/v6abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 #https://live.fptplay53.net/live/media/v6abr/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv6-hd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv7hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv7.png", VTV7
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv7hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv7.png", VTV7
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/v7abr/live247-hls-avc/v7abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 #https://live.fptplay53.net/live/media/v7abr/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv7-hd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv8hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv8.png", VTV8
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv8hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv8.png", VTV8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vtv8/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/epzhd2/vtv8hd_vhls.smil/chunklist.m3u8
@@ -76,31 +76,31 @@ https://vips-livecdn.fptplay.net/live/media/vtv8/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd1/vtv8hd_vhls.smil/chunklist.m3u8
 #https://live.fptplay53.net/live/media/vtv8/live-hls-avc/vtv8.m3u8
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv9hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv9.png", VTV9
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv9hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv9.png", VTV9
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/v9abr/live247-hls-avc/v9abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 #https://live.fptplay53.net/live/media/v9abr/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv9-hd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv10hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv10.png", VTV10
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv10hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv10.png", VTV10
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/v10abr/live247-hls-avc/v10abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 #https://live.fptplay53.net/live/media/v10abr/live247-hls-avc/index.m3u8
 #https://hoiquan.dpdns.org/VTVGo/?vtv10-hd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hdtnb" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv5-tnb.png", VTV5 Tây Nam Bộ
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hdtnb" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv5-tnb.png", VTV5 Tây Nam Bộ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vtv5tnb/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd1/vtv5tnb_vhls.smil/chunklist.m3u8
 #https://live.fptplay53.net/live/media/vtv5tnb/live-hls-avc/index.m3u8
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hdtn" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvprime/vtv5-tn.png", VTV5 Tây Nguyên
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vtv5hdtn" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvprime/vtv5-tn.png", VTV5 Tây Nguyên
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vtv5tn/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd1/vtv5taynguyen_vhls.smil/chunklist.m3u8
 #https://live.fptplay53.net/live/media/vtv5tn/live-hls-avc/index.m3u8
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vietnamtoday" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/local/vtvprime-vntoday.png", Vietnam Today
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="vietnamtoday" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/local/vtvprime-vntoday.png", Vietnam Today
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/vietnamtoday/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist.m3u8
@@ -109,7 +109,7 @@ https://vips-livecdn.fptplay.net/live/media/vietnamtoday/live-hls-avc/index.m3u8
 #https://sgchill.duckdns.org/source/fptplay.m3u8?id=vntoday
 #https://hoiquan.dpdns.org/VTVGo/?vietnamtoday
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="antvhd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/local/vtvprime-antv.png", ANTV
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="antvhd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/local/vtvprime-antv.png", ANTV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/antv/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist.m3u8
@@ -118,7 +118,7 @@ https://vips-livecdn.fptplay.net/live/media/antv/live-hls-avc/index.m3u8
 #https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/antv/KenhCoBan.m3u8
 #https://sgchill.duckdns.org/source/fptplay.m3u8?id=antvhd
 
-#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="qpvnhd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/local/vtvprime-qpvn.png", QPVN
+#EXTINF:-1 group-title="00. ⭐ VTV" tvg-id="qpvnhd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/local/vtvprime-qpvn.png", QPVN
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vips-livecdn.fptplay.net/live/media/quocphongvn/live-hls-avc/index.m3u8
 #https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist.m3u8
@@ -235,7 +235,7 @@ https://vpsttt.vietanhtv.top/tv360/tv360.php?id=188
 #--*.*--02. 🌍 QUỐC TẾ--*.*--#
 
 
-#EXTINF:-1 tvg-id="musicbox" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/intl/inthebox/musicboxhd.png", Music Box HD
+#EXTINF:-1 tvg-id="musicbox" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/inthebox/musicboxhd.png", Music Box HD
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
@@ -249,7 +249,7 @@ https://livevlisctcdnw.seenow.vn/livesnv2/MUSICBOX/manifest.mpd
 #KODIPROP:inputstream.adaptive.license_key=2942ed303e0d40c9b99c94c587bbf509:96cda24109734fb7920d799d58d1a9ae
 https://livevlisctcdnw.seenow.vn/mean/WO/manifest.mpd
 
-#EXTINF:-1 tvg-id="boxmovie1" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/intl/inthebox/boxmovie1hd.png", Box Movie 1 HD
+#EXTINF:-1 tvg-id="boxmovie1" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/inthebox/boxmovie1hd.png", Box Movie 1 HD
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
@@ -263,7 +263,7 @@ https://livevlisctcdnw.seenow.vn/mean/BM1/manifest.mpd
 #KODIPROP:inputstream.adaptive.license_key=a7c942778e874d43be92b8d0a0cd11b4:6d54358306571658ffdb952c6560688b
 https://livevlisctcdnw.seenow.vn/mean/BOXHIT/manifest.mpd
 
-#EXTINF:-1 tvg-id="hollywoodclassic" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/intl/inthebox/hollywoodclassics.png", Hollywood Classics HD
+#EXTINF:-1 tvg-id="hollywoodclassic" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/inthebox/hollywoodclassics.png", Hollywood Classics HD
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
@@ -402,7 +402,7 @@ https://s2129134.cdn.mytvnet.vn/pkg20/live_dzones/dscasia.smil/manifest.mpd
 #KODIPROP:inputstream.adaptive.license_key=c1d9f25701023508bfa6737e3a8c7001:30c3613e9b06e0f7cc201014f31bf5d8
 https://s2129134.cdn.mytvnet.vn/pkg20/live_dzones/ftv.smil/manifest.mpd
 
-#EXTINF:-1 tvg-id="afnhd" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/general/afn.png", Asia Food Network HD
+#EXTINF:-1 tvg-id="afnhd" group-title="02. 🌍 QUỐC TẾ" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/general/afn.png", Asia Food Network HD
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vpsttt.vietanhtv.top/tv360/tv360.php?id=215
 
@@ -701,7 +701,7 @@ https://liveatmvng.vtvprime.vn/live/data8/SCTV22/Live_DASHDRM/SCTV22.mpd
 #KODIPROP:inputstream.adaptive.license_key=https://vpsttt.vietanhtv.top/sctv/cleankey.php?id=sctvphim
 https://liveatmvng.vtvprime.vn/live/data8/SCTVPHIM/Live_DASHDRM/SCTVPHIM.mpd
 
-#EXTINF:-1 tvg-id="sctv4k" group-title="04. 🎫 SCTV" tvg-logo="https://vietanhtv.id.vn/logo/sctv4k.png", SCTV4K
+#EXTINF:-1 tvg-id="sctv4k" group-title="04. 🎫 SCTV" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/sctv/sctv-pth.png", SCTV4K
 #EXTVLCOPT:http-user-agent=vlc/3.0.22-rc1
 https://vpsttt.vietanhtv.top/sctv/tv.php?id=sctv-4k
 
@@ -811,7 +811,7 @@ https://live.fptplay53.net/epzsd1/gialai01_hls.smil/chunklist_b2500000.m3u8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
 https://live.trt.com.vn/TRT-Online/playlist.m3u8
 
-#EXTINF:-1 tvg-id="khanhhoa" group-title="05. 📺 ĐỊA PHƯƠNG" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/local/ktv.png", KTV HD | TH Khánh Hòa
+#EXTINF:-1 tvg-id="khanhhoa" group-title="05. 📺 ĐỊA PHƯƠNG" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/local/ktv.png", KTV HD | TH Khánh Hòa
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
 https://live.fptplay53.net/epzsd1/khanhhoa_hls.smil/chunklist_b2500000.m3u8
 
@@ -855,7 +855,7 @@ https://live.fptplay53.net/fnxsd1/hatinh_hls.smil/chunklist_b2500000.m3u8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
 https://live.fptplay53.net/fnxsd1/haiphong_hls.smil/chunklist_b2500000.m3u8
 
-#EXTINF:-1 tvg-id="haiphong3" group-title="05. 📺 ĐỊA PHƯƠNG" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/local/thp3.png", THP3 HD | TH Hải Phòng
+#EXTINF:-1 tvg-id="haiphong3" group-title="05. 📺 ĐỊA PHƯƠNG" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/local/thp3.png", THP3 HD | TH Hải Phòng
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
 https://live.fptplay53.net/fnxsd1/haiphongplus_hls.smil/chunklist_b2500000.m3u8
 
@@ -919,91 +919,91 @@ https://live.fptplay53.net/fnxsd1/tuyenquang_hls.smil/chunklist_b2500000.m3u8
 
 #--*.*--06. 📌 VTV - BACKUP - TVPub--*.*--#
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv1hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv1.webp", VTV1 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv1hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv1.webp", VTV1 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv1/live247-hls-avc/vtv1-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv2hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv2.webp", VTV2 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv2hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv2.webp", VTV2 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv2-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv3hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv3.webp", VTV3 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv3hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv3.webp", VTV3 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv3-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv4hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv4.webp", VTV4 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv4hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv4.webp", VTV4 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv5.webp", VTV5 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5.webp", VTV5 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hdtnb" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv5-tnb.webp", VTV5 Tây Nam Bộ TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hdtnb" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5-tnb.webp", VTV5 Tây Nam Bộ TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv5tnb/live-hls-avc/vtv5tnb-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hdtn" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv5-tn.webp", VTV5 Tây Nguyên TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv5hdtn" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv5-tn.webp", VTV5 Tây Nguyên TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv5tn/live-hls-avc/vtv5tn-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv6hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv6.webp", VTV6 TVPUB
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv6hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv6.webp", VTV6 TVPUB
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
 https://vtv6-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv7hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv7.webp", VTV7 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv7hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv7.webp", VTV7 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv7-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv8hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv8.webp", VTV8 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv8hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv8.webp", VTV8 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://live.fptplay53.net/live/media/vtv8/live-hls-avc/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv9hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv9.webp", VTV9 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv9hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv9.webp", VTV9 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv9-autom3u.quanlehong539.workers.dev/index.m3u8
 
-#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv10hd" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/vtvgo/vtv10.webp", VTV10 TVPub
+#EXTINF:-1 group-title="06. 📌 VTV - BACKUP" tvg-id="vtv10hd" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/vtvgo/vtv10.webp", VTV10 TVPub
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
 https://vtv10-autom3u.quanlehong539.workers.dev/index.m3u8
 
 
 #--*.*--06. 📌 VTV - BACKUP - HOIQUANCLICK--*.*--#
 
-#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv1.png",VTV1 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv1.png",VTV1 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv1-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv2.png",VTV2 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv2.png",VTV2 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv2-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv3.png",VTV3 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv3.png",VTV3 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv3-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv4.png",VTV4 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv4.png",VTV4 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv4-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv5.png",VTV5 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5.png",VTV5 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv5-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv5-tnb.png",VTV5 Tây Nam Bộ HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5-tnb.png",VTV5 Tây Nam Bộ HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv5-tay-nam-bo/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv5-tn.png",VTV5 Tây Nguyên HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv5-tn.png",VTV5 Tây Nguyên HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv5-tay-nguyen/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv6hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv6.png",VTV6 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv6hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv6.png",VTV6 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv6-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv7.png",VTV7 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv7.png",VTV7 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv7-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv8.png",VTV8 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv8.png",VTV8 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv8-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv9.png",VTV9 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv9.png",VTV9 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv9-hd/KenhCoBan.m3u8
 
-#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt-trans/vtv10.png",VTV10 HD HOIQUANCLICK
+#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt-trans/vtv10.png",VTV10 HD HOIQUANCLICK
 https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/vtv10-hd/KenhCoBan.m3u8
 
 
@@ -1056,41 +1056,41 @@ https://sgchill.duckdns.org/source/fptplay.m3u8?id=vtv10
 
 #--*.*--06. 📌 VTV - BACKUP - VIETANHTV--*.*--#
 
-#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv1.webp", VTV1 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv1hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv1.webp", VTV1 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv1/live247-hls-avc/vtv1-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv2.webp", VTV2 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv2.webp", VTV2 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v2abr/live247-hls-avc/v2abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv3.webp", VTV3 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv3.webp", VTV3 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v3abr/live247-hls-avc/v3abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv4.webp", VTV4 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv4hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv4.webp", VTV4 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv4/live247-hls-avc/vtv4-avc1_5600000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv5.webp", VTV5 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv5hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5.webp", VTV5 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv5/live247-hls-avc/vtv5-avc1_5600000=10000-mp4a_131600=20000.m3u8
 #https://vpsttt.vietanhtv.top/tv360/tv360.php?id=110
 
-#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv5-tnb.webp", VTV5 HD - Tây Nam Bộ  VIETANHTV
+#EXTINF:-1 tvg-id="vtv5hdtnb" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5-tnb.webp", VTV5 HD - Tây Nam Bộ  VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv5tnb/live-hls-avc/vtv5tnb-avc1_4000000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv5-tn.webp", VTV5 HD - Tây Nguyên  VIETANHTV
+#EXTINF:-1 tvg-id="vtv5hdtn" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv5-tn.webp", VTV5 HD - Tây Nguyên  VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/live/media/vtv5tn/live-hls-avc/vtv5tn-avc1_4000000=10000-mp4a_131600=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv6hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv6.webp", VTV6 VIETANHTV
+#EXTINF:-1 tvg-id="vtv6hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv6.webp", VTV6 VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v6abr/live247-hls-avc/v6abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
 #https://vpsttt.vietanhtv.top/tv360/tv360.php?id=98
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv7.webp", VTV7 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv7.webp", VTV7 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
@@ -1098,58 +1098,58 @@ https://vips-livecdn.fptplay.net/live/media/v6abr/live247-hls-avc/v6abr-avc1_560
 https://live-a.fptplay53.net/live/media/vtv7_drm/dash_247_avc_drm/index.mpd
 
 #https://vpsttt.vietanhtv.top/tv360/tv360.php?id=6
-#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv8.webp", VTV8 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv8hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv8.webp", VTV8 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://live.fptplay53.net/fnxhd1/vtv8hd_vhls.smil/chunklist.m3u8
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv9.webp", VTV9 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv9.webp", VTV9 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=40b6534806e047eaa9db2d6cc711087e:4b8129275739df5cc04f8145b2fa2b86
 https://live-a.fptplay53.net/live/media/vtv9_drm/dash_247_avc_drm/index.mpd
 
-#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv10.webp", VTV10 HD VIETANHTV
+#EXTINF:-1 tvg-id="vtv10hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv10.webp", VTV10 HD VIETANHTV
 #EXTVLCOPT:http-user-agent=Dalvik/2.1.0
 https://vips-livecdn.fptplay.net/live/media/v10abr/live247-hls-avc/v10abr-avc1_5600000=10000-mp4a_140800_vie=20000.m3u8
 
-#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv2.webp" , VTV2 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv2hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv2.webp" , VTV2 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7485.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv451/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv3.webp" , VTV3 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv3hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv3.webp" , VTV3 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv262/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv7.webp" , VTV7 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv7hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv7.webp" , VTV7 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7485.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv516/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv9.webp" , VTV9 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv9hd" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv9.webp" , VTV9 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7486.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv455/manifest.mpd
 
-#EXTINF:-1 tvg-id="vtv1hd0" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/vn/vtv/fpt/vtv10.webp" , VTV10 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="vtv1hd0" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/vn/vtv/fpt/vtv10.webp" , VTV10 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7486.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv263/manifest.mpd
 
-#EXTINF:-1 tvg-id="SPOTV" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/intl/sports/spotv.png", SPOTV VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="SPOTV" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/sports/spotv.png", SPOTV VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
 https://s7484.cdn.mytvnet.vn/pkg20/__cl/gvtsig/vstv587/manifest.mpd
 
-#EXTINF:-1 tvg-id="SPOTV2" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://raw.githubusercontent.com/towrx/archive/refs/heads/main/iptv/logos/intl/sports/spotv2.png", SPOTV2 VIETANHTV(MDP)
+#EXTINF:-1 tvg-id="SPOTV2" group-title="06. 📌 VTV - BACKUP" tvg-logo="https://iptv-player.nupakachi.dpdns.org/logos/intl/sports/spotv2.png", SPOTV2 VIETANHTV(MDP)
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=widevine
 #KODIPROP:inputstream.adaptive.license_key=http://minhghi.vietanhtv.top/mytv2/key.php
