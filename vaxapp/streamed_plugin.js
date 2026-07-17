@@ -1,27 +1,21 @@
 // =============================================================================
-// VAAPP Plugin Template
-// Hướng dẫn chi tiết: xem HUONG_DAN.md
-// =============================================================================
-
-// =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
 // =============================================================================
 
 const BASE_URL = "https://streamed.pk";
 
-
 function getManifest() {
   return JSON.stringify({
-    id: "streamed", // ID duy nhất, không dấu, không khoảng trắng
-    name: "streamed", // Tên hiển thị trong App
-    version: "1.0.0", // Đổi version → App tự cập nhật
+    id: "streamed",
+    name: "streamed",
+    version: "1.0.0",
     baseUrl: BASE_URL,
-    iconUrl: "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp-plugins/logos/streamed.png",
+    iconUrl: "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/logos/streamed.png",
     isEnabled: true,
     isAdult: false,
-    type: "VIDEO", // "MOVIE" hoặc "COMIC"
-    layoutType: "VERTICAL", // "VERTICAL" hoặc "HORIZONTAL"
-    playerType: "embed"
+    type: "VIDEO",
+    layoutType: "VERTICAL",
+    playerType: "embed",
   });
 }
 
@@ -74,7 +68,7 @@ function getUrlList(slug, filtersJson) {
 
 function getUrlSearch(keyword, filtersJson) {
   var page = JSON.parse(filtersJson || "{}").page || 1;
-  return "https://domain-phim-cua-ban.com/tim-kiem?q=" + encodeURIComponent(keyword) + "&page=" + page;
+  return "https://streamed.pk/api/matches/all";
 }
 
 function getUrlDetail(slug) {
@@ -98,10 +92,6 @@ function getUrlYears() {
 // NHÓM 3: PARSER (App fetch URL xong → ném HTML/JSON thô vào đây → bạn parse)
 // =============================================================================
 
-/**
- * Parse danh sách phim từ HTML trang danh sách.
- * App mong đợi: { items: [{id, title, posterUrl, ...}], pagination: {...} }
- */
 function parseListResponse(html) {
   try {
     var data = JSON.parse(html);
@@ -115,11 +105,11 @@ function parseListResponse(html) {
         items.push({
           id: `/api/stream/${source.source}/${source.id}`,
           title: item.title,
-          description: `Server: ${source.source.toUpperCase()}`,
+          description: `Server: ${source.source.toUpperCase()} + Time: ${time}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
           // year: time || 0,
-          year:0
+          year: 0,
         });
       });
     });
@@ -137,22 +127,14 @@ function parseSearchResponse(html) {
   return parseListResponse(html);
 }
 
-/**
- * Parse chi tiết phim: title, description, servers + episodes.
- * ⚠️ episode.id là giá trị App dùng để resolve link xem:
- *    - Nếu là URL .m3u8/.mp4 → App phát luôn
- *    - Nếu là slug/URL → App gọi getUrlDetail(id) → parseDetailResponse()
- */
 function parseMovieDetail(html) {
   var stream = JSON.parse(html);
   var servers = [];
   stream.map((item, index) => {
     servers.push({
       name: "Server: " + stream[0].source,
-        episodes: [
-          { id: item.embedUrl, name: `${item.hd ? 'FullHD' : 'HD or SD'}`, slug: "/"+(index+1) },
-        ]
-    })
+      episodes: [{ id: item.embedUrl, name: `${item.hd ? "FullHD" : "HD or SD"}`, slug: "/" + (index + 1) }],
+    });
   });
   return JSON.stringify({
     id: stream[0].id,
@@ -172,71 +154,16 @@ function parseMovieDetail(html) {
   });
 }
 
-/**
- * Parse link video cuối cùng để Player phát.
- *
- * Trường hợp 1 — Link trực tiếp:
- *   { url: "https://cdn.com/video.m3u8", headers: {...} }
- *
- * Trường hợp 2 — Embed (WebView):
- *   { url: "https://player.com/embed/abc", headers: {...} }
- *   (Manifest cần set playerType: "embed" hoặc "auto")
- *
- * Trường hợp 3 — Recursive embed (cần fetch thêm):
- *   { url: "https://site.com/ajax.php", isEmbed: true, postBody: "id=123&sv=1" }
- *   → App sẽ POST/GET url đó → gọi parseEmbedResponse()
- *
- * Trường hợp 4 — Extension lạ:
- *   { url: "https://cdn.com/video.vl", mimeType: "application/x-mpegURL" }
- *   → Báo App đây là HLS dù extension không phải .m3u8
- */
 function parseDetailResponse(html, pageUrl) {
   return JSON.stringify({
     url: pageUrl,
     headers: {
-      Referer: BASE_URL+"/",
+      Referer: BASE_URL + "/",
     },
-    subtitles: [],
-    // isEmbed: false,     // true nếu cần fetch tiếp (xem parseEmbedResponse)
-    // postBody: "",       // Body cho POST request (rỗng = GET)
-    // mimeType: ""        // "application/x-mpegURL" cho HLS, "video/mp4" cho MP4
   });
 }
 
-/**
- * [TÙY CHỌN] Xử lý embed nhiều bước.
- * Chỉ cần viết hàm này khi trang dùng luồng phức tạp:
- *   Trang chi tiết → AJAX → iframe → stream URL
- *
- * App gọi hàm này trong vòng lặp (tối đa 3 lần):
- *   - isEmbed: true  → App fetch tiếp URL trả về
- *   - isEmbed: false → URL cuối cùng, phát luôn
- *   - url: ""        → Dừng lặp
- *
- * @param {string} html - HTML/JSON response từ bước trước
- * @param {string} sourceUrl - URL đã fetch để lấy html này
- */
 function parseEmbedResponse(html, sourceUrl) {
-  // Ví dụ: AJAX response chứa iframe
-  // if (sourceUrl.indexOf('ajax') !== -1) {
-  //     var data = JSON.parse(html);
-  //     var match = data.player.match(/src="([^"]+)"/);
-  //     if (match) {
-  //         return JSON.stringify({ url: match[1], isEmbed: true });
-  //     }
-  // }
-
-  // Ví dụ: Embed page chứa file stream
-  // var fileMatch = html.match(/"file"\s*:\s*"(https?[^"]+)"/);
-  // if (fileMatch) {
-  //     return JSON.stringify({
-  //         url: fileMatch[1],
-  //         isEmbed: false,
-  //         mimeType: "application/x-mpegURL",
-  //         headers: { "Referer": "https://embed-server.com/" }
-  //     });
-  // }
-
   return JSON.stringify({ url: "", isEmbed: false });
 }
 
