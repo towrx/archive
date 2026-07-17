@@ -1,5 +1,5 @@
 const BASE_URL = "https://streamed.pk";
-const FALLBACK_POSTER =
+const FALLBACK_POSTER_URL =
   "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-fallback-poster.webp";
 
 // =============================================================================
@@ -138,8 +138,8 @@ function parseMovieDetail(html) {
   return JSON.stringify({
     id: stream[0]?.id || "",
     title: stream[0]?.id || "",
-    posterUrl: FALLBACK_POSTER,
-    backdropUrl: FALLBACK_POSTER,
+    posterUrl: FALLBACK_POSTER_URL,
+    backdropUrl: FALLBACK_POSTER_URL,
     description: "",
     servers: [{ name: serverName, episodes: episodes }],
     quality: "",
@@ -185,10 +185,12 @@ function parseYearsResponse(html) {
 
 function getPosterUrl(item) {
   try {
+    if (item?.poster) return item.poster;
     const homeTeamLogoSlug = item?.teams?.home?.badge;
     const awayTeamLogoSlug = item?.teams?.away?.badge;
-    const imagePath = item?.poster ? item?.poster : `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
-    return BASE_URL + imagePath;
+    if (homeTeamLogoSlug && awayTeamLogoSlug)
+      return BASE_URL + `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
+    return FALLBACK_POSTER_URL;
   } catch (e) {
     return "";
   }
