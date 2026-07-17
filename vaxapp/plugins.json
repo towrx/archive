@@ -5,10 +5,8 @@
       "id": "streamed",
       "name": "Streamed",
       "version": "1.0.0",
-      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp-plugins/streamed.js",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp-plugins/streamed_plugin.js",
       "iconUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp-plugins/logos/streamed.png"
     }
   ]
 }
-
-
