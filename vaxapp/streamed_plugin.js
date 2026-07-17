@@ -1,8 +1,10 @@
+const BASE_URL = "https://streamed.pk";
+const FALLBACK_POSTER =
+  "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-fallback-poster.webp";
+
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
 // =============================================================================
-
-const BASE_URL = "https://streamed.pk";
 
 function getManifest() {
   return JSON.stringify({
@@ -10,7 +12,7 @@ function getManifest() {
     name: "streamed",
     version: "1.0.0",
     baseUrl: BASE_URL,
-    iconUrl: "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/logos/streamed.png",
+    iconUrl: "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
     isEnabled: true,
     isAdult: false,
     type: "VIDEO",
@@ -71,11 +73,10 @@ function getUrlSearch(keyword, filtersJson) {
   return "https://streamed.pk/api/matches/all";
 }
 
-function getUrlDetail(slug) {
-  if (!slug) return "";
-  if (slug.indexOf("http") === 0) return slug;
-  if (slug.charAt(0) !== "/") slug = "/" + slug;
-  return BASE_URL + slug;
+function getUrlDetail(path) {
+  if (!path) return "";
+  if (path.indexOf("http") === 0) return path;
+  return BASE_URL + path;
 }
 
 function getUrlCategories() {
@@ -139,8 +140,8 @@ function parseMovieDetail(html) {
   return JSON.stringify({
     id: stream[0].id,
     title: stream[0].id,
-    posterUrl: "",
-    backdropUrl: "",
+    posterUrl: FALLBACK_POSTER,
+    backdropUrl: FALLBACK_POSTER,
     description: "",
     servers: servers,
     quality: "",
@@ -158,7 +159,9 @@ function parseDetailResponse(html, pageUrl) {
   return JSON.stringify({
     url: pageUrl,
     headers: {
-      Referer: BASE_URL + "/",
+      Referer: "https://embed.st/",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
     },
   });
 }
@@ -176,6 +179,10 @@ function parseCountriesResponse(html) {
 function parseYearsResponse(html) {
   return "[]";
 }
+
+// =============================================================================
+// NHÓM 4: handmade function
+// ==
 
 function getPosterUrl(item) {
   try {
