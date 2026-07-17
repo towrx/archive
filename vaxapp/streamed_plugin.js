@@ -99,9 +99,6 @@ function parseListResponse(html) {
     var items = [];
     data.forEach((item) => {
       const imageUrl = getPosterUrl(item);
-      const time = new Date(item.date).toLocaleString("vi-VN", {
-        timeZone: "Asia/Ho_Chi_Minh",
-      });
       item.sources.forEach((source) => {
         items.push({
           id: `/api/stream/${source.source}/${source.id}`,
@@ -109,7 +106,6 @@ function parseListResponse(html) {
           description: `Server: ${source.source.toUpperCase()} + Time: ${time}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          // year: time || 0,
           year: 0,
         });
       });
@@ -145,7 +141,7 @@ function parseMovieDetail(html) {
     description: "",
     servers: servers,
     quality: "",
-    year: 2024,
+    year: 0,
     rating: "",
     status: "",
     duration: "",
@@ -186,9 +182,9 @@ function parseYearsResponse(html) {
 
 function getPosterUrl(item) {
   try {
-    const logoTeamHome = item?.teams?.home?.badge;
-    const logoTeamAway = item?.teams?.away?.badge;
-    const imagePath = item?.poster ? item.poster : `/api/images/poster/${logoTeamHome}/${logoTeamAway}.webp`;
+    const homeTeamLogoSlug = item?.teams?.home?.badge;
+    const awayTeamLogoSlug = item?.teams?.away?.badge;
+    const imagePath = item?.poster ? item.poster : `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
     return BASE_URL + imagePath;
   } catch (e) {
     return "";
