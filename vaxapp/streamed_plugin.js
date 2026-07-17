@@ -69,7 +69,6 @@ function getUrlList(slug, filtersJson) {
 }
 
 function getUrlSearch(keyword, filtersJson) {
-  var page = JSON.parse(filtersJson || "{}").page || 1;
   return "https://streamed.pk/api/matches/all";
 }
 
@@ -102,8 +101,8 @@ function parseListResponse(html) {
       item.sources.forEach((source) => {
         items.push({
           id: `/api/stream/${source.source}/${source.id}`,
-          title: item.title,
-          description: `Server: ${source.source.toUpperCase()} + Time: ${time}`,
+          title: item?.title,
+          description: `Server: ${source?.source?.toUpperCase()}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
           year: 0,
@@ -126,20 +125,23 @@ function parseSearchResponse(html) {
 
 function parseMovieDetail(html) {
   var stream = JSON.parse(html);
-  var servers = [];
+  var episodes = [];
+  const serverName = stream?.[0]?.source.toUpperCase();
+
   stream.map((item, index) => {
-    servers.push({
-      name: "Server: " + stream[0].source,
-      episodes: [{ id: item.embedUrl, name: `${item.hd ? "FullHD" : "HD or SD"}`, slug: "/" + (index + 1) }],
+    episodes.push({
+      id: item?.embedUrl,
+      name: `${item?.hd ? "FullHD" : "HD or SD"} - ${item?.language} - Viewers: ${item?.viewers}`,
+      slug: "/" + item?.streamNo,
     });
   });
   return JSON.stringify({
-    id: stream[0].id,
-    title: stream[0].id,
+    id: stream[0]?.id || "",
+    title: stream[0]?.id || "",
     posterUrl: FALLBACK_POSTER,
     backdropUrl: FALLBACK_POSTER,
     description: "",
-    servers: servers,
+    servers: [{ name: serverName, episodes: episodes }],
     quality: "",
     year: 0,
     rating: "",
@@ -151,14 +153,15 @@ function parseMovieDetail(html) {
   });
 }
 
-function parseDetailResponse(html, pageUrl) {
+function parseDetailResponse(html, sourceUrl) {
   return JSON.stringify({
-    url: pageUrl,
+    url: sourceUrl,
     headers: {
       Referer: "https://embed.st/",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
     },
+    isEmbed: false,
   });
 }
 
@@ -178,13 +181,13 @@ function parseYearsResponse(html) {
 
 // =============================================================================
 // NHÓM 4: handmade function
-// ==
+// =============================================================================
 
 function getPosterUrl(item) {
   try {
     const homeTeamLogoSlug = item?.teams?.home?.badge;
     const awayTeamLogoSlug = item?.teams?.away?.badge;
-    const imagePath = item?.poster ? item.poster : `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
+    const imagePath = item?.poster ? item?.poster : `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
     return BASE_URL + imagePath;
   } catch (e) {
     return "";
