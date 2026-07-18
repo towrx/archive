@@ -18,7 +18,7 @@ function getManifest() {
     isAdult: false,
     type: "VIDEO",
     layoutType: "VERTICAL",
-    playerType: "embed"
+    playerType: "embedtoexoplay"
   });
 }
 
