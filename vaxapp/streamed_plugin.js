@@ -75,7 +75,7 @@ function getFilterConfig() {
 
 function getUrlList(slug, filtersJson) {
   const basePath = "/api/matches/";
-  return BASE_URL + basePath + slug + "popular";
+  return BASE_URL + basePath + slug + "/popular";
 }
 
 function getUrlSearch(keyword, filtersJson) {
