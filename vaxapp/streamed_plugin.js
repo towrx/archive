@@ -12,26 +12,37 @@ function getManifest() {
     name: "streamed",
     version: "1.0.0",
     baseUrl: BASE_URL,
-    iconUrl: "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
+    iconUrl:
+      "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
     isEnabled: true,
     isAdult: false,
     type: "VIDEO",
     layoutType: "VERTICAL",
-    playerType: "embed",
+    playerType: "embed"
   });
 }
 
 function getHomeSections() {
   return JSON.stringify([
     { slug: "live", title: "🔴 LIVE", type: "Horizontal", path: "" },
-    { slug: "all-today", title: "Today's Matches", type: "Horizontal", path: "" },
+    {
+      slug: "all-today",
+      title: "Today's Matches",
+      type: "Horizontal",
+      path: ""
+    },
     { slug: "all", title: "All Matches", type: "Horizontal", path: "" },
-    { slug: "fight", title: "Fight (UFC, Boxing)", type: "Horizontal", path: "" },
+    {
+      slug: "fight",
+      title: "Fight (UFC, Boxing)",
+      type: "Horizontal",
+      path: ""
+    },
     { slug: "football", title: "Football", type: "Horizontal", path: "" },
     { slug: "billiards", title: "Billiards", type: "Horizontal", path: "" },
     { slug: "basketball", title: "Basketball", type: "Horizontal", path: "" },
     { slug: "golf", title: "Golf", type: "Horizontal", path: "" },
-    { slug: "other", title: "Other", type: "Horizontal", path: "" },
+    { slug: "other", title: "Other", type: "Horizontal", path: "" }
   ]);
 }
 
@@ -51,7 +62,7 @@ function getPrimaryCategories() {
     { name: "AFL", slug: "afl" },
     { name: "Darts", slug: "darts" },
     { name: "Cricket", slug: "cricket" },
-    { name: "Other", slug: "other" },
+    { name: "Other", slug: "other" }
   ]);
 }
 
@@ -105,17 +116,20 @@ function parseListResponse(html) {
           description: `Server: ${source?.source?.toUpperCase()}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          year: 0,
+          year: 0
         });
       });
     });
 
     return JSON.stringify({
       items: items,
-      pagination: { currentPage: 1, totalPages: 1 },
+      pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (e) {
-    return JSON.stringify({ items: [], pagination: { currentPage: 1, totalPages: 1 } });
+    return JSON.stringify({
+      items: [],
+      pagination: { currentPage: 1, totalPages: 1 }
+    });
   }
 }
 
@@ -132,7 +146,7 @@ function parseMovieDetail(html) {
     episodes.push({
       id: item?.embedUrl,
       name: `${item?.hd ? "FullHD" : "HD or SD"} - ${item?.language} - Viewers: ${item?.viewers}`,
-      slug: "/" + item?.streamNo,
+      slug: "/" + item?.streamNo
     });
   });
   return JSON.stringify({
@@ -149,7 +163,7 @@ function parseMovieDetail(html) {
     duration: "",
     casts: "",
     director: "",
-    category: "",
+    category: ""
   });
 }
 
@@ -159,9 +173,9 @@ function parseDetailResponse(html, sourceUrl) {
     headers: {
       Referer: "https://embed.st/",
       "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
     },
-    isEmbed: false,
+    isEmbed: false
   });
 }
 
@@ -189,7 +203,10 @@ function getPosterUrl(item) {
     const homeTeamLogoSlug = item?.teams?.home?.badge;
     const awayTeamLogoSlug = item?.teams?.away?.badge;
     if (homeTeamLogoSlug && awayTeamLogoSlug)
-      return BASE_URL + `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
+      return (
+        BASE_URL +
+        `/api/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`
+      );
     return FALLBACK_POSTER_URL;
   } catch (e) {
     return "";
