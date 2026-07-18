@@ -9,7 +9,7 @@ const FALLBACK_POSTER_URL =
 function getManifest() {
   return JSON.stringify({
     id: "streamed",
-    name: "streamed",
+    name: "Streamed",
     version: "1.0.0",
     baseUrl: BASE_URL,
     iconUrl:
@@ -24,24 +24,24 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
-    { slug: "live", title: "🔴 LIVE", type: "Vertical", path: "" },
+    { slug: "live", title: "🔴 LIVE", type: "Horizontal", path: "" },
     {
       slug: "all-today",
       title: "Today's Matches",
-      type: "Vertical",
+      type: "Horizontal",
       path: ""
     },
     {
       slug: "fight",
       title: "Fight (UFC, Boxing)",
-      type: "Vertical",
+      type: "Horizontal",
       path: ""
     },
-    { slug: "football", title: "Football", type: "Vertical", path: "" },
-    { slug: "billiards", title: "Billiards", type: "Vertical", path: "" },
-    { slug: "basketball", title: "Basketball", type: "Vertical", path: "" },
-    { slug: "golf", title: "Golf", type: "Vertical", path: "" },
-    { slug: "other", title: "Other", type: "Vertical", path: "" }
+    { slug: "football", title: "Football", type: "Horizontal", path: "" },
+    { slug: "billiards", title: "Billiards", type: "Horizontal", path: "" },
+    { slug: "basketball", title: "Basketball", type: "Horizontal", path: "" },
+    { slug: "golf", title: "Golf", type: "Horizontal", path: "" },
+    { slug: "other", title: "Other", type: "Horizontal", path: "" }
   ]);
 }
 
@@ -53,7 +53,7 @@ function getPrimaryCategories() {
     { name: "Hockey", slug: "hockey" },
     { name: "Baseball", slug: "baseball" },
     { name: "Motor Sports", slug: "motor-sports" },
-    { name: "Fight (UFC, Boxing)", slug: "fight" },
+    { name: "Fight", slug: "fight" },
     { name: "Tennis", slug: "tennis" },
     { name: "Rugby", slug: "rugby" },
     { name: "Golf", slug: "golf" },
@@ -110,12 +110,12 @@ function parseListResponse(html) {
       const imageUrl = getPosterUrl(item);
       item.sources.forEach((source) => {
         items.push({
-          id: `/api/stream/${source.source}/${source.id}`,
+          id: `/api/stream/${source?.source}/${source?.id}`,
           title: item?.title,
           description: `Server: ${source?.source?.toUpperCase()}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          year: 0
+          quality: source?.source?.toUpperCase()
         });
       });
     });
@@ -141,7 +141,7 @@ function parseMovieDetail(html) {
   if (!Array.isArray(stream) || stream.length === 0)
     return JSON.stringify({
       id: "",
-      title: "No information!",
+      title: "No Information!",
       posterUrl: FALLBACK_POSTER_URL,
       backdropUrl: FALLBACK_POSTER_URL,
       servers: []
@@ -152,7 +152,7 @@ function parseMovieDetail(html) {
   stream.map((item, index) => {
     episodes.push({
       id: item?.embedUrl,
-      name: `${item?.hd ? "HD" : "SD"}`,
+      name: `${item?.hd ? `HD - ${index + 1}` : `SD - ${index + 1}`}`,
       slug: "/" + item?.streamNo
     });
   });
