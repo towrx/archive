@@ -199,7 +199,7 @@ function parseYearsResponse(html) {
 
 function getPosterUrl(item) {
   try {
-    if (item?.poster) return item.poster;
+    if (item?.poster) return BASE_URL + item.poster;
     const homeTeamLogoSlug = item?.teams?.home?.badge;
     const awayTeamLogoSlug = item?.teams?.away?.badge;
     if (homeTeamLogoSlug && awayTeamLogoSlug)
