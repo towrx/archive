@@ -18,7 +18,7 @@ function getManifest() {
     isAdult: false,
     type: "VIDEO",
     layoutType: "VERTICAL",
-    playerType: "embedtoexoplay"
+    playerType: "embed"
   });
 }
 
@@ -75,7 +75,7 @@ function getFilterConfig() {
 
 function getUrlList(slug, filtersJson) {
   const basePath = "/api/matches/";
-  return BASE_URL + basePath + slug;
+  return BASE_URL + basePath + slug + "popular";
 }
 
 function getUrlSearch(keyword, filtersJson) {
