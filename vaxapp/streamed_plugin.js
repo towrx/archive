@@ -39,10 +39,10 @@ function getHomeSections() {
       path: ""
     },
     { slug: "football", title: "Football", type: "Horizontal", path: "" },
-    // { slug: "billiards", title: "Billiards", type: "Horizontal", path: "" },
-    { slug: "basketball", title: "Basketball", type: "Horizontal", path: "" }
-    // { slug: "golf", title: "Golf", type: "Horizontal", path: "" },
-    // { slug: "other", title: "Other", type: "Horizontal", path: "" }
+    { slug: "billiards", title: "Billiards", type: "Horizontal", path: "" },
+    { slug: "basketball", title: "Basketball", type: "Horizontal", path: "" },
+    { slug: "golf", title: "Golf", type: "Horizontal", path: "" },
+    { slug: "other", title: "Other", type: "Horizontal", path: "" }
   ]);
 }
 
@@ -139,13 +139,15 @@ function parseSearchResponse(html) {
 
 function parseMovieDetail(html) {
   var stream = JSON.parse(html);
+  if (!Array.isArray(stream) || stream.length === 0)
+    return JSON.stringify({ title: "No information!" });
   var episodes = [];
-  const serverName = stream?.[0]?.source.toUpperCase();
+  const serverName = stream?.[0]?.source?.toUpperCase();
 
   stream.map((item, index) => {
     episodes.push({
       id: item?.embedUrl,
-      name: `${item?.hd ? "FullHD" : "HD or SD"} - ${item?.language} - Viewers: ${item?.viewers}`,
+      name: `${item?.hd ? "HD" : "SD"}`,
       slug: "/" + item?.streamNo
     });
   });
@@ -154,16 +156,10 @@ function parseMovieDetail(html) {
     title: stream[0]?.id || "",
     posterUrl: FALLBACK_POSTER_URL,
     backdropUrl: FALLBACK_POSTER_URL,
-    // description: "",
-    servers: [{ name: serverName, episodes: episodes }]
-    // quality: "",
-    // year: 0,
-    // rating: "",
-    // status: "",
-    // duration: "",
-    // casts: "",
-    // director: "",
-    // category: ""
+    servers:
+      serverName && episodes.length !== 0
+        ? [{ name: serverName, episodes: episodes }]
+        : []
   });
 }
 
@@ -171,9 +167,7 @@ function parseDetailResponse(html, sourceUrl) {
   return JSON.stringify({
     url: sourceUrl,
     headers: {
-      Referer: "https://embed.st/",
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      Referer: "https://embed.st/"
     },
     isEmbed: false
   });
