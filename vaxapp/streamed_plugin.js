@@ -172,11 +172,14 @@ function parseMovieDetail(html) {
     });
   });
   return JSON.stringify({
-    id:
+    id: stream[0]?.id || "",
+    title:
       stream[0]?.id
-        ?.replace(/-/g, " ")
-        ?.replace(/\b\w/g, (c) => c?.toUpperCase()) || "",
-    title: stream[0]?.id || "",
+        ?.split("-")
+        .map((w, i) =>
+          i === 0 ? w.toUpperCase() : w[0].toUpperCase() + w.slice(1)
+        )
+        .join(" ") || "",
     posterUrl: FALLBACK_POSTER_URL,
     backdropUrl: FALLBACK_POSTER_URL,
     servers:
