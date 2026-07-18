@@ -61,7 +61,7 @@ function getPrimaryCategories() {
   return JSON.stringify([
     { name: "Basketball", slug: "basketball" },
     { name: "Football", slug: "football" },
-    { name: "American Football", slug: "american-football" },
+    { name: "USA Football", slug: "american-football" },
     { name: "Hockey", slug: "hockey" },
     { name: "Baseball", slug: "baseball" },
     { name: "Motor Sports", slug: "motor-sports" },
@@ -172,7 +172,10 @@ function parseMovieDetail(html) {
     });
   });
   return JSON.stringify({
-    id: stream[0]?.id || "",
+    id:
+      stream[0]?.id
+        ?.replace(/-/g, " ")
+        ?.replace(/\b\w/g, (c) => c?.toUpperCase()) || "",
     title: stream[0]?.id || "",
     posterUrl: FALLBACK_POSTER_URL,
     backdropUrl: FALLBACK_POSTER_URL,
