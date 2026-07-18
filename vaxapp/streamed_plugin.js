@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.0",
+    version: "1.0.1",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -18,7 +18,7 @@ function getManifest() {
     isAdult: false,
     type: "VIDEO",
     layoutType: "VERTICAL",
-    playerType: "embed"
+    playerType: "embedtoexoplay"
   });
 }
 
