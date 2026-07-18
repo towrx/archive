@@ -24,24 +24,36 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
-    { slug: "live", title: "🔴 LIVE", type: "Horizontal", path: "" },
-    {
-      slug: "all-today",
-      title: "Today's Matches",
-      type: "Horizontal",
-      path: ""
-    },
+    { slug: "live", title: "LIVE 🔴", type: "Horizontal", path: "" },
     {
       slug: "fight",
-      title: "Fight (UFC, Boxing)",
+      title: "Fight (UFC, Boxing) 🥊",
       type: "Horizontal",
       path: ""
     },
-    { slug: "football", title: "Football", type: "Horizontal", path: "" },
-    { slug: "billiards", title: "Billiards", type: "Horizontal", path: "" },
-    { slug: "basketball", title: "Basketball", type: "Horizontal", path: "" },
-    { slug: "golf", title: "Golf", type: "Horizontal", path: "" },
-    { slug: "other", title: "Other", type: "Horizontal", path: "" }
+    { slug: "football", title: "Football ⚽", type: "Horizontal", path: "" },
+    {
+      slug: "motor-sports",
+      title: "Motor Sports 🏍️",
+      type: "Horizontal",
+      path: ""
+    },
+    { slug: "billiards", title: "Billiards 🎱", type: "Horizontal", path: "" },
+    {
+      slug: "basketball",
+      title: "Basketball 🏀",
+      type: "Horizontal",
+      path: ""
+    },
+    { slug: "golf", title: "Golf ⛳", type: "Horizontal", path: "" },
+    { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
+    { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
+    {
+      slug: "all-today",
+      title: "Today's Matches 📋",
+      type: "Horizontal",
+      path: ""
+    }
   ]);
 }
 
@@ -75,7 +87,8 @@ function getFilterConfig() {
 
 function getUrlList(slug, filtersJson) {
   const basePath = "/api/matches/";
-  return BASE_URL + basePath + slug + "/popular";
+  if (slug === "live") slug += "/popular";
+  return BASE_URL + basePath + slug;
 }
 
 function getUrlSearch(keyword, filtersJson) {
@@ -115,8 +128,9 @@ function parseListResponse(html) {
           description: `Server: ${source?.source?.toUpperCase()}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          quality: `${String(new Date(item?.date).getHours()).padStart(2, "0")}:${String(new Date(item?.date).getMinutes()).padStart(2, "0")}-${String(new Date(item?.date).getDate()).padStart(2, "0")}/${String(new Date(item?.date).getMonth() + 1).padStart(2, "0")}/${String(new Date(item?.date).getFullYear()).slice(-2)}`,
-          episode_current: source?.source?.toUpperCase()
+          quality: `${String(new Date(item?.date).getHours()).padStart(2, "0")}:${String(new Date(item?.date).getMinutes()).padStart(2, "0")}-${String(new Date(item?.date).getDate()).padStart(2, "0")}/${String(new Date(item?.date).getMonth() + 1).padStart(2, "0")}`,
+          episode_current: source?.source?.toUpperCase(),
+          lang: item?.category?.toUpperCase() || ""
         });
       });
     });
