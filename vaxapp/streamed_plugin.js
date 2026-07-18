@@ -115,7 +115,8 @@ function parseListResponse(html) {
           description: `Server: ${source?.source?.toUpperCase()}`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          quality: source?.source?.toUpperCase()
+          quality: `${String(new Date(item?.date).getHours()).padStart(2, "0")}:${String(new Date(item?.date).getMinutes()).padStart(2, "0")}-${String(new Date(item?.date).getDate()).padStart(2, "0")}/${String(new Date(item?.date).getMonth() + 1).padStart(2, "0")}/${String(new Date(item?.date).getFullYear()).slice(-2)}`,
+          episode_current: source?.source?.toUpperCase()
         });
       });
     });
