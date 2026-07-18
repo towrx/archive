@@ -140,7 +140,13 @@ function parseSearchResponse(html) {
 function parseMovieDetail(html) {
   var stream = JSON.parse(html);
   if (!Array.isArray(stream) || stream.length === 0)
-    return JSON.stringify({ title: "No information!" });
+    return JSON.stringify({
+      id: "",
+      title: "No information!",
+      posterUrl: FALLBACK_POSTER_URL,
+      backdropUrl: FALLBACK_POSTER_URL,
+      servers: []
+    });
   var episodes = [];
   const serverName = stream?.[0]?.source?.toUpperCase();
 
