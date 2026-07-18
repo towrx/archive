@@ -34,7 +34,7 @@ function getHomeSections() {
     { slug: "football", title: "Football ⚽", type: "Horizontal", path: "" },
     {
       slug: "motor-sports",
-      title: "Motor Sports 🏍️",
+      title: "Motor Sports 🏁",
       type: "Horizontal",
       path: ""
     },
@@ -51,7 +51,7 @@ function getHomeSections() {
       type: "Horizontal",
       path: ""
     },
-    { slug: "golf", title: "Golf ⛳", type: "Horizontal", path: "" },
+    { slug: "golf", title: "Golf 🚩", type: "Horizontal", path: "" },
     { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
     { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
     {
