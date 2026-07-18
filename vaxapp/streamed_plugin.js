@@ -45,6 +45,12 @@ function getHomeSections() {
       type: "Horizontal",
       path: ""
     },
+    {
+      slug: "american-football",
+      title: "USA Football 🏉",
+      type: "Horizontal",
+      path: ""
+    },
     { slug: "golf", title: "Golf ⛳", type: "Horizontal", path: "" },
     { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
     { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
@@ -130,7 +136,10 @@ function parseListResponse(html) {
           backdropUrl: imageUrl,
           quality: `${String(new Date(item?.date).getHours()).padStart(2, "0")}:${String(new Date(item?.date).getMinutes()).padStart(2, "0")}-${String(new Date(item?.date).getDate()).padStart(2, "0")}/${String(new Date(item?.date).getMonth() + 1).padStart(2, "0")}`,
           episode_current: source?.source?.toUpperCase(),
-          lang: item?.category?.toUpperCase() || ""
+          lang:
+            item?.category === "american-football"
+              ? "USA Football"
+              : item?.category?.toUpperCase() || ""
         });
       });
     });
@@ -156,7 +165,7 @@ function parseMovieDetail(html) {
   if (!Array.isArray(stream) || stream.length === 0)
     return JSON.stringify({
       id: "",
-      title: "No Information!",
+      title: "⚠️ Link Not Found!",
       posterUrl: FALLBACK_POSTER_URL,
       backdropUrl: FALLBACK_POSTER_URL,
       servers: []
