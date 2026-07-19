@@ -37,41 +37,41 @@ https: function getHomeSections() {
       type: "Horizontal",
       path: ""
     },
-    {
-      slug: "fight",
-      title: "Fight (Boxing, UFC) 🥊",
-      type: "Horizontal",
-      path: ""
-    },
-    { slug: "football", title: "Football ⚽", type: "Horizontal", path: "" },
-    {
-      slug: "motor-sports",
-      title: "Motor Sports 🏁",
-      type: "Horizontal",
-      path: ""
-    },
-    { slug: "billiards", title: "Billiards 🎱", type: "Horizontal", path: "" },
+    // {
+    //   slug: "fight",
+    //   title: "Fight (Boxing, UFC) 🥊",
+    //   type: "Horizontal",
+    //   path: ""
+    // },
+    // { slug: "football", title: "Football ⚽", type: "Horizontal", path: "" },
+    // {
+    //   slug: "motor-sports",
+    //   title: "Motor Sports 🏁",
+    //   type: "Horizontal",
+    //   path: ""
+    // },
+    // { slug: "billiards", title: "Billiards 🎱", type: "Horizontal", path: "" },
     {
       slug: "basketball",
       title: "Basketball 🏀",
       type: "Horizontal",
       path: ""
-    },
-    {
-      slug: "american-football",
-      title: "American Football 🏉",
-      type: "Horizontal",
-      path: ""
-    },
-    { slug: "golf", title: "Golf 🚩", type: "Horizontal", path: "" },
-    { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
-    { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
-    {
-      slug: "all-today",
-      title: "Today's Matches 📋",
-      type: "Horizontal",
-      path: ""
     }
+    // {
+    //   slug: "american-football",
+    //   title: "American Football 🏉",
+    //   type: "Horizontal",
+    //   path: ""
+    // },
+    // { slug: "golf", title: "Golf 🚩", type: "Horizontal", path: "" },
+    // { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
+    // { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
+    // {
+    //   slug: "all-today",
+    //   title: "Today's Matches 📋",
+    //   type: "Horizontal",
+    //   path: ""
+    // }
   ]);
 }
 
