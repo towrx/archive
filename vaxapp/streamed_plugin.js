@@ -1,7 +1,7 @@
 const BASE_URL = "https://streamed.pk";
 const FALLBACK_POSTER_URL =
   "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-fallback-poster.webp";
-const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1,000 concurrent viewers.`;
+const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
 
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
@@ -11,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.8",
+    version: "1.0.9",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -26,6 +26,12 @@ function getManifest() {
 
 https: function getHomeSections() {
   return JSON.stringify([
+    {
+      slug: "live/popular-viewcount",
+      title: "LIVE 🔴 (popular by viewers)",
+      type: "Horizontal",
+      path: ""
+    },
     {
       slug: "live/popular",
       title: "LIVE 🔴",
