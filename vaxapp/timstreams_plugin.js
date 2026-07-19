@@ -2,7 +2,6 @@ const BASE_URL = "https://timstreams.st";
 const BASE_API_URL = "https://api.vixnuvew.uk/api/";
 const FALLBACK_POSTER_URL =
   "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/fallback-thumbnail.webp";
-const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
 
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
@@ -12,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.1",
+    version: "1.0.2",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -111,7 +110,7 @@ function parseListResponse(html) {
         description: `Event "${name}" is hosted on server "TIMSTREAMS".`,
         posterUrl: logo || FALLBACK_POSTER_URL,
         backdropUrl: logo || FALLBACK_POSTER_URL,
-        quality: formatDateTimeGMT7(time) || "LIVE 24/7",
+        quality: data?.channels ? "LIVE 24/7" : formatDateTimeGMT7(time),
         episode_current: data?.genres?.[genre] || "REPLAY"
       });
     });
@@ -149,11 +148,11 @@ function parseMovieDetail(html, apiUrl) {
   const { url, name, logo, genre, time, streams } = source || {};
   const episodes = [];
 
-  source?.streams?.map((stream) => {
+  source?.streams?.map((stream, index) => {
     const { name, url } = stream;
     episodes.push({
       id: url,
-      name: name,
+      name: obj?.events || obj?.replays ? name : `Link - ${index}`,
       slug: url
     });
   });
@@ -163,7 +162,7 @@ function parseMovieDetail(html, apiUrl) {
     title: name,
     posterUrl: logo || FALLBACK_POSTER_URL,
     backdropUrl: logo || FALLBACK_POSTER_URL,
-    quality: (genre && obj?.genres[genre]) || obj?.genres[genre],
+    quality: genre && (obj?.genres[genre] || obj?.genres[genre]),
     episode_current: formatDateTimeGMT7(time),
     description: `Event "${name}" is hosted on server TIMSTREAMS`,
     servers: [{ name: "TIMSTREAMS", episodes: episodes }]
