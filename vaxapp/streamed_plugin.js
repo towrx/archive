@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.1",
+    version: "1.0.2",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -65,20 +65,20 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "Basketball", slug: "basketball" },
-    { name: "Football", slug: "football" },
-    { name: "USA Football", slug: "american-football" },
-    { name: "Hockey", slug: "hockey" },
-    { name: "Baseball", slug: "baseball" },
-    { name: "Motor Sports", slug: "motor-sports" },
     { name: "Fight", slug: "fight" },
+    { name: "Football", slug: "football" },
+    { name: "Basketball", slug: "basketball" },
+    { name: "USA Football", slug: "american-football" },
+    { name: "Motor Sports", slug: "motor-sports" },
     { name: "Tennis", slug: "tennis" },
-    { name: "Rugby", slug: "rugby" },
     { name: "Golf", slug: "golf" },
     { name: "Billiards", slug: "billiards" },
+    { name: "Baseball", slug: "baseball" },
+    { name: "Cricket", slug: "cricket" },
     { name: "AFL", slug: "afl" },
     { name: "Darts", slug: "darts" },
-    { name: "Cricket", slug: "cricket" },
+    { name: "Hockey", slug: "hockey" },
+    { name: "Rugby", slug: "rugby" },
     { name: "Other", slug: "other" }
   ]);
 }
@@ -176,17 +176,18 @@ function parseMovieDetail(html) {
   stream.map((item, index) => {
     episodes.push({
       id: item?.embedUrl,
-      name: `${item?.hd ? `HD - ${index + 1}` : `SD - ${index + 1}`}`,
-      slug: "/" + item?.streamNo
+      name: `${item?.hd ? `HD-${/^\d+$/.test(item?.viewers) ? (+item?.viewers < 1000 ? item?.viewers : String(Math.floor(+item?.viewers / 1000)) + "N") : item?.viewers}` : `SD-${/^\d+$/.test(item?.viewers) ? (+item?.viewers < 1000 ? item?.viewers : String(Math.floor(+item?.viewers / 1000)) + "N") : item?.viewers}`}`,
+      slug: item?.streamNo
     });
   });
   return JSON.stringify({
     id: stream[0]?.id || "",
     title:
       stream[0]?.id
-        ?.split("-")
+        ?.split(/[-_]+/)
+        .filter(Boolean)
         .map((w, i) =>
-          i === 0 ? w.toUpperCase() : w[0].toUpperCase() + w.slice(1)
+          i === 0 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)
         )
         .join(" ") || "",
     posterUrl: FALLBACK_POSTER_URL,
