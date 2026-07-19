@@ -1,7 +1,6 @@
 const BASE_URL = "https://timstreams.st";
 const BASE_API_URL = "https://api.vixnuvew.uk/api/";
-const FALLBACK_POSTER_URL =
-  "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/fallback-thumbnail.webp";
+const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
@@ -11,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.2",
+    version: "1.0.3",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -66,7 +65,11 @@ function getUrlList(slug, filtersJson) {
 }
 
 function getUrlSearch(keyword, filtersJson) {
-  return "";
+  return (
+    BASE_API_URL +
+    "/channels?search=" +
+    encodeURIComponent(keyword?.trim() || "")
+  );
 }
 
 function getUrlDetail(path) {
@@ -89,12 +92,24 @@ function getUrlYears() {
 // NHÓM 3: PARSER (App fetch URL xong → ném HTML/JSON thô vào đây → bạn parse)
 // =============================================================================
 
-function parseListResponse(html) {
+function parseListResponse(html, apiUrl) {
   try {
     const data = JSON.parse(html);
-    // const {events, channels, replays} = data;
-    const objs = data?.events || data?.channels || data?.replays;
+    let objs = data?.events || data?.channels || data?.replays;
     const items = [];
+
+    // Lọc theo search keyword từ ?search= trong apiUrl
+    const searchKeyword = extractParamFromUrl(apiUrl, "search");
+    if (searchKeyword) {
+      var keyword = searchKeyword.toLowerCase();
+      objs = objs.filter(function (obj) {
+        return (
+          obj?.name
+            ?.toLowerCase()
+            ?.indexOf(searchKeyword?.toLowerCase() || "") >= 0
+        );
+      });
+    }
 
     objs.forEach((obj) => {
       const { url, name, logo, genre, time } = obj;
@@ -110,7 +125,11 @@ function parseListResponse(html) {
         description: `Event "${name}" is hosted on server "TIMSTREAMS".`,
         posterUrl: logo || FALLBACK_POSTER_URL,
         backdropUrl: logo || FALLBACK_POSTER_URL,
-        quality: data?.channels ? "LIVE 24/7" : formatDateTimeGMT7(time),
+        quality: data?.channels
+          ? "LIVE 24/7"
+          : data?.replays
+            ? "📼"
+            : formatDateTimeGMT7(time),
         episode_current: data?.genres?.[genre] || "REPLAY"
       });
     });
@@ -152,7 +171,7 @@ function parseMovieDetail(html, apiUrl) {
     const { name, url } = stream;
     episodes.push({
       id: url,
-      name: obj?.events || obj?.replays ? name : `Link - ${index}`,
+      name: obj?.events || obj?.replays ? name : `Link - ${index + 1}`,
       slug: url
     });
   });

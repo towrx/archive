@@ -1,6 +1,5 @@
 const BASE_URL = "https://streamed.pk";
-const FALLBACK_POSTER_URL =
-  "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/fallback-thumbnail.webp";
+const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
 
 // =============================================================================
@@ -13,8 +12,7 @@ function getManifest() {
     name: "Streamed",
     version: "1.1.1",
     baseUrl: BASE_URL,
-    iconUrl:
-      "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
+    iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
     isAdult: false,
     type: "VIDEO",
