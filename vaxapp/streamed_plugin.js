@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.0",
+    version: "1.0.5",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -27,7 +27,7 @@ https: function getHomeSections() {
   return JSON.stringify([
     {
       slug: "live/popular-viewcount",
-      title: "LIVE (by viewers) 🔴",
+      title: "LIVE (popular by viewers) 🔴",
       type: "Horizontal",
       path: ""
     },
@@ -144,7 +144,7 @@ function parseListResponse(html) {
         const title = item?.title?.trim();
         const viewerCount = item?.viewers;
         // const dateTime = `${((p) => `${p.find((x) => x.type == "hour").value}:${p.find((x) => x.type == "minute").value}${p.find((x) => x.type == "dayPeriod").value} - ${p.find((x) => x.type == "day").value}/${p.find((x) => x.type == "month").value}/${p.find((x) => x.type == "year").value}`)(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit", hour12: true, day: "2-digit", month: "2-digit", year: "numeric" }).formatToParts(new Date(item?.date)))}`;
-        const category = item?.category?.toUpperCase() || "";
+        // const category = item?.category?.toUpperCase() || "";
 
         items.push({
           id: path,
@@ -152,7 +152,7 @@ function parseListResponse(html) {
           description: `Event ${title} is hosted on server ${serverName}.`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          quality: "",
+          quality: "xxxxxxxx",
           episode_current: viewerCount
             ? `Viewers: ${viewerCount}`
             : `Server: ${serverName}`,
@@ -205,15 +205,15 @@ function parseMovieDetail(html) {
     const embedUrl = item?.embedUrl;
     const quality = item?.hd ? "HD" : "SD";
     const slug = item?.streamNo;
-    // const viewerCount = /^\d+$/.test(item?.viewers)
-    //   ? +item?.viewers < 1000
-    //     ? item?.viewers
-    //     : String(Math.floor(+item?.viewers / 1000)) + "N"
-    //   : item?.viewers;
+    const viewerCount = /^\d+$/.test(item?.viewers)
+      ? +item?.viewers < 1000
+        ? item?.viewers
+        : String(Math.floor(+item?.viewers / 1000)) + "N"
+      : item?.viewers;
 
     episodes.push({
       id: embedUrl,
-      name: `${quality}-Viewers:${0}`,
+      name: `${quality}-Viewers:${viewerCount}`,
       slug: slug
     });
   });
