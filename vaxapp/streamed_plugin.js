@@ -59,7 +59,7 @@ https: function getHomeSections() {
     },
     {
       slug: "american-football",
-      title: "USA Football 🏉",
+      title: "American Football 🏉",
       type: "Horizontal",
       path: ""
     },
@@ -80,7 +80,7 @@ function getPrimaryCategories() {
     { name: "Fight (Boxing, UFC)", slug: "fight" },
     { name: "Football", slug: "football" },
     { name: "Basketball", slug: "basketball" },
-    { name: "USA Football", slug: "american-football" },
+    { name: "American Football", slug: "american-football" },
     { name: "Motor Sports", slug: "motor-sports" },
     { name: "Tennis", slug: "tennis" },
     { name: "Golf", slug: "golf" },
@@ -144,11 +144,7 @@ function parseListResponse(html) {
         const title = item?.title?.trim();
         const viewerCount = item?.viewers;
         const dateTime = `${((p) => `${p.find((x) => x.type == "hour").value}:${p.find((x) => x.type == "minute").value}${p.find((x) => x.type == "dayPeriod").value} - ${p.find((x) => x.type == "day").value}/${p.find((x) => x.type == "month").value}/${p.find((x) => x.type == "year").value}`)(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit", hour12: true, day: "2-digit", month: "2-digit", year: "numeric" }).formatToParts(new Date(item?.date)))}`;
-
-        const category =
-          item?.category === "american-football"
-            ? "USA Football"
-            : item?.category?.toUpperCase() || "";
+        const category = item?.category?.toUpperCase() || "";
 
         items.push({
           id: path,
