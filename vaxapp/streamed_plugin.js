@@ -11,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.9",
+    version: "1.1.0",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -22,19 +22,18 @@ function getManifest() {
     playerType: "embedtoexoplay"
   });
 }
-//streamed.pk/api/matches/live/popular-viewcount
 
 https: function getHomeSections() {
   return JSON.stringify([
     {
       slug: "live/popular-viewcount",
-      title: "LIVE 🔴 (popular by viewers)",
+      title: "🔴 LIVE (popular by viewers)",
       type: "Horizontal",
       path: ""
     },
     {
       slug: "live/popular",
-      title: "LIVE 🔴",
+      title: "🔴 LIVE",
       type: "Horizontal",
       path: ""
     },
@@ -284,7 +283,7 @@ function formatDateTimeGMT7(timestamp) {
 function formatViewerCount(viewerCount) {
   return /^\d+$/.test(viewerCount)
     ? +viewerCount < 1000
-      ? viewerCount
-      : String(Math.floor(+viewerCount / 1000)) + "N"
+      ? viewerCount + "👁️"
+      : String(Math.floor(+viewerCount / 1000)) + "N👁️"
     : viewerCount;
 }
