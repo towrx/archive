@@ -109,7 +109,9 @@ function getUrlList(slug, filtersJson) {
 }
 
 function getUrlSearch(keyword, filtersJson) {
-  return "https://streamed.pk/api/matches/all";
+  return (
+    "https://streamed.pk/api/matches/all?search=" + encodeURIComponent(keyword)
+  );
 }
 
 function getUrlDetail(path) {
@@ -177,7 +179,7 @@ function parseSearchResponse(html) {
 function parseMovieDetail(html) {
   const stream = JSON.parse(html);
 
-  if (!Array.isArray(stream) || stream.length === 0)
+  if (!Array.isArray(stream) || stream?.length === 0)
     return JSON.stringify({
       id: "",
       title: "⚠️ Link Not Found!",
@@ -198,7 +200,7 @@ function parseMovieDetail(html) {
   const episodes = [];
   const serverName = stream?.[0]?.source?.toUpperCase();
 
-  stream.map((item, index) => {
+  stream.map((item) => {
     const embedUrl = item?.embedUrl;
     const quality = item?.hd ? "HD" : "SD";
     const slug = item?.streamNo;
