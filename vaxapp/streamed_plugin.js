@@ -10,24 +10,36 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.2",
+    version: "1.0.3",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
     isEnabled: true,
     isAdult: false,
     type: "VIDEO",
-    layoutType: "VERTICAL",
+    layoutType: "HORIZONTAL",
     playerType: "embedtoexoplay"
   });
 }
+//streamed.pk/api/matches/live/popular-viewcount
 
-function getHomeSections() {
+https: function getHomeSections() {
   return JSON.stringify([
-    { slug: "live", title: "LIVE 🔴", type: "Horizontal", path: "" },
+    {
+      slug: "live/popular-viewcount",
+      title: "LIVE (by viewers) 🔴",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "live/popular",
+      title: "LIVE 🔴",
+      type: "Horizontal",
+      path: ""
+    },
     {
       slug: "fight",
-      title: "Fight (UFC, Boxing) 🥊",
+      title: "Fight (Boxing, UFC) 🥊",
       type: "Horizontal",
       path: ""
     },
@@ -65,7 +77,7 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "Fight", slug: "fight" },
+    { name: "Fight (Boxing, UFC)", slug: "fight" },
     { name: "Football", slug: "football" },
     { name: "Basketball", slug: "basketball" },
     { name: "USA Football", slug: "american-football" },
@@ -93,7 +105,6 @@ function getFilterConfig() {
 
 function getUrlList(slug, filtersJson) {
   const basePath = "/api/matches/";
-  if (slug === "live") slug += "/popular";
   return BASE_URL + basePath + slug;
 }
 
@@ -123,23 +134,33 @@ function getUrlYears() {
 
 function parseListResponse(html) {
   try {
-    var data = JSON.parse(html);
-    var items = [];
+    const data = JSON.parse(html);
+    const items = [];
     data.forEach((item) => {
       const imageUrl = getPosterUrl(item);
       item.sources.forEach((source) => {
+        const path = `/api/stream/${source?.source}/${source?.id}`;
+        const serverName = source?.source?.toUpperCase();
+        const title = item?.title?.trim();
+        const viewerCount = item?.viewers;
+        const dateTime = `${((p) => `${p.find((x) => x.type == "hour").value}:${p.find((x) => x.type == "minute").value}${p.find((x) => x.type == "dayPeriod").value} - ${p.find((x) => x.type == "day").value}/${p.find((x) => x.type == "month").value}/${p.find((x) => x.type == "year").value}`)(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit", hour12: true, day: "2-digit", month: "2-digit", year: "numeric" }).formatToParts(new Date(item?.date)))}`;
+
+        const category =
+          item?.category === "american-football"
+            ? "USA Football"
+            : item?.category?.toUpperCase() || "";
+
         items.push({
-          id: `/api/stream/${source?.source}/${source?.id}`,
-          title: item?.title,
-          description: `Server: ${source?.source?.toUpperCase()}`,
+          id: path,
+          title: title,
+          description: `Event ${title} is hosted on server ${serverName}.`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          quality: `${String(new Date(item?.date).getHours()).padStart(2, "0")}:${String(new Date(item?.date).getMinutes()).padStart(2, "0")}-${String(new Date(item?.date).getDate()).padStart(2, "0")}/${String(new Date(item?.date).getMonth() + 1).padStart(2, "0")}`,
-          episode_current: source?.source?.toUpperCase(),
-          lang:
-            item?.category === "american-football"
-              ? "USA Football"
-              : item?.category?.toUpperCase() || ""
+          quality: dateTime,
+          episode_current: serverName
+            ? `Server: ${serverName}`
+            : `Viewers: ${viewerCount}`,
+          lang: category
         });
       });
     });
@@ -161,7 +182,8 @@ function parseSearchResponse(html) {
 }
 
 function parseMovieDetail(html) {
-  var stream = JSON.parse(html);
+  const stream = JSON.parse(html);
+
   if (!Array.isArray(stream) || stream.length === 0)
     return JSON.stringify({
       id: "",
@@ -170,32 +192,44 @@ function parseMovieDetail(html) {
       backdropUrl: FALLBACK_POSTER_URL,
       servers: []
     });
-  var episodes = [];
+
+  const id = stream[0]?.id || "";
+  const title =
+    stream[0]?.id
+      ?.split(/[-_]+/)
+      .filter(Boolean)
+      .map((w, i) =>
+        i === 0 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)
+      )
+      .join(" ") || "";
+  const episodes = [];
   const serverName = stream?.[0]?.source?.toUpperCase();
 
   stream.map((item, index) => {
+    const embedUrl = item?.embedUrl;
+    const quality = item?.hd ? "HD" : "SD";
+    const slug = item?.streamNo;
+    const viewerCount = /^\d+$/.test(item?.viewers)
+      ? +item?.viewers < 1000
+        ? item?.viewers
+        : String(Math.floor(+item?.viewers / 1000)) + "N"
+      : item?.viewers;
+
     episodes.push({
-      id: item?.embedUrl,
-      name: `${item?.hd ? `HD-${/^\d+$/.test(item?.viewers) ? (+item?.viewers < 1000 ? item?.viewers : String(Math.floor(+item?.viewers / 1000)) + "N") : item?.viewers}` : `SD-${/^\d+$/.test(item?.viewers) ? (+item?.viewers < 1000 ? item?.viewers : String(Math.floor(+item?.viewers / 1000)) + "N") : item?.viewers}`}`,
-      slug: item?.streamNo
+      id: embedUrl,
+      name: `${quality}-Viewers:${viewerCount}`,
+      slug: slug
     });
   });
+
   return JSON.stringify({
-    id: stream[0]?.id || "",
-    title:
-      stream[0]?.id
-        ?.split(/[-_]+/)
-        .filter(Boolean)
-        .map((w, i) =>
-          i === 0 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)
-        )
-        .join(" ") || "",
+    id: id,
+    title: title,
     posterUrl: FALLBACK_POSTER_URL,
     backdropUrl: FALLBACK_POSTER_URL,
-    servers:
-      serverName && episodes.length !== 0
-        ? [{ name: serverName, episodes: episodes }]
-        : []
+    lang: `SERVER: ${serverName}`,
+    description: `Event ${title} is hosted on server ${serverName}.`,
+    servers: [{ name: serverName, episodes: episodes }]
   });
 }
 
