@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.4",
+    version: "1.0.5",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -146,8 +146,8 @@ function parseListResponse(html, apiUrl) {
   }
 }
 
-function parseSearchResponse(html) {
-  return parseListResponse(html);
+function parseSearchResponse(html, apiUrl) {
+  return parseListResponse(html, apiUrl);
 }
 
 function parseMovieDetail(html, apiUrl) {
