@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.3",
+    version: "1.0.4",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -153,9 +153,9 @@ function parseListResponse(html) {
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
           quality: dateTime,
-          episode_current: serverName
-            ? `Server: ${serverName}`
-            : `Viewers: ${viewerCount}`,
+          episode_current: viewerCount
+            ? `Viewers: ${viewerCount}`
+            : `Server: ${serverName}`,
           lang: category
         });
       });
