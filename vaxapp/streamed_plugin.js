@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.6",
+    version: "1.0.0",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
