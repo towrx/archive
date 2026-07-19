@@ -158,7 +158,7 @@ function parseListResponse(html) {
             : `Server: ${serverName}`,
           lang: category
         });
-      };);
+      });
     });
 
     return JSON.stringify({
