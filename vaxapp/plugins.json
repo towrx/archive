@@ -4,9 +4,16 @@
     {
       "id": "streamed",
       "name": "Streamed",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/streamed_plugin.js",
       "iconUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png"
+    }
+    {
+      "id": "timstreams",
+      "name": "Timstreams",
+      "version": "1.0.0",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/timstreams_plugin.js",
+      "iconUrl": "https://i.ibb.co/WN9gstLN/logo.png"
     }
   ]
 }

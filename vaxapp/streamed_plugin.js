@@ -1,6 +1,6 @@
 const BASE_URL = "https://streamed.pk";
 const FALLBACK_POSTER_URL =
-  "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-fallback-poster.webp";
+  "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/fallback-thumbnail.webp";
 const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
 
 // =============================================================================
@@ -11,13 +11,13 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.0",
+    version: "1.1.1",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
     isEnabled: true,
     isAdult: false,
-    type: "VIDEO",
+    type: "LIVE",
     layoutType: "HORIZONTAL",
     playerType: "embedtoexoplay"
   });
@@ -137,7 +137,7 @@ function parseListResponse(html) {
     const data = JSON.parse(html);
     const items = [];
     data.forEach((item) => {
-      const imageUrl = getPosterUrl(item);
+      const imageUrl = getThumbnailUrl(item);
       item.sources.forEach((source) => {
         const path = `/api/stream/${source?.source}/${source?.id}`;
         const serverName = source?.source?.toUpperCase();
@@ -148,7 +148,7 @@ function parseListResponse(html) {
         items.push({
           id: path,
           title: title,
-          description: `Event ${title} is hosted on server ${serverName}.`,
+          description: `Event "${title}" is hosted on server ${serverName}.`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
           quality: dateTime,
@@ -250,7 +250,7 @@ function parseYearsResponse(html) {
 // NHÓM 4: handmade function
 // =============================================================================
 
-function getPosterUrl(item) {
+function getThumbnailUrl(item) {
   try {
     if (item?.poster) return BASE_URL + item.poster;
     const homeTeamLogoSlug = item?.teams?.home?.badge;
