@@ -17,7 +17,7 @@ function getManifest() {
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
     isEnabled: true,
     isAdult: false,
-    type: "LIVE",
+    type: "VIDEO",
     layoutType: "HORIZONTAL",
     playerType: "embedtoexoplay"
   });

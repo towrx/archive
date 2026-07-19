@@ -17,7 +17,7 @@ function getManifest() {
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
     isAdult: false,
-    type: "LIVE",
+    type: "VIDEO",
     layoutType: "HORIZONTAL",
     playerType: "embedtoexoplay"
   });
