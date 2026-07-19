@@ -11,7 +11,7 @@
     {
       "id": "timstreams",
       "name": "Timstreams",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/timstreams_plugin.js",
       "iconUrl": "https://i.ibb.co/qYJ3gnwZ/timstreams-logo.png"
     }

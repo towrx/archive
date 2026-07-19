@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.3",
+    version: "1.0.4",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -67,7 +67,7 @@ function getUrlList(slug, filtersJson) {
 function getUrlSearch(keyword, filtersJson) {
   return (
     BASE_API_URL +
-    "/channels?search=" +
+    "channels?search=" +
     encodeURIComponent(keyword?.trim() || "")
   );
 }
@@ -128,7 +128,7 @@ function parseListResponse(html, apiUrl) {
         quality: data?.channels
           ? "LIVE 24/7"
           : data?.replays
-            ? "📼"
+            ? "💿"
             : formatDateTimeGMT7(time),
         episode_current: data?.genres?.[genre] || "REPLAY"
       });
