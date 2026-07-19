@@ -1,6 +1,7 @@
 const BASE_URL = "https://streamed.pk";
 const FALLBACK_POSTER_URL =
   "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-fallback-poster.webp";
+const SELECTION_GUIDE = `\n\n\n\nThe format of each live event link is: [VideoQuality - ConcurrentViewers].\nVideo quality: Prefer at least HD.\nConcurrent viewers: higher is better, 1N = 1,000 concurrent viewers.`;
 
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
@@ -10,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.0.0",
+    version: "1.0.7",
     baseUrl: BASE_URL,
     iconUrl:
       "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/images/streamed-logo.png",
@@ -25,12 +26,6 @@ function getManifest() {
 
 https: function getHomeSections() {
   return JSON.stringify([
-    {
-      slug: "live/popular-viewcount",
-      title: "LIVE (popular by viewers) 🔴",
-      type: "Horizontal",
-      path: ""
-    },
     {
       slug: "live/popular",
       title: "LIVE 🔴",
@@ -142,8 +137,7 @@ function parseListResponse(html) {
         const path = `/api/stream/${source?.source}/${source?.id}`;
         const serverName = source?.source?.toUpperCase();
         const title = item?.title?.trim();
-        const viewerCount = item?.viewers;
-        // const dateTime = `${((p) => `${p.find((x) => x.type == "hour").value}:${p.find((x) => x.type == "minute").value}${p.find((x) => x.type == "dayPeriod").value} - ${p.find((x) => x.type == "day").value}/${p.find((x) => x.type == "month").value}/${p.find((x) => x.type == "year").value}`)(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit", hour12: true, day: "2-digit", month: "2-digit", year: "numeric" }).formatToParts(new Date(item?.date)))}`;
+        const dateTime = formatDateTimeGMT7(item?.date);
         const category = item?.category?.toUpperCase() || "";
 
         items.push({
@@ -152,10 +146,8 @@ function parseListResponse(html) {
           description: `Event ${title} is hosted on server ${serverName}.`,
           posterUrl: imageUrl,
           backdropUrl: imageUrl,
-          quality: "xxxx",
-          episode_current: viewerCount
-            ? `Viewers: ${viewerCount}`
-            : `Server: ${serverName}`,
+          quality: dateTime,
+          episode_current: serverName ? `Server: ${serverName}` : "",
           lang: category
         });
       });
@@ -205,15 +197,11 @@ function parseMovieDetail(html) {
     const embedUrl = item?.embedUrl;
     const quality = item?.hd ? "HD" : "SD";
     const slug = item?.streamNo;
-    // const viewerCount = /^\d+$/.test(item?.viewers)
-    //   ? +item?.viewers < 1000
-    //     ? item?.viewers
-    //     : String(Math.floor(+item?.viewers / 1000)) + "N"
-    //   : item?.viewers;
+    const viewerCount = formatViewerCount(item?.viewers);
 
     episodes.push({
       id: embedUrl,
-      name: `${quality}-Viewers:${123}`,
+      name: `${quality}-${viewerCount}`,
       slug: slug
     });
   });
@@ -224,7 +212,7 @@ function parseMovieDetail(html) {
     posterUrl: FALLBACK_POSTER_URL,
     backdropUrl: FALLBACK_POSTER_URL,
     lang: `SERVER: ${serverName}`,
-    description: `Event ${title} is hosted on server ${serverName}.`,
+    description: `Event "${title}" is hosted on server ${serverName}.${SELECTION_GUIDE}`,
     servers: [{ name: serverName, episodes: episodes }]
   });
 }
@@ -271,4 +259,26 @@ function getPosterUrl(item) {
   } catch (e) {
     return "";
   }
+}
+
+function formatDateTimeGMT7(timestamp) {
+  if (!timestamp) return "";
+
+  const date = new Date(timestamp);
+  const utc = date.getTime() + date.getTimezoneOffset() * 60000;
+  const gmt7 = new Date(utc + 7 * 60 * 60 * 1000);
+  const hh = String(gmt7.getHours()).padStart(2, "0");
+  const mm = String(gmt7.getMinutes()).padStart(2, "0");
+  const dd = String(gmt7.getDate()).padStart(2, "0");
+  const MM = String(gmt7.getMonth() + 1).padStart(2, "0");
+
+  return `${hh}:${mm} - ${dd}/${MM}`;
+}
+
+function formatViewerCount(viewerCount) {
+  return /^\d+$/.test(viewerCount)
+    ? +viewerCount < 1000
+      ? viewerCount
+      : String(Math.floor(+viewerCount / 1000)) + "N"
+    : viewerCount;
 }
