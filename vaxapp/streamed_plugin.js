@@ -17,7 +17,7 @@ function getManifest() {
     isEnabled: true,
     isAdult: false,
     type: "VIDEO",
-    layoutType: "VERTICAL",
+    layoutType: "HORIZONTAL",
     playerType: "embedtoexoplay"
   });
 }
@@ -205,15 +205,15 @@ function parseMovieDetail(html) {
     const embedUrl = item?.embedUrl;
     const quality = item?.hd ? "HD" : "SD";
     const slug = item?.streamNo;
-    const viewerCount = /^\d+$/.test(item?.viewers)
-      ? +item?.viewers < 1000
-        ? item?.viewers
-        : String(Math.floor(+item?.viewers / 1000)) + "N"
-      : item?.viewers;
+    // const viewerCount = /^\d+$/.test(item?.viewers)
+    //   ? +item?.viewers < 1000
+    //     ? item?.viewers
+    //     : String(Math.floor(+item?.viewers / 1000)) + "N"
+    //   : item?.viewers;
 
     episodes.push({
       id: embedUrl,
-      name: `${quality}-Viewers:${viewerCount}`,
+      name: `${quality}-Viewers:${0}`,
       slug: slug
     });
   });
