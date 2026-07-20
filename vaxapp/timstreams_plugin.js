@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.8",
+    version: "1.0.9",
     baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -113,7 +113,9 @@ function parseListResponse(html, apiUrl) {
         ? "LIVE 24/7"
         : data?.replays
           ? "📀"
-          : formatDateTimeGMT7(time);
+          : isLive(time)
+            ? "LIVE"
+            : formatDateTimeGMT7(time);
 
       items.push({
         id: path,
