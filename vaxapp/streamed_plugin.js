@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.4",
+    version: "1.1.5",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -148,7 +148,6 @@ function parseListResponse(html, apiUrl) {
       stream.sources.forEach((item) => {
         const serverName = item?.source?.toUpperCase();
         const description = `Event "${title}" is hosted on server ${serverName}.`;
-        const episode_current = serverName ? `Server: ${serverName}` : "";
         const path = `/api/stream/${item?.source}/${item?.id}?posterUrl=${encodeURIComponent(posterUrl)}&title=${encodeURIComponent(title)}&category=${encodeURIComponent(category)}&description=${encodeURIComponent(description)}`;
 
         items.push({
@@ -158,7 +157,7 @@ function parseListResponse(html, apiUrl) {
           posterUrl: posterUrl,
           backdropUrl: posterUrl,
           quality: dateTime,
-          episode_current: episode_current,
+          episode_current: serverName,
           lang: category
         });
       });
@@ -201,14 +200,15 @@ function parseMovieDetail(html, apiUrl) {
   const serverName = stream[0].source?.toUpperCase();
   const id = stream[0].id;
 
-  stream.map((item) => {
+  stream.map((item, index) => {
     const embedUrl = item?.embedUrl;
     const name = `${item?.hd ? "HD" : "SD"}-${formatViewerCount(item?.viewers)}`;
+    const slug = `${id}-${index + 1}`;
 
     episodes.push({
       id: embedUrl,
       name: name,
-      slug: id
+      slug: slug
     });
   });
 
