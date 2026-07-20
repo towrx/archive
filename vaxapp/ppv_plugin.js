@@ -18,7 +18,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "PPV",
-    version: "1.0.0",
+    version: "1.0.1",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -154,7 +154,6 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (e) {
-    console.log(e);
     return JSON.stringify({
       items: [],
       pagination: { currentPage: 1, totalPages: 1 }
@@ -300,7 +299,7 @@ function getStreamsBySearch(apiUrl, param, streams) {
   const searchKeyword = extractParamFromUrl(apiUrl, param);
 
   const result = [];
-  if (searchKeyword)
+  if (searchKeyword) {
     streams?.forEach((categoryStreams) => {
       categoryStreams?.streams?.forEach((stream) => {
         if (
@@ -312,5 +311,7 @@ function getStreamsBySearch(apiUrl, param, streams) {
       });
     });
 
-  return result;
+    return result;
+  }
+  return streams;
 }
