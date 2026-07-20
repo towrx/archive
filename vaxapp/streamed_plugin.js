@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.5",
+    version: "1.1.6",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -186,8 +186,8 @@ function parseMovieDetail(html, apiUrl) {
     return JSON.stringify({
       id: "",
       title: "⚠️ Link Not Found!",
-      posterUrl: posterUrl,
-      backdropUrl: posterUrl,
+      posterUrl: FALLBACK_POSTER_URL,
+      backdropUrl: FALLBACK_POSTER_URL,
       servers: []
     });
 
