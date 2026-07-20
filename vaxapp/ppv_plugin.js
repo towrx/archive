@@ -18,7 +18,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "PPV",
-    version: "1.0.1",
+    version: "1.0.2",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -87,7 +87,7 @@ function getUrlList(slug, filtersJson) {
 }
 
 function getUrlSearch(keyword, filtersJson) {
-  return BASE_URL + "?search=" + encodeURIComponent(keyword?.trim() || "");
+  return BASE_URL + "?search=" + encodeURIComponent(keyword?.trim());
 }
 
 function getUrlDetail(path) {
@@ -138,7 +138,11 @@ function parseListResponse(html, apiUrl) {
           "?id=" +
           encodeURIComponent(id) +
           "&category=" +
-          encodeURIComponent(extractParamFromUrl(apiUrl, "category")),
+          encodeURIComponent(
+            Object.keys(CATEGORY_MAP).find(
+              (slug) => CATEGORY_MAP[slug] === category_name
+            )
+          ),
         title: name,
         description: `Event "${name}" is hosted on server "PPV".`,
         posterUrl: poster || FALLBACK_POSTER_URL,
@@ -287,7 +291,7 @@ function getStreamsByParam(apiUrl, param, streams) {
 
 function getStreamByParam(apiUrl, param, streams) {
   const id = extractParamFromUrl(apiUrl, param);
-
+  console.log("streams:::: ", streams);
   if (id)
     return streams?.find((stream) => {
       return "" + stream?.id === id;
