@@ -18,7 +18,7 @@
     {
       "id": "ppv",
       "name": "PPV",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/ppv_plugin.js",
       "iconUrl": "https://i.ibb.co/BHQSwhLX/ppv-logo.png"
     }

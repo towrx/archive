@@ -11,7 +11,8 @@ const CATEGORY_MAP = {
   "australian-football": "Australian Football",
   "american-football": "American Football",
   rugby: "rugby",
-  wrestling: "Wrestling"
+  wrestling: "Wrestling",
+  darts: "Darts"
 };
 
 // =============================================================================
@@ -22,7 +23,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "PPV",
-    version: "1.0.3",
+    version: "1.0.4",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -66,26 +67,33 @@ https: function getHomeSections() {
       path: ""
     },
     {
-      slug: "australian-football 🏈",
-      title: "Australian Football",
+      slug: "australian-football",
+      title: "Australian Football 🏈",
       type: "Horizontal",
       path: ""
     },
     {
-      slug: "american-football 🏈",
-      title: "American Football",
+      slug: "american-football",
+      title: "American Football 🏈",
       type: "Horizontal",
       path: ""
     },
     {
-      slug: "rugby 🏉",
-      title: "Rugby",
+      slug: "rugby",
+      title: "Rugby 🏉",
       type: "Horizontal",
       path: ""
     },
     {
-      slug: "wrestling 🤼",
-      title: "Wrestling",
+      slug: "wrestling",
+      title: "Wrestling 🤼",
+      type: "Horizontal",
+      path: ""
+    },
+
+    {
+      slug: "darts",
+      title: "Darts 🎯",
       type: "Horizontal",
       path: ""
     }
@@ -102,14 +110,15 @@ https: function getHomeSections() {
 function getPrimaryCategories() {
   return JSON.stringify([
     { name: "Baseball", slug: "baseball" },
-    { name: "Football", slug: "basketball" },
+    { name: "Basketball", slug: "basketball" },
     { name: "Football", slug: "football" },
     { name: "Volleyball", slug: "volleyball" },
     { name: "24/7 Streams", slug: "channels" },
     { name: "Australian Football", slug: "australian-football" },
     { name: "American Football", slug: "american-football" },
     { name: "Rugby", slug: "rugby" },
-    { name: "Wrestling", slug: "wrestling" }
+    { name: "Wrestling", slug: "wrestling" },
+    { name: "Darts", slug: "darts" }
     // { name: "", slug: "" },
   ]);
 }
