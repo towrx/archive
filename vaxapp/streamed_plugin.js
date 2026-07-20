@@ -169,7 +169,6 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (e) {
-    console.log(e);
     return JSON.stringify({
       items: [],
       pagination: { currentPage: 1, totalPages: 1 }
