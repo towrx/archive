@@ -31,7 +31,7 @@ https: function getHomeSections() {
     },
     {
       slug: "channels",
-      title: "Televion 24/7 📺",
+      title: "Television 24/7 📺",
       type: "Horizontal",
       path: ""
     },
