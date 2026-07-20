@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.6",
+    version: "1.1.7",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -21,7 +21,7 @@ function getManifest() {
   });
 }
 
-https: function getHomeSections() {
+function getHomeSections() {
   return JSON.stringify([
     {
       slug: "live/popular-viewcount",
