@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.3",
+    version: "1.1.4",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -102,19 +102,18 @@ function getFilterConfig() {
 // =============================================================================
 
 function getUrlList(slug, filtersJson) {
-  const basePath = "/api/matches/";
-  return BASE_URL + basePath + slug;
+  const basePath = "";
+  return `${BASE_URL}/api/matches/${slug}`;
 }
 
 function getUrlSearch(keyword, filtersJson) {
-  return (
-    "https://streamed.pk/api/matches/all?search=" + encodeURIComponent(keyword)
-  );
+  return `${BASE_URL}/api/matches/all?search=${encodeURIComponent(keyword)}`;
 }
 
 function getUrlDetail(path) {
   if (!path) return "";
   if (path.indexOf("http") === 0) return path;
+  if (path.charAt(0) !== "/") path = "/" + path;
   return BASE_URL + path;
 }
 
@@ -134,39 +133,32 @@ function getUrlYears() {
 
 function parseListResponse(html, apiUrl) {
   try {
-    let data = JSON.parse(html);
+    let streams = JSON.parse(html);
     const items = [];
+    const keyword = extractParamFromUrl(apiUrl, "search");
 
-    // Lọc theo search keyword từ ?search= trong apiUrl
-    const searchKeyword = extractParamFromUrl(apiUrl, "search");
+    streams = filterByKeyword(streams, keyword);
 
-    if (searchKeyword) {
-      data = data.filter(function (obj) {
-        return (
-          obj?.title
-            ?.toLowerCase()
-            ?.indexOf(searchKeyword?.toLowerCase() || "") >= 0
-        );
-      });
-    }
+    streams.forEach((stream) => {
+      const title = stream?.title?.trim();
+      const posterUrl = getPosterUrl(stream);
+      const dateTime = formatDateTime(stream?.date);
+      const category = stream?.category?.toUpperCase() || "";
 
-    data.forEach((item) => {
-      const imageUrl = getThumbnailUrl(item);
-      item.sources.forEach((source) => {
-        const path = `/api/stream/${source?.source}/${source?.id}?image_url=${encodeURIComponent(imageUrl)}`;
-        const serverName = source?.source?.toUpperCase();
-        const title = item?.title?.trim();
-        const dateTime = formatDateTimeGMT7(item?.date);
-        const category = item?.category?.toUpperCase() || "";
+      stream.sources.forEach((item) => {
+        const serverName = item?.source?.toUpperCase();
+        const description = `Event "${title}" is hosted on server ${serverName}.`;
+        const episode_current = serverName ? `Server: ${serverName}` : "";
+        const path = `/api/stream/${item?.source}/${item?.id}?posterUrl=${encodeURIComponent(posterUrl)}&title=${encodeURIComponent(title)}&category=${encodeURIComponent(category)}&description=${encodeURIComponent(description)}`;
 
         items.push({
           id: path,
           title: title,
-          description: `Event "${title}" is hosted on server ${serverName}.`,
-          posterUrl: imageUrl,
-          backdropUrl: imageUrl,
+          description: description,
+          posterUrl: posterUrl,
+          backdropUrl: posterUrl,
           quality: dateTime,
-          episode_current: serverName ? `Server: ${serverName}` : "",
+          episode_current: episode_current,
           lang: category
         });
       });
@@ -177,6 +169,7 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (e) {
+    console.log(e);
     return JSON.stringify({
       items: [],
       pagination: { currentPage: 1, totalPages: 1 }
@@ -190,49 +183,44 @@ function parseSearchResponse(html, apiUrl) {
 
 function parseMovieDetail(html, apiUrl) {
   const stream = JSON.parse(html);
-  const imageUrl = extractParamFromUrl(apiUrl, "image_url");
 
   if (!Array.isArray(stream) || stream?.length === 0)
     return JSON.stringify({
       id: "",
       title: "⚠️ Link Not Found!",
-      posterUrl: imageUrl,
-      backdropUrl: imageUrl,
+      posterUrl: posterUrl,
+      backdropUrl: posterUrl,
       servers: []
     });
 
-  const id = stream[0]?.id || "";
-  const title =
-    stream[0]?.id
-      ?.split(/[-_]+/)
-      .filter(Boolean)
-      .map((w, i) =>
-        i === 0 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)
-      )
-      .join(" ") || "";
+  const posterUrl = extractParamFromUrl(apiUrl, "posterUrl");
+  const title = extractParamFromUrl(apiUrl, "title");
+  const category = extractParamFromUrl(apiUrl, "category");
+  const description =
+    extractParamFromUrl(apiUrl, "description") + SELECTION_GUIDE;
   const episodes = [];
-  const serverName = stream?.[0]?.source?.toUpperCase();
+  const serverName = stream[0].source?.toUpperCase();
+  const id = stream[0].id;
 
   stream.map((item) => {
     const embedUrl = item?.embedUrl;
-    const quality = item?.hd ? "HD" : "SD";
-    const slug = item?.streamNo;
-    const viewerCount = formatViewerCount(item?.viewers);
+    const name = `${item?.hd ? "HD" : "SD"}-${formatViewerCount(item?.viewers)}`;
 
     episodes.push({
       id: embedUrl,
-      name: `${quality}-${viewerCount}`,
-      slug: slug
+      name: name,
+      slug: id
     });
   });
 
   return JSON.stringify({
     id: id,
     title: title,
-    posterUrl: imageUrl,
-    backdropUrl: imageUrl,
-    lang: `SERVER: ${serverName}`,
-    description: `Event "${title}" is hosted on server ${serverName}.${SELECTION_GUIDE}`,
+    posterUrl: posterUrl,
+    backdropUrl: posterUrl,
+    lang: serverName,
+    description: description,
+    quality: category,
     servers: [{ name: serverName, episodes: episodes }]
   });
 }
@@ -262,10 +250,10 @@ function parseYearsResponse(html) {
 }
 
 // =============================================================================
-// NHÓM 4: handmade function
+// NHÓM 4: HELPERS
 // =============================================================================
 
-function getThumbnailUrl(item) {
+function getPosterUrl(item) {
   try {
     if (item?.poster) return BASE_URL + item.poster;
     const homeTeamLogoSlug = item?.teams?.home?.badge;
@@ -281,18 +269,19 @@ function getThumbnailUrl(item) {
   }
 }
 
-function formatDateTimeGMT7(timestamp) {
-  if (!timestamp) return "";
+function formatDateTime(timestamp) {
+  if (timestamp == null) return "";
+  if (timestamp < 1e12) {
+    timestamp *= 1000;
+  }
 
   const date = new Date(timestamp);
-  const utc = date.getTime() + date.getTimezoneOffset() * 60000;
-  const gmt7 = new Date(utc + 7 * 60 * 60 * 1000);
-  const hh = String(gmt7.getHours()).padStart(2, "0");
-  const mm = String(gmt7.getMinutes()).padStart(2, "0");
-  const dd = String(gmt7.getDate()).padStart(2, "0");
-  const MM = String(gmt7.getMonth() + 1).padStart(2, "0");
+  const hh = String(date.getHours()).padStart(2, "0");
+  const mm = String(date.getMinutes()).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  const MM = String(date.getMonth() + 1).padStart(2, "0");
 
-  return `${hh}:${mm} - ${dd}/${MM}`;
+  return `${hh}:${mm}-${dd}/${MM}`;
 }
 
 function formatViewerCount(viewerCount) {
@@ -307,4 +296,15 @@ function extractParamFromUrl(url, param) {
   if (!url) return "";
   var match = url.match(new RegExp("[?&]" + param + "=([^&]+)"));
   return match ? decodeURIComponent(match[1]) : "";
+}
+
+function filterByKeyword(streams, keyword) {
+  if (keyword) {
+    streams = streams.filter((stream) => {
+      return (
+        stream?.title?.toLowerCase()?.indexOf(keyword.toLowerCase() || "") >= 0
+      );
+    });
+  }
+  return streams;
 }
