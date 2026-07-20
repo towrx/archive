@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.2",
+    version: "1.1.3",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -139,7 +139,7 @@ function parseListResponse(html, apiUrl) {
 
     // Lọc theo search keyword từ ?search= trong apiUrl
     const searchKeyword = extractParamFromUrl(apiUrl, "search");
-    console.log(searchKeyword);
+
     if (searchKeyword) {
       data = data.filter(function (obj) {
         return (
