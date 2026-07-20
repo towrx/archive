@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.1",
+    version: "1.1.2",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -132,14 +132,28 @@ function getUrlYears() {
 // NHÓM 3: PARSER (App fetch URL xong → ném HTML/JSON thô vào đây → bạn parse)
 // =============================================================================
 
-function parseListResponse(html) {
+function parseListResponse(html, apiUrl) {
   try {
-    const data = JSON.parse(html);
+    let data = JSON.parse(html);
     const items = [];
+
+    // Lọc theo search keyword từ ?search= trong apiUrl
+    const searchKeyword = extractParamFromUrl(apiUrl, "search");
+    console.log(searchKeyword);
+    if (searchKeyword) {
+      data = data.filter(function (obj) {
+        return (
+          obj?.title
+            ?.toLowerCase()
+            ?.indexOf(searchKeyword?.toLowerCase() || "") >= 0
+        );
+      });
+    }
+
     data.forEach((item) => {
       const imageUrl = getThumbnailUrl(item);
       item.sources.forEach((source) => {
-        const path = `/api/stream/${source?.source}/${source?.id}`;
+        const path = `/api/stream/${source?.source}/${source?.id}?image_url=${encodeURIComponent(imageUrl)}`;
         const serverName = source?.source?.toUpperCase();
         const title = item?.title?.trim();
         const dateTime = formatDateTimeGMT7(item?.date);
@@ -170,19 +184,20 @@ function parseListResponse(html) {
   }
 }
 
-function parseSearchResponse(html) {
-  return parseListResponse(html);
+function parseSearchResponse(html, apiUrl) {
+  return parseListResponse(html, apiUrl);
 }
 
-function parseMovieDetail(html) {
+function parseMovieDetail(html, apiUrl) {
   const stream = JSON.parse(html);
+  const imageUrl = extractParamFromUrl(apiUrl, "image_url");
 
   if (!Array.isArray(stream) || stream?.length === 0)
     return JSON.stringify({
       id: "",
       title: "⚠️ Link Not Found!",
-      posterUrl: FALLBACK_POSTER_URL,
-      backdropUrl: FALLBACK_POSTER_URL,
+      posterUrl: imageUrl,
+      backdropUrl: imageUrl,
       servers: []
     });
 
@@ -214,8 +229,8 @@ function parseMovieDetail(html) {
   return JSON.stringify({
     id: id,
     title: title,
-    posterUrl: FALLBACK_POSTER_URL,
-    backdropUrl: FALLBACK_POSTER_URL,
+    posterUrl: imageUrl,
+    backdropUrl: imageUrl,
     lang: `SERVER: ${serverName}`,
     description: `Event "${title}" is hosted on server ${serverName}.${SELECTION_GUIDE}`,
     servers: [{ name: serverName, episodes: episodes }]
@@ -286,4 +301,10 @@ function formatViewerCount(viewerCount) {
       ? viewerCount + "👁️"
       : String(Math.floor(+viewerCount / 1000)) + "N👁️"
     : viewerCount;
+}
+
+function extractParamFromUrl(url, param) {
+  if (!url) return "";
+  var match = url.match(new RegExp("[?&]" + param + "=([^&]+)"));
+  return match ? decodeURIComponent(match[1]) : "";
 }

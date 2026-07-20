@@ -10,8 +10,8 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.5",
-    baseUrl: BASE_URL,
+    version: "1.0.6",
+    baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
     isAdult: false,
@@ -101,7 +101,6 @@ function parseListResponse(html, apiUrl) {
     // Lọc theo search keyword từ ?search= trong apiUrl
     const searchKeyword = extractParamFromUrl(apiUrl, "search");
     if (searchKeyword) {
-      var keyword = searchKeyword.toLowerCase();
       objs = objs.filter(function (obj) {
         return (
           obj?.name
@@ -128,7 +127,7 @@ function parseListResponse(html, apiUrl) {
         quality: data?.channels
           ? "LIVE 24/7"
           : data?.replays
-            ? "💿"
+            ? "📀"
             : formatDateTimeGMT7(time),
         episode_current: data?.genres?.[genre] || "REPLAY"
       });
@@ -184,6 +183,7 @@ function parseMovieDetail(html, apiUrl) {
     quality: genre && (obj?.genres[genre] || obj?.genres[genre]),
     episode_current: formatDateTimeGMT7(time),
     description: `Event "${name}" is hosted on server TIMSTREAMS`,
+    lang: `SERVER: Timstreams`,
     servers: [{ name: "TIMSTREAMS", episodes: episodes }]
   });
 }
