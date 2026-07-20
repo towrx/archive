@@ -142,7 +142,8 @@ function parseListResponse(html, apiUrl) {
     streams.forEach((stream) => {
       const title = stream?.title?.trim();
       const posterUrl = getPosterUrl(stream);
-      const dateTime = formatDateTime(stream?.date);
+      const dateTime =
+        Date.now() >= stream?.date ? "LIVE" : formatDateTime(stream?.date);
       const category = stream?.category?.toUpperCase() || "";
 
       stream.sources.forEach((item) => {

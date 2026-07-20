@@ -160,7 +160,8 @@ function parseMovieDetail(html, apiUrl) {
   const stream = findStreamBySlug(streams, slug);
   const { url, name, logo, genre, time } = stream || {};
   const type = genre && (data?.genres[genre] || data?.genres[genre]);
-  const dateTime = formatDateTimeGMT7(time);
+  const dateTime =
+    data?.events && isLive(time) ? "LIVE" : formatDateTimeGMT7(time);
   const description = `Event "${name}" is hosted on server Timstreams`;
   const episodes = [];
 
@@ -215,6 +216,9 @@ function parseYearsResponse(html) {
 // =============================================================================
 // NHÓM 4: HELPERS
 // =============================================================================
+
+// GMT-4
+const isLive = (time) => Date.now() >= new Date(time + ":00-04:00").getTime();
 
 function formatDateTimeGMT7(timestamp) {
   if (!timestamp) return "";
