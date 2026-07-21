@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.1.8",
+    version: "1.1.9",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -203,7 +203,11 @@ function parseMovieDetail(html, apiUrl) {
 
   stream.map((item, index) => {
     const embedUrl = item?.embedUrl;
-    const name = `${item?.hd ? "HD" : "SD"}-${formatViewerCount(item?.viewers)}`;
+    // const name = `${item?.hd ? "HD" : "SD"}-${formatViewerCount(item?.viewers)}`;
+    const quality = item?.hd;
+    const viewers = formatViewerCount(item?.viewers);
+    const language = item.language;
+    const name = `${quality}${viewers ? " - " + viewers + " viewers" : ""}${language ? " - " + language : ""}`;
     const slug = `${id}-${index + 1}`;
 
     episodes.push({
@@ -287,8 +291,8 @@ function formatDateTime(timestamp) {
 function formatViewerCount(viewerCount) {
   return /^\d+$/.test(viewerCount)
     ? +viewerCount < 1000
-      ? viewerCount + "👁️"
-      : String(Math.floor(+viewerCount / 1000)) + "N👁️"
+      ? viewerCount
+      : String(Math.floor(+viewerCount / 1000)) + "N"
     : viewerCount;
 }
 
