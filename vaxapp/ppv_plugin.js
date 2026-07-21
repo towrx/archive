@@ -23,7 +23,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "PPV",
-    version: "1.0.4",
+    version: "1.0.5",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -255,7 +255,7 @@ function parseMovieDetail(html, apiUrl) {
   const episodes = [];
 
   episodes.push({
-    id: iframe,
+    id: removeGid(iframe),
     name: "Link 1",
     slug: uri_name
   });
@@ -375,4 +375,9 @@ function getStreamsBySearch(apiUrl, param, streams) {
     return result;
   }
   return streams;
+}
+
+function removeGid(url) {
+  const index = url.indexOf("?gid=");
+  return index !== -1 ? url.slice(0, index) : url;
 }
