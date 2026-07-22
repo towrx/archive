@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.2.2",
+    version: "1.2.3",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -37,7 +37,7 @@ function getHomeSections() {
     },
     {
       slug: "fight",
-      title: "Fight (Boxing, UFC,...) 🥊",
+      title: "Fight (Boxing, UFC, ...) 🥊",
       type: "Horizontal",
       path: ""
     },
@@ -80,7 +80,7 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "Fight (Boxing, UFC,...)", slug: "fight" },
+    { name: "Fight (Boxing, UFC, ...)", slug: "fight" },
     { name: "Football", slug: "football" },
     { name: "Basketball", slug: "basketball" },
     { name: "American Football", slug: "american-football" },
