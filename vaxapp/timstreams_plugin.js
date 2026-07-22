@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.0.9",
+    version: "1.1.0",
     baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -30,15 +30,15 @@ https: function getHomeSections() {
       path: ""
     },
     {
-      slug: "channels",
-      title: "Television 24/7 📺",
+      slug: "replays",
+      title: "Latest Replays 🎞️",
       type: "Horizontal",
       path: ""
     },
     {
-      slug: "replays",
-      title: "Latest Replays 🎞️",
-      type: "Horizontal",
+      slug: "channels",
+      title: "Television 24/7 📺",
+      type: "Grid",
       path: ""
     }
   ]);
@@ -47,8 +47,8 @@ https: function getHomeSections() {
 function getPrimaryCategories() {
   return JSON.stringify([
     { name: "LIVE EVENTS", slug: "live-upcoming" },
-    { name: "Television 24/7", slug: "channels" },
-    { name: "Latest Replays", slug: "replays" }
+    { name: "Latest Replays", slug: "replays" },
+    { name: "Television 24/7", slug: "channels" }
   ]);
 }
 
@@ -179,6 +179,8 @@ function parseMovieDetail(html, apiUrl) {
     });
   });
 
+  const servers = [{ name: "Timstreams", episodes: episodes }];
+
   return JSON.stringify({
     id: url,
     title: name,
@@ -187,7 +189,7 @@ function parseMovieDetail(html, apiUrl) {
     quality: type,
     episode_current: dateTime,
     description: description,
-    servers: [{ name: "Timstreams", episodes: episodes }]
+    servers: servers
   });
 }
 

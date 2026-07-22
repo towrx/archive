@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.2.0",
+    version: "1.2.1",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -37,7 +37,7 @@ function getHomeSections() {
     },
     {
       slug: "fight",
-      title: "Fight (Boxing, UFC) 🥊",
+      title: "Fight (Boxing, UFC, WWE, Wrestling, ...) 🥊",
       type: "Horizontal",
       path: ""
     },
@@ -57,17 +57,22 @@ function getHomeSections() {
     },
     {
       slug: "american-football",
-      title: "American Football 🏉",
+      title: "American Football 🏈",
       type: "Horizontal",
       path: ""
     },
     { slug: "golf", title: "Golf 🚩", type: "Horizontal", path: "" },
     { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
+    { slug: "cricket", title: "Cricket 🏏", type: "Horizontal", path: "" },
+    { slug: "afl", title: "AFL 🏈", type: "Horizontal", path: "" },
+    { slug: "darts", title: "Darts 🎯", type: "Horizontal", path: "" },
+    { slug: "hockey", title: "Hockey 🏒", type: "Horizontal", path: "" },
+    { slug: "rugby", title: "Rugby 🏉", type: "Horizontal", path: "" },
     { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
     {
       slug: "all-today",
-      title: "Today's Matches 📋",
-      type: "Horizontal",
+      title: "All Matches 📋",
+      type: "Grid",
       path: ""
     }
   ]);
@@ -75,7 +80,7 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "Fight (Boxing, UFC)", slug: "fight" },
+    { name: "Fight (Boxing, UFC, WWE, Wrestling, ...)", slug: "fight" },
     { name: "Football", slug: "football" },
     { name: "Basketball", slug: "basketball" },
     { name: "American Football", slug: "american-football" },
@@ -89,7 +94,8 @@ function getPrimaryCategories() {
     { name: "Darts", slug: "darts" },
     { name: "Hockey", slug: "hockey" },
     { name: "Rugby", slug: "rugby" },
-    { name: "Other", slug: "other" }
+    { name: "Other", slug: "other" },
+    { name: "All Matches", slug: "all" }
   ]);
 }
 
@@ -216,6 +222,8 @@ function parseMovieDetail(html, apiUrl) {
     });
   });
 
+  const servers = [{ name: serverName, episodes: episodes }];
+
   return JSON.stringify({
     id: id,
     title: title,
@@ -224,7 +232,7 @@ function parseMovieDetail(html, apiUrl) {
     lang: serverName,
     description: description,
     quality: category,
-    servers: [{ name: serverName, episodes: episodes }]
+    servers: servers
   });
 }
 
