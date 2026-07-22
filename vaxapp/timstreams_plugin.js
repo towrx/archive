@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.1.0",
+    version: "1.1.1",
     baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -167,7 +167,7 @@ function parseMovieDetail(html, apiUrl) {
   const description = `Event "${name}" is hosted on server Timstreams`;
   const episodes = [];
 
-  stream?.streams?.map((item, index) => {
+  stream?.streams?.forEach((item, index) => {
     let { name, url } = item;
     name = data?.events || data?.replays ? name : `Link - ${index + 1}`;
     const slug = `${stream.url}-${index + 1}`;
