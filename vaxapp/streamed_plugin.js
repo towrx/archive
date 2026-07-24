@@ -9,8 +9,8 @@ const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQua
 function getManifest() {
   return JSON.stringify({
     id: "streamed",
-    name: "Streamed",
-    version: "1.2.4",
+    name: "[sports] Streamed",
+    version: "1.2.5",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,

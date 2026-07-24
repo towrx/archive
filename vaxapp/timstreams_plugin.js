@@ -9,8 +9,8 @@ const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 function getManifest() {
   return JSON.stringify({
     id: "timstreams",
-    name: "Timstreams",
-    version: "1.1.3",
+    name: "[sports] Timstreams",
+    version: "1.1.4",
     baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
