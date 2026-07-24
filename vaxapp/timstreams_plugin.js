@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.1.1",
+    version: "1.1.3",
     baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -197,7 +197,17 @@ function parseDetailResponse(html, sourceUrl) {
   return JSON.stringify({
     url: sourceUrl,
     headers: {
-      Referer: "https://logic.icelanders.st/"
+      Referer: sourceUrl,
+      Origin: sourceUrl,
+      "User-Agent":
+        "Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+      "Sec-Ch-Ua":
+        '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+      "Sec-Ch-Ua-Mobile": "?1",
+      "Sec-Ch-Ua-Platform": '"Android"',
+      Accept: "*/*",
+      "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+      "X-Requested-With": "com.android.chrome"
     },
     isEmbed: false
   });
