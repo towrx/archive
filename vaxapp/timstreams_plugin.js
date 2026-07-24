@@ -159,7 +159,7 @@ function parseMovieDetail(html, apiUrl) {
     });
 
   const slug = extractParamFromUrl(apiUrl, "slug");
-  const stream = findStreamBySlug(streams, slug);
+  const stream = getStreamBySlug(streams, slug);
   const { url, name, logo, genre, time } = stream || {};
   const type = genre && (data?.genres[genre] || data?.genres[genre]);
   const dateTime =
@@ -255,7 +255,7 @@ function extractParamFromUrl(url, param) {
   return match ? decodeURIComponent(match[1]) : "";
 }
 
-function findStreamBySlug(streams, slug) {
+function getStreamBySlug(streams, slug) {
   if (!Array.isArray(streams) || streams?.length === 0) return undefined;
   return streams.find((stream) => stream?.url === slug);
 }
