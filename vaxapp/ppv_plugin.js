@@ -31,7 +31,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "[sports] PPV",
-    version: "1.0.7",
+    version: "1.0.8",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -44,6 +44,12 @@ function getManifest() {
 
 https: function getHomeSections() {
   return JSON.stringify([
+    {
+      slug: "live",
+      title: "🔴 LIVE",
+      type: "Horizontal",
+      path: ""
+    },
     {
       slug: "combat-sports",
       title: "Combat Sports 💪",
@@ -248,11 +254,11 @@ function parseListResponse(html, apiUrl) {
           ? "LIVE"
           : formatDateTime(stream.starts_at);
       const bottomLabel =
-        stream.locale.toUpperCase() +
+        stream.category_name.toUpperCase() +
         " - " +
         stream.tag +
         " - " +
-        stream.category_name.toUpperCase();
+        stream.locale.toUpperCase();
 
       items.push({
         id: id,
@@ -423,17 +429,34 @@ function getStream(streams, id) {
 }
 
 function filterStreams(streams, [filterKey, filterValue]) {
+  const result = [];
+
   // filter streams by category
-  if (filterValue && filterKey === "category")
+  if (filterValue && filterKey === "category") {
+    if (filterValue === "live") {
+      // live
+      streams.forEach((item) => {
+        item.streams.forEach((stream) => {
+          const isLive =
+            Number(stream.starts_at) <= Math.floor(Date.now() / 1000) &&
+            !stream.always_live;
+          if (isLive) result.push(stream);
+        });
+      });
+
+      result.sort((a, b) => parseInt(b.viewers) - parseInt(a.viewers));
+      return result;
+    }
+
+    // normal
     return (
       streams.find((item) => {
         return item.category === CATEGORY_MAP[filterValue];
       })?.streams || []
     );
-
+  }
   // filter streams by search
   if (filterValue && filterKey === "search") {
-    const result = [];
     streams.forEach((item) => {
       item.streams.forEach((stream) => {
         filterValue = filterValue.toLowerCase();
