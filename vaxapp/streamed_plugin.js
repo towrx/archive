@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "[sports] Streamed",
-    version: "1.2.5",
+    version: "1.2.6",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -143,12 +143,12 @@ function parseListResponse(html, apiUrl) {
     const items = [];
     const keyword = extractParamFromUrl(apiUrl, "search");
 
-    streams = filterByKeyword(streams, keyword);
+    streams = filterStreams(streams, keyword);
 
     streams.forEach((stream) => {
       const title = stream?.title?.trim();
       const posterUrl = getPosterUrl(stream);
-      const dateTime =
+      const streamLabel =
         Date.now() >= stream?.date ? "LIVE" : formatDateTime(stream?.date);
       const category = stream?.category?.toUpperCase() || "";
 
@@ -163,7 +163,7 @@ function parseListResponse(html, apiUrl) {
           description: description,
           posterUrl: posterUrl,
           backdropUrl: posterUrl,
-          quality: dateTime,
+          quality: streamLabel,
           episode_current: serverName,
           lang: category
         });
@@ -175,6 +175,7 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (e) {
+    console.log(e);
     return JSON.stringify({
       items: [],
       pagination: { currentPage: 1, totalPages: 1 }
@@ -187,12 +188,12 @@ function parseSearchResponse(html, apiUrl) {
 }
 
 function parseMovieDetail(html, apiUrl) {
-  const stream = JSON.parse(html);
+  const streams = JSON.parse(html);
 
-  if (!Array.isArray(stream) || stream?.length === 0)
+  if (!Array.isArray(streams) || streams.length === 0)
     return JSON.stringify({
       id: "",
-      title: "⚠️ Link Not Found!",
+      title: "⚠️ Stream Link Not Found!",
       posterUrl: FALLBACK_POSTER_URL,
       backdropUrl: FALLBACK_POSTER_URL,
       servers: []
@@ -204,14 +205,14 @@ function parseMovieDetail(html, apiUrl) {
   const description =
     extractParamFromUrl(apiUrl, "description") + SELECTION_GUIDE;
   const episodes = [];
-  const serverName = stream[0].source?.toUpperCase();
-  const id = stream[0].id;
+  const serverName = streams[0].source?.toUpperCase();
+  const id = streams[0].id;
 
-  stream.forEach((item, index) => {
-    const embedUrl = item?.embedUrl;
-    const quality = item?.hd ? "HD" : "SD";
-    const viewers = formatViewerCount(item?.viewers);
-    const language = item.language;
+  streams.forEach((stream, index) => {
+    const embedUrl = stream?.embedUrl;
+    const quality = stream?.hd ? "HD" : "SD";
+    const viewers = formatViewerCount(stream?.viewers);
+    const language = stream.language;
     const name = `${quality}${viewers ? " - " + viewers + " 👁️" : ""}${language ? " - " + language : ""}`;
     const slug = `${id}-${index + 1}`;
 
@@ -320,7 +321,7 @@ function extractParamFromUrl(url, param) {
   return match ? decodeURIComponent(match[1]) : "";
 }
 
-function filterByKeyword(streams, keyword) {
+function filterStreams(streams, keyword) {
   if (keyword) {
     streams = streams.filter((stream) => {
       return (

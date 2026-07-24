@@ -1,18 +1,21 @@
 const BACKUP_DOMAINS = "https://ppv.domains/";
-const BASE_URL = "https://api.ppv.st/api/streams";
+const BASE_URL = "https://api.ppv.st";
 const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 
 const CATEGORY_MAP = {
-  baseball: "Baseball",
-  basketball: "Basketball",
+  "combat-sports": "Combat Sports",
   football: "Football",
   volleyball: "Volleyball",
-  channels: "24/7 Streams",
-  "australian-football": "Australian Football",
-  "american-football": "American Football",
-  rugby: "rugby",
+  motorsports: "Motorsports",
   wrestling: "Wrestling",
-  darts: "Darts"
+  basketball: "Basketball",
+  baseball: "Baseball",
+  "american-football": "American Football",
+  "australian-football": "Australian Football",
+  rugby: "rugby",
+  darts: "Darts",
+  miscellaneous: "Miscellaneous",
+  channels: "24/7 Streams"
 };
 
 // =============================================================================
@@ -22,8 +25,8 @@ const CATEGORY_MAP = {
 function getManifest() {
   return JSON.stringify({
     id: "ppv",
-    name: "PPV",
-    version: "1.0.5",
+    name: "[sports] PPV",
+    version: "1.0.6",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -37,14 +40,8 @@ function getManifest() {
 https: function getHomeSections() {
   return JSON.stringify([
     {
-      slug: "baseball",
-      title: "Baseball ⚾",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "basketball",
-      title: "Basketball 🏀",
+      slug: "combat-sports",
+      title: "Combat Sports 💪",
       type: "Horizontal",
       path: ""
     },
@@ -61,14 +58,26 @@ https: function getHomeSections() {
       path: ""
     },
     {
-      slug: "channels",
-      title: "24/7 Streams 📺",
+      slug: "motorsports",
+      title: "Motorsports 🏁",
       type: "Horizontal",
       path: ""
     },
     {
-      slug: "australian-football",
-      title: "Australian Football 🏈",
+      slug: "wrestling",
+      title: "Wrestling 🤼",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "basketball",
+      title: "Basketball 🏀",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "baseball",
+      title: "Baseball ⚾",
       type: "Horizontal",
       path: ""
     },
@@ -79,21 +88,32 @@ https: function getHomeSections() {
       path: ""
     },
     {
+      slug: "australian-football",
+      title: "Australian Football 🏈",
+      type: "Horizontal",
+      path: ""
+    },
+    {
       slug: "rugby",
       title: "Rugby 🏉",
       type: "Horizontal",
       path: ""
     },
     {
-      slug: "wrestling",
-      title: "Wrestling 🤼",
+      slug: "darts",
+      title: "Darts 🎯",
       type: "Horizontal",
       path: ""
     },
-
     {
-      slug: "darts",
-      title: "Darts 🎯",
+      slug: "miscellaneous",
+      title: "Miscellaneous 🏳️‍🌈",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "channels",
+      title: "24/7 Streams 📺",
       type: "Horizontal",
       path: ""
     }
@@ -109,16 +129,19 @@ https: function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "Baseball", slug: "baseball" },
-    { name: "Basketball", slug: "basketball" },
+    { name: "Combat Sports", slug: "combat-sports" },
     { name: "Football", slug: "football" },
     { name: "Volleyball", slug: "volleyball" },
-    { name: "24/7 Streams", slug: "channels" },
-    { name: "Australian Football", slug: "australian-football" },
-    { name: "American Football", slug: "american-football" },
-    { name: "Rugby", slug: "rugby" },
+    { name: "Motorsports", slug: "motorsports" },
     { name: "Wrestling", slug: "wrestling" },
-    { name: "Darts", slug: "darts" }
+    { name: "Basketball", slug: "basketball" },
+    { name: "Baseball", slug: "baseball" },
+    { name: "American Football", slug: "american-football" },
+    { name: "Australian Football", slug: "australian-football" },
+    { name: "Rugby", slug: "rugby" },
+    { name: "Darts", slug: "darts" },
+    { name: "Miscellaneous", slug: "miscellaneous" },
+    { name: "24/7 Streams", slug: "channels" }
     // { name: "", slug: "" },
   ]);
 }
@@ -132,18 +155,18 @@ function getFilterConfig() {
 // =============================================================================
 
 function getUrlList(slug, filtersJson) {
-  return BASE_URL + "?category=" + encodeURIComponent(slug);
+  return `${BASE_URL}/api/streams?category=${encodeURIComponent(slug)}`;
 }
 
 function getUrlSearch(keyword, filtersJson) {
-  return BASE_URL + "?search=" + encodeURIComponent(keyword?.trim());
+  keyword = keyword?.trim() || "";
+  return `${BASE_URL}/api/streams?search=${encodeURIComponent(keyword)}`;
 }
 
 function getUrlDetail(path) {
   if (!path) return "";
   if (path.indexOf("http") === 0) return path;
-  // if (path.charAt(0) !== "/") path = "/" + path;
-  return BASE_URL + path;
+  return `${BASE_URL}/api/streams${path}`;
 }
 
 function getUrlCategories() {
@@ -163,46 +186,47 @@ function getUrlYears() {
 function parseListResponse(html, apiUrl) {
   try {
     const data = JSON.parse(html);
-    let streams = data?.streams;
+    let streams = data?.streams || [];
     const items = [];
+    const category = extractParamFromUrl(apiUrl, "category");
+    const keyword = extractParamFromUrl(apiUrl, "search");
 
-    streams = getStreamsBySearch(apiUrl, "search", streams);
-    // filter by param category
-    streams = getStreamsByParam(apiUrl, "category", streams);
+    if (category) streams = filterStreams(streams, ["category", category]);
+    if (keyword) streams = filterStreams(streams, ["search", keyword]);
 
-    streams?.forEach((stream) => {
-      const {
-        id,
-        name,
-        poster,
-        starts_at,
-        always_live,
-        locale,
-        category_name,
-        viewers
-      } = stream;
+    streams.forEach((stream) => {
+      const title = stream.name;
+      const logo = stream.poster;
+      const viewersLabel = "Viewers: " + stream.viewers;
+      const id =
+        "?id=" +
+        encodeURIComponent(stream.id) +
+        "&category=" +
+        encodeURIComponent(
+          Object.keys(CATEGORY_MAP).find(
+            (key) => CATEGORY_MAP[key] === stream.category_name
+          )
+        );
+      const description = `Event "${title}" is hosted on server "PPV".`;
+      const streamLabel = stream.always_live
+        ? "LIVE 24/7"
+        : Number(stream.starts_at) <= Math.floor(Date.now() / 1000)
+          ? "LIVE"
+          : formatDateTime(stream.starts_at);
+      const bottomLabel =
+        stream.locale.toUpperCase() +
+        " - " +
+        stream.category_name.toUpperCase();
 
       items.push({
-        id:
-          "?id=" +
-          encodeURIComponent(id) +
-          "&category=" +
-          encodeURIComponent(
-            Object.keys(CATEGORY_MAP).find(
-              (slug) => CATEGORY_MAP[slug] === category_name
-            )
-          ),
-        title: name,
-        description: `Event "${name}" is hosted on server "PPV".`,
-        posterUrl: poster || FALLBACK_POSTER_URL,
-        backdropUrl: poster || FALLBACK_POSTER_URL,
-        quality: always_live
-          ? "LIVE 24/7"
-          : Number(starts_at) <= Math.floor(Date.now() / 1000)
-            ? "LIVE"
-            : formatDateTime(starts_at),
-        episode_current: "Viewers: " + viewers,
-        lang: locale?.toUpperCase() + " - " + category_name?.toUpperCase()
+        id: id,
+        title: title,
+        description: description,
+        posterUrl: logo || FALLBACK_POSTER_URL,
+        backdropUrl: logo || FALLBACK_POSTER_URL,
+        quality: streamLabel,
+        episode_current: viewersLabel,
+        lang: bottomLabel
       });
     });
 
@@ -211,6 +235,7 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (e) {
+    console.log(e);
     return JSON.stringify({
       items: [],
       pagination: { currentPage: 1, totalPages: 1 }
@@ -224,65 +249,73 @@ function parseSearchResponse(html, apiUrl) {
 
 function parseMovieDetail(html, apiUrl) {
   const data = JSON.parse(html);
-  let streams = data?.streams;
+  let streams = data.streams;
 
-  // filter by param category
-  streams = getStreamsByParam(apiUrl, "category", streams);
+  // filter streams by category
+  const episodes = [];
+  const category = extractParamFromUrl(apiUrl, "category");
+  streams = filterStreams(streams, ["category", category]);
 
-  if (!Array.isArray(streams) || streams?.length === 0)
-    return JSON.stringify({
-      id: "",
-      title: "⚠️ Link Not Found!",
-      posterUrl: FALLBACK_POSTER_URL,
-      backdropUrl: FALLBACK_POSTER_URL,
-      servers: []
-    });
   // get stream by param id
-  const stream = getStreamByParam(apiUrl, "id", streams);
-
+  const streamId = extractParamFromUrl(apiUrl, "id");
+  const stream = getStream(streams, streamId);
   const {
     name,
     poster,
     starts_at,
     always_live,
     locale,
-    category_name,
-    viewers,
     iframe,
     substreams,
-    uri_name
+    source_tag,
+    uri_name,
+    viewers
   } = stream;
-  const episodes = [];
 
+  if (!iframe && (!Array.isArray(substreams) || substreams.length === 0))
+    return JSON.stringify({
+      id: "",
+      title: "⚠️ Stream Link Not Found!",
+      posterUrl: FALLBACK_POSTER_URL,
+      backdropUrl: FALLBACK_POSTER_URL,
+      servers: []
+    });
+
+  const viewersLabel = "Viewers: " + viewers;
+  const description = `Event "${name}" is hosted on server PPV`;
+  const streamLabel = always_live
+    ? "LIVE 24/7"
+    : Number(starts_at) <= Math.floor(Date.now() / 1000)
+      ? "LIVE"
+      : formatDateTime(starts_at);
   episodes.push({
-    id: removeGid(iframe),
-    name: "Link 1",
+    id: iframe,
+    name: `${source_tag} - ${locale.toUpperCase()}`,
     slug: uri_name
   });
 
-  // substreams?.streams?.map((stream, index) => {
-  //   const { name, url } = stream;
-  //   episodes.push({
-  //     id: url,
-  //     name: obj?.events || obj?.replays ? name : `Link - ${index + 1}`,
-  //     slug: url
-  //   });
-  // });
+  substreams.forEach((item) => {
+    const { iframe, uri_name, locale } = item;
+    const name = `${item.source_tag} - ${locale.toUpperCase()}`;
+    episodes.push({
+      id: item.iframe,
+      name: name,
+      slug: item.uri_name
+    });
+  });
+
+  const servers = [{ name: "PPV", episodes: episodes }];
 
   return JSON.stringify({
     id: uri_name,
     title: name,
     posterUrl: poster || FALLBACK_POSTER_URL,
     backdropUrl: poster || FALLBACK_POSTER_URL,
-    quality: always_live
-      ? "LIVE 24/7"
-      : Number(starts_at) <= Math.floor(Date.now() / 1000)
-        ? "LIVE"
-        : formatDateTime(starts_at),
-    episode_current: "Viewers: " + viewers,
-    description: `Event "${name}" is hosted on server PPV`,
-    lang: `SERVER: Ppv - ${locale}`,
-    servers: [{ name: "PPV", episodes: episodes }]
+    quality: streamLabel,
+    episode_current: viewersLabel,
+    description: description,
+    lang: locale,
+    servers: servers
   });
 }
 
@@ -290,7 +323,17 @@ function parseDetailResponse(html, sourceUrl) {
   return JSON.stringify({
     url: sourceUrl,
     headers: {
-      Referer: "https://embedindia.st/"
+      Referer: sourceUrl,
+      Origin: sourceUrl,
+      "User-Agent":
+        "Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+      "Sec-Ch-Ua":
+        '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+      "Sec-Ch-Ua-Mobile": "?1",
+      "Sec-Ch-Ua-Platform": '"Android"',
+      Accept: "*/*",
+      "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+      "X-Requested-With": "com.android.chrome"
     },
     isEmbed: false
   });
@@ -322,7 +365,6 @@ function extractParamFromUrl(url, param) {
 
 function formatDateTime(timestamp) {
   if (timestamp == null) return "";
-  // Hỗ trợ cả Unix timestamp (giây) và milliseconds
   if (timestamp < 1e12) {
     timestamp *= 1000;
   }
@@ -336,48 +378,36 @@ function formatDateTime(timestamp) {
   return `${hh}:${mm}-${dd}/${MM}`;
 }
 
-function getStreamsByParam(apiUrl, param, streams) {
-  const category = extractParamFromUrl(apiUrl, param);
-
-  if (category)
-    return streams?.find((stream) => {
-      return stream?.category === CATEGORY_MAP[category];
-    })?.streams;
-  return streams;
-}
-
-function getStreamByParam(apiUrl, param, streams) {
-  const id = extractParamFromUrl(apiUrl, param);
-  console.log("streams:::: ", streams);
+function getStream(streams, id) {
   if (id)
     return streams?.find((stream) => {
-      return "" + stream?.id === id;
+      return "" + stream.id === id;
     });
   return {};
 }
 
-function getStreamsBySearch(apiUrl, param, streams) {
-  const searchKeyword = extractParamFromUrl(apiUrl, param);
+function filterStreams(streams, [filterKey, filterValue]) {
+  // filter streams by category
+  if (filterValue && filterKey === "category")
+    return (
+      streams.find((item) => {
+        return item.category === CATEGORY_MAP[filterValue];
+      })?.streams || []
+    );
 
-  const result = [];
-  if (searchKeyword) {
-    streams?.forEach((categoryStreams) => {
-      categoryStreams?.streams?.forEach((stream) => {
-        if (
-          stream?.name
-            ?.toLowerCase()
-            ?.indexOf(searchKeyword?.toLowerCase() || "") >= 0
-        )
-          result.push(stream);
+  // filter streams by search
+  if (filterValue && filterKey === "search") {
+    const result = [];
+    streams.forEach((item) => {
+      item.streams.forEach((stream) => {
+        filterValue = filterValue.toLowerCase();
+        const streamName = stream.name.toLowerCase();
+        const isTrue = streamName.indexOf(filterValue) >= 0;
+        if (isTrue) result.push(stream);
       });
     });
 
     return result;
   }
   return streams;
-}
-
-function removeGid(url) {
-  const index = url.indexOf("?gid=");
-  return index !== -1 ? url.slice(0, index) : url;
 }
