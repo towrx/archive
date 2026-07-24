@@ -7,15 +7,20 @@ const CATEGORY_MAP = {
   football: "Football",
   volleyball: "Volleyball",
   motorsports: "Motorsports",
+  badminton: "Badminton",
+  golf: "Golf",
+  tennis: "Tennis",
   wrestling: "Wrestling",
   basketball: "Basketball",
   baseball: "Baseball",
+  hockey: "Hockey",
   "american-football": "American Football",
   "australian-football": "Australian Football",
-  rugby: "rugby",
+  rugby: "Rugby",
   darts: "Darts",
   miscellaneous: "Miscellaneous",
   channels: "24/7 Streams"
+  // ,: ""
 };
 
 // =============================================================================
@@ -26,7 +31,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "[sports] PPV",
-    version: "1.0.6",
+    version: "1.0.7",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -52,14 +57,33 @@ https: function getHomeSections() {
       path: ""
     },
     {
-      slug: "volleyball 🏐",
-      title: "Volleyball",
+      slug: "volleyball",
+      title: "Volleyball 🏐",
       type: "Horizontal",
       path: ""
     },
     {
       slug: "motorsports",
       title: "Motorsports 🏁",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "badminton",
+      title: "Badminton 🏸",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "golf",
+      title: "Golf 🚩",
+      type: "Horizontal",
+      path: ""
+    },
+
+    {
+      slug: "tennis",
+      title: "Tennis 🎾",
       type: "Horizontal",
       path: ""
     },
@@ -78,6 +102,12 @@ https: function getHomeSections() {
     {
       slug: "baseball",
       title: "Baseball ⚾",
+      type: "Horizontal",
+      path: ""
+    },
+    {
+      slug: "hockey",
+      title: "Hockey 🏒",
       type: "Horizontal",
       path: ""
     },
@@ -133,9 +163,13 @@ function getPrimaryCategories() {
     { name: "Football", slug: "football" },
     { name: "Volleyball", slug: "volleyball" },
     { name: "Motorsports", slug: "motorsports" },
+    { name: "Badminton", slug: "badminton" },
+    { name: "Golf", slug: "golf" },
+    { name: "Tennis", slug: "tennis" },
     { name: "Wrestling", slug: "wrestling" },
     { name: "Basketball", slug: "basketball" },
     { name: "Baseball", slug: "baseball" },
+    { name: "Hockey", slug: "hockey" },
     { name: "American Football", slug: "american-football" },
     { name: "Australian Football", slug: "australian-football" },
     { name: "Rugby", slug: "rugby" },
@@ -215,6 +249,8 @@ function parseListResponse(html, apiUrl) {
           : formatDateTime(stream.starts_at);
       const bottomLabel =
         stream.locale.toUpperCase() +
+        " - " +
+        stream.tag +
         " - " +
         stream.category_name.toUpperCase();
 
