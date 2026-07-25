@@ -31,7 +31,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "[sports] PPV",
-    version: "1.0.9",
+    version: "1.1.0",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -299,7 +299,7 @@ function parseMovieDetail(html, apiUrl) {
   streams = filterStreams(streams, ["category", category]);
 
   // get stream by param id
-  const streamId = extractParamFromUrl(apiUrl, "?id=");
+  const streamId = extractParamFromUrl(apiUrl, "id");
   const stream = getStream(streams, streamId);
   const {
     name,

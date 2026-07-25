@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "[sports] Timstreams",
-    version: "1.1.6",
+    version: "1.1.7",
     baseUrl: BASE_API_URL,
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -187,7 +187,7 @@ function parseMovieDetail(html, apiUrl) {
   const servers = [{ name: "Timstreams", episodes: episodes }];
 
   return JSON.stringify({
-    id: url,
+    id: id,
     title: name,
     posterUrl: logo || FALLBACK_POSTER_URL,
     backdropUrl: logo || FALLBACK_POSTER_URL,
