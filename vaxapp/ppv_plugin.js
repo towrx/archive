@@ -31,7 +31,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "[sports] PPV",
-    version: "1.0.8",
+    version: "1.0.9",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -299,7 +299,7 @@ function parseMovieDetail(html, apiUrl) {
   streams = filterStreams(streams, ["category", category]);
 
   // get stream by param id
-  const streamId = extractParamFromUrl(apiUrl, "id");
+  const streamId = extractParamFromUrl(apiUrl, "?id=");
   const stream = getStream(streams, streamId);
   const {
     name,
@@ -323,6 +323,7 @@ function parseMovieDetail(html, apiUrl) {
       servers: []
     });
 
+  const id = getSlug(apiUrl, `?id=`);
   const viewersLabel = "Viewers: " + viewers;
   const description = `Event "${name}" is hosted on server PPV`;
   const streamLabel = always_live
@@ -349,7 +350,7 @@ function parseMovieDetail(html, apiUrl) {
   const servers = [{ name: "PPV", episodes: episodes }];
 
   return JSON.stringify({
-    id: uri_name,
+    id: id,
     title: name,
     posterUrl: poster || FALLBACK_POSTER_URL,
     backdropUrl: poster || FALLBACK_POSTER_URL,
@@ -469,4 +470,10 @@ function filterStreams(streams, [filterKey, filterValue]) {
     return result;
   }
   return streams;
+}
+
+function getSlug(apiUrl, keyword) {
+  const index = apiUrl.indexOf(keyword);
+  if (!keyword || index === -1) return "";
+  return apiUrl.substring(index);
 }

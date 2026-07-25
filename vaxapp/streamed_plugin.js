@@ -2,6 +2,179 @@ const BASE_URL = "https://streamed.pk";
 const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
 
+const LANGUAGE_MAP = {
+  Afar: "aa",
+  Abkhazian: "ab",
+  Afrikaans: "af",
+  Akan: "ak",
+  Albanian: "sq",
+  Amharic: "am",
+  Arabic: "ar",
+  Aragonese: "an",
+  Armenian: "hy",
+  Assamese: "as",
+  Avaric: "av",
+  Avestan: "ae",
+  Aymara: "ay",
+  Azerbaijani: "az",
+  Bashkir: "ba",
+  Bambara: "bm",
+  Basque: "eu",
+  Belarusian: "be",
+  Bengali: "bn",
+  Bislama: "bi",
+  Bosnian: "bs",
+  Breton: "br",
+  Bulgarian: "bg",
+  Burmese: "my",
+  Catalan: "ca",
+  Chamorro: "ch",
+  Chechen: "ce",
+  Chinese: "zh",
+  "Church Slavic": "cu",
+  Chuvash: "cv",
+  Cornish: "kw",
+  Corsican: "co",
+  Cree: "cr",
+  Croatian: "hr",
+  Czech: "cs",
+  Danish: "da",
+  Divehi: "dv",
+  Dutch: "nl",
+  English: "en",
+  Esperanto: "eo",
+  Estonian: "et",
+  Ewe: "ee",
+  Faroese: "fo",
+  Fijian: "fj",
+  Finnish: "fi",
+  French: "fr",
+  Fulah: "ff",
+  Galician: "gl",
+  Georgian: "ka",
+  German: "de",
+  Greek: "el",
+  Guarani: "gn",
+  Gujarati: "gu",
+  Haitian: "ht",
+  Hausa: "ha",
+  Hebrew: "he",
+  Herero: "hz",
+  Hindi: "hi",
+  "Hiri Motu": "ho",
+  Hungarian: "hu",
+  Icelandic: "is",
+  Ido: "io",
+  Igbo: "ig",
+  Indonesian: "id",
+  Interlingua: "ia",
+  Interlingue: "ie",
+  Inuktitut: "iu",
+  Inupiaq: "ik",
+  Irish: "ga",
+  Italian: "it",
+  Japanese: "ja",
+  Javanese: "jv",
+  Kalaallisut: "kl",
+  Kannada: "kn",
+  Kanuri: "kr",
+  Kashmiri: "ks",
+  Kazakh: "kk",
+  Khmer: "km",
+  Kikuyu: "ki",
+  Kinyarwanda: "rw",
+  Kirghiz: "ky",
+  Komi: "kv",
+  Korean: "ko",
+  Kuanyama: "kj",
+  Kurdish: "ku",
+  Lao: "lo",
+  Latin: "la",
+  Latvian: "lv",
+  Limburgan: "li",
+  Lingala: "ln",
+  Lithuanian: "lt",
+  Luxembourgish: "lb",
+  Macedonian: "mk",
+  Malagasy: "mg",
+  Malay: "ms",
+  Malayalam: "ml",
+  Maltese: "mt",
+  Manx: "gv",
+  Maori: "mi",
+  Marathi: "mr",
+  Mongolian: "mn",
+  Nauru: "na",
+  Navajo: "nv",
+  "North Ndebele": "nd",
+  "Northern Sami": "se",
+  Norwegian: "no",
+  "Norwegian Bokmal": "nb",
+  "Norwegian Nynorsk": "nn",
+  Occitan: "oc",
+  Ojibwa: "oj",
+  Oriya: "or",
+  Oromo: "om",
+  Ossetian: "os",
+  Pali: "pi",
+  Pashto: "ps",
+  Persian: "fa",
+  Polish: "pl",
+  Portuguese: "pt",
+  Punjabi: "pa",
+  Quechua: "qu",
+  Romanian: "ro",
+  Romansh: "rm",
+  Russian: "ru",
+  Samoan: "sm",
+  Sango: "sg",
+  Sanskrit: "sa",
+  Sardinian: "sc",
+  Serbian: "sr",
+  Shona: "sn",
+  Sindhi: "sd",
+  Sinhala: "si",
+  Slovak: "sk",
+  Slovenian: "sl",
+  Somali: "so",
+  "Southern Sotho": "st",
+  Spanish: "es",
+  Sundanese: "su",
+  Swahili: "sw",
+  Swati: "ss",
+  Swedish: "sv",
+  Tagalog: "tl",
+  Tahitian: "ty",
+  Tajik: "tg",
+  Tamil: "ta",
+  Tatar: "tt",
+  Telugu: "te",
+  Thai: "th",
+  Tibetan: "bo",
+  Tigrinya: "ti",
+  Tonga: "to",
+  Tsonga: "ts",
+  Tswana: "tn",
+  Turkish: "tr",
+  Turkmen: "tk",
+  Uighur: "ug",
+  Ukrainian: "uk",
+  Urdu: "ur",
+  Uzbek: "uz",
+  Venda: "ve",
+  Vietnamese: "vi",
+  Volapuk: "vo",
+  Walloon: "wa",
+  Welsh: "cy",
+  "Western Frisian": "fy",
+  Wolof: "wo",
+  Xhosa: "xh",
+  Yiddish: "yi",
+  Yoruba: "yo",
+  Zhuang: "za",
+  Zulu: "zu"
+};
+
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
 // =============================================================================
@@ -10,7 +183,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "[sports] Streamed",
-    version: "1.2.6",
+    version: "1.2.7",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -199,6 +372,7 @@ function parseMovieDetail(html, apiUrl) {
       servers: []
     });
 
+  const id = getSlug(apiUrl, `/api/`);
   const posterUrl = extractParamFromUrl(apiUrl, "posterUrl");
   const title = extractParamFromUrl(apiUrl, "title");
   const category = extractParamFromUrl(apiUrl, "category");
@@ -206,15 +380,14 @@ function parseMovieDetail(html, apiUrl) {
     extractParamFromUrl(apiUrl, "description") + SELECTION_GUIDE;
   const episodes = [];
   const serverName = streams[0].source?.toUpperCase();
-  const id = streams[0].id;
 
   streams.forEach((stream, index) => {
     const embedUrl = stream?.embedUrl;
     const quality = stream?.hd ? "HD" : "SD";
     const viewers = formatViewerCount(stream?.viewers);
     const language = stream.language;
-    const name = `${quality}${viewers ? " - " + viewers + " 👁️" : ""}${language ? " - " + language : ""}`;
-    const slug = `${id}-${index + 1}`;
+    const name = `${quality}${viewers ? " - " + viewers + "👁️" : ""}${LANGUAGE_MAP[language] ? " - " + language : ""}`;
+    const slug = `${id}/${index + 1}`;
 
     episodes.push({
       id: embedUrl,
@@ -330,4 +503,10 @@ function filterStreams(streams, keyword) {
     });
   }
   return streams;
+}
+
+function getSlug(apiUrl, keyword) {
+  const index = apiUrl.indexOf(keyword);
+  if (!keyword || index === -1) return "";
+  return apiUrl.substring(index);
 }
