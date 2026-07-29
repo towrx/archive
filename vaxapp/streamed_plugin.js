@@ -37,7 +37,7 @@ function getHomeSections() {
     },
     {
       slug: "fight",
-      title: "Fight (Boxing, MMA, Wrestling ...v.v) 🥊",
+      title: "Fight (Boxing, MMA, ...v.v) 🥊",
       type: "Horizontal",
       path: ""
     },
