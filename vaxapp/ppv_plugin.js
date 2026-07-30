@@ -32,7 +32,7 @@ function getManifest() {
     id: "ppv",
     name: "PPV",
     version: "1.1.4",
-    baseUrl: "https://ppv.st/",
+    baseUrl: "https://ppv.st",
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
     isAdult: false,
