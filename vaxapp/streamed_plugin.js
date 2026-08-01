@@ -11,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.3.3",
+    version: "1.3.4",
     baseUrl: "https://streamed.pk",
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -285,7 +285,10 @@ function parseYearsResponse(html) {
 
 function getPosterUrl(item) {
   try {
-    if (item?.poster) return BASE_API_URL + item.poster;
+    if (item?.poster)
+      return (
+        BASE_API_URL + item.poster.substring(item.poster.indexOf("/api/") + 4)
+      );
     const homeTeamLogoSlug = item?.teams?.home?.badge;
     const awayTeamLogoSlug = item?.teams?.away?.badge;
     if (homeTeamLogoSlug && awayTeamLogoSlug)
