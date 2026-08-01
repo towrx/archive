@@ -11,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.3.4",
+    version: "1.3.5",
     baseUrl: "https://streamed.pk",
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -24,44 +24,14 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
-    {
-      slug: "live/popular-viewcount",
-      title: "🔴 LIVE (popular by viewers)",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "live/popular",
-      title: "🔴 LIVE",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "fight",
-      title: "Fight (Boxing, MMA, ...v.v) 🥊",
-      type: "Horizontal",
-      path: ""
-    },
+    { slug: "live/popular-viewcount", title: "🔴 LIVE (popular by viewers)", type: "Horizontal", path: "" },
+    { slug: "live/popular", title: "🔴 LIVE", type: "Horizontal", path: "" },
+    { slug: "fight", title: "Fight (Boxing, MMA, ...v.v) 🥊", type: "Horizontal", path: "" },
     { slug: "football", title: "Football ⚽", type: "Horizontal", path: "" },
-    {
-      slug: "motor-sports",
-      title: "Motor Sports 🏁",
-      type: "Horizontal",
-      path: ""
-    },
+    { slug: "motor-sports", title: "Motor Sports 🏁", type: "Horizontal", path: "" },
     { slug: "billiards", title: "Billiards 🎱", type: "Horizontal", path: "" },
-    {
-      slug: "basketball",
-      title: "Basketball 🏀",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "american-football",
-      title: "American Football 🏈",
-      type: "Horizontal",
-      path: ""
-    },
+    { slug: "basketball", title: "Basketball 🏀", type: "Horizontal", path: "" },
+    { slug: "american-football", title: "American Football 🏈", type: "Horizontal", path: "" },
     { slug: "golf", title: "Golf 🚩", type: "Horizontal", path: "" },
     { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
     { slug: "cricket", title: "Cricket 🏏", type: "Horizontal", path: "" },
@@ -70,12 +40,7 @@ function getHomeSections() {
     { slug: "hockey", title: "Hockey 🏒", type: "Horizontal", path: "" },
     { slug: "rugby", title: "Rugby 🏉", type: "Horizontal", path: "" },
     { slug: "other", title: "Other 🏳️‍🌈", type: "Horizontal", path: "" },
-    {
-      slug: "all-today",
-      title: "All Matches 📋",
-      type: "Grid",
-      path: ""
-    }
+    { slug: "all-today", title: "All Matches 📋", type: "Grid", path: "" }
   ]);
 }
 
@@ -157,7 +122,8 @@ function parseListResponse(html, apiUrl) {
         //remove server echo
         if (serverName === "ECHO") break;
         const description = `Event "${title}" is hosted on server ${serverName}.`;
-        const path = `/stream/${item?.source}/${item?.id}?posterUrl=${encodeURIComponent(posterUrl)}&title=${encodeURIComponent(title)}&category=${encodeURIComponent(category)}&description=${encodeURIComponent(description)}`;
+        const encodedData = encodeURIComponent(JSON.stringify({ title, posterUrl, category, description }));
+        const path = `/stream/${item?.source}/${item?.id}|${encodedData}`;
 
         items.push({
           id: path,
@@ -203,11 +169,9 @@ function parseMovieDetail(html, apiUrl) {
       });
 
     const id = getPath(apiUrl, `/stream/`);
-    const posterUrl = extractParamFromUrl(apiUrl, "posterUrl");
-    const title = extractParamFromUrl(apiUrl, "title");
-    const category = extractParamFromUrl(apiUrl, "category");
-    const description =
-      extractParamFromUrl(apiUrl, "description") + SELECTION_GUIDE;
+    const data = JSON.parse(decodeURIComponent(apiUrl.split("|")[1]));
+    const { title, posterUrl, category } = data;
+    const description = data.description + SELECTION_GUIDE;
     const episodes = [];
     const serverName = streams[0].source?.toUpperCase();
 
@@ -217,7 +181,7 @@ function parseMovieDetail(html, apiUrl) {
       const viewers = formatViewerCount(stream?.viewers);
       const language = stream.language;
       const name = `${quality}${viewers ? " - 🔴 " + viewers : ""}${language ? " - " + language : ""}`;
-      const path = `${id}-${index + 1}`;
+      const path = `${id.split("?")[0]}-${index + 1}`;
 
       episodes.push({
         id: embedUrl,

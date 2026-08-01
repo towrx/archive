@@ -10,7 +10,7 @@ function getManifest() {
   return JSON.stringify({
     id: "timstreams",
     name: "Timstreams",
-    version: "1.2.2",
+    version: "1.2.3",
     baseUrl: "https://timstreams.st",
     iconUrl: "https://i.ibb.co/WN9gstLN/logo.png",
     isEnabled: true,
@@ -23,24 +23,9 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
-    {
-      slug: "live-upcoming",
-      title: "🔴 LIVE EVENTS",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "replays",
-      title: "Latest Replays 🎞️",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "channels",
-      title: "Television 24/7 📺",
-      type: "Grid",
-      path: ""
-    }
+    { slug: "live-upcoming", title: "🔴 LIVE EVENTS", type: "Horizontal", path: "" },
+    { slug: "replays", title: "Latest Replays 🎞️", type: "Horizontal", path: "" },
+    { slug: "channels", title: "Television 24/7 📺", type: "Grid", path: "" }
   ]);
 }
 
@@ -91,7 +76,7 @@ function getUrlYears() {
 function parseListResponse(html, apiUrl) {
   try {
     const data = JSON.parse(html);
-    let streams = data?.events || data?.channels || data?.replays;
+    let streams = data?.events || data?.channels || data?.replays || [];
     const items = [];
 
     // Lọc theo search keyword từ ?search= trong apiUrl
@@ -270,6 +255,7 @@ function getStream(streams, slug) {
 }
 
 function filterStreams(streams, keyword) {
+  // search
   if (keyword) {
     streams = streams.filter(function (stream) {
       return stream?.name?.toLowerCase()?.indexOf(keyword.toLowerCase()) >= 0;

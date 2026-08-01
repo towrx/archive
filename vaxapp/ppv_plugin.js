@@ -19,7 +19,8 @@ const CATEGORY_MAP = {
   rugby: "Rugby",
   darts: "Darts",
   miscellaneous: "Miscellaneous",
-  channels: "24/7 Streams"
+  channels: "24/7 Streams",
+  "arm-wrestling": "Arm Wrestling"
   // ,: ""
 };
 
@@ -31,7 +32,7 @@ function getManifest() {
   return JSON.stringify({
     id: "ppv",
     name: "PPV",
-    version: "1.1.7",
+    version: "1.1.8",
     baseUrl: "https://ppv.st",
     iconUrl: "https://i.ibb.co/BHQSwhLX/ppv-logo.png",
     isEnabled: true,
@@ -44,122 +45,26 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
-    {
-      slug: "live",
-      title: "🔴 LIVE",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "combat-sports",
-      title: "Combat Sports 💪",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "football",
-      title: "Football ⚽",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "volleyball",
-      title: "Volleyball 🏐",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "motorsports",
-      title: "Motorsports 🏁",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "badminton",
-      title: "Badminton 🏸",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "golf",
-      title: "Golf 🚩",
-      type: "Horizontal",
-      path: ""
-    },
-
-    {
-      slug: "tennis",
-      title: "Tennis 🎾",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "wrestling",
-      title: "Wrestling 🤼",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "basketball",
-      title: "Basketball 🏀",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "baseball",
-      title: "Baseball ⚾",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "hockey",
-      title: "Hockey 🏒",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "american-football",
-      title: "American Football 🏈",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "australian-football",
-      title: "Australian Football 🏈",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "rugby",
-      title: "Rugby 🏉",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "darts",
-      title: "Darts 🎯",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "miscellaneous",
-      title: "Miscellaneous 🏳️‍🌈",
-      type: "Horizontal",
-      path: ""
-    },
-    {
-      slug: "channels",
-      title: "24/7 Streams 📺",
-      type: "Horizontal",
-      path: ""
-    }
-    // ,
-    // {
-    //   slug: "",
-    //   title: "",
-    //   type: "Horizontal",
-    //   path: ""
-    // },
+    { slug: "live", title: "🔴 LIVE", type: "Horizontal", path: "" },
+    { slug: "combat-sports", title: "Combat Sports 🥊", type: "Horizontal", path: "" },
+    { slug: "football", title: "Football ⚽", type: "Horizontal", path: "" },
+    { slug: "volleyball", title: "Volleyball 🏐", type: "Horizontal", path: "" },
+    { slug: "motorsports", title: "Motorsports 🏁", type: "Horizontal", path: "" },
+    { slug: "badminton", title: "Badminton 🏸", type: "Horizontal", path: "" },
+    { slug: "golf", title: "Golf 🚩", type: "Horizontal", path: "" },
+    { slug: "tennis", title: "Tennis 🎾", type: "Horizontal", path: "" },
+    { slug: "wrestling", title: "Wrestling 🤼", type: "Horizontal", path: "" },
+    { slug: "arm-wrestling", title: "Arm Wrestling 💪", type: "Horizontal", path: "" },
+    { slug: "basketball", title: "Basketball 🏀", type: "Horizontal", path: "" },
+    { slug: "baseball", title: "Baseball ⚾", type: "Horizontal", path: "" },
+    { slug: "hockey", title: "Hockey 🏒", type: "Horizontal", path: "" },
+    { slug: "american-football", title: "American Football 🏈", type: "Horizontal", path: "" },
+    { slug: "australian-football", title: "Australian Football 🏈", type: "Horizontal", path: "" },
+    { slug: "rugby", title: "Rugby 🏉", type: "Horizontal", path: "" },
+    { slug: "darts", title: "Darts 🎯", type: "Horizontal", path: "" },
+    { slug: "miscellaneous", title: "Miscellaneous 🏳️‍🌈", type: "Horizontal", path: "" },
+    { slug: "channels", title: "24/7 Streams 📺", type: "Horizontal", path: "" }
+      // ,{ slug: "", title: "", type: "Horizontal", path: "" },
   ]);
 }
 
@@ -173,6 +78,7 @@ function getPrimaryCategories() {
     { name: "Golf", slug: "golf" },
     { name: "Tennis", slug: "tennis" },
     { name: "Wrestling", slug: "wrestling" },
+    { name: "Arm Wrestling", slug: "arm-wrestling" },
     { name: "Basketball", slug: "basketball" },
     { name: "Baseball", slug: "baseball" },
     { name: "Hockey", slug: "hockey" },
@@ -181,8 +87,8 @@ function getPrimaryCategories() {
     { name: "Rugby", slug: "rugby" },
     { name: "Darts", slug: "darts" },
     { name: "Miscellaneous", slug: "miscellaneous" },
-    { name: "24/7 Streams", slug: "channels" }
-    // { name: "", slug: "" },
+    { name: "24/7 Streams", slug: "channels" },
+    // ,{ name: "", slug: "" },
   ]);
 }
 
