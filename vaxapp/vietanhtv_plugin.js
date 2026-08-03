@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vietanhtv",
     name: "VietAnhTV",
-    version: "1.0.4",
+    version: "1.0.5",
     baseUrl: "https://tv.vietanhtv.top/tv",
     iconUrl: "https://i.ibb.co/b8dVqVt/vietanhtv-logo.jpg",
     isEnabled: true,
@@ -34,15 +34,15 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "VTV ⭐", slug: "vtv" },
-    { name: "VTVcab 💎", slug: "vtvcab" },
-    { name: "TV360 📡", slug: "tv360" },
-    { name: "VTVPrime 🛰️", slug: "vtvprime" },
-    { name: "QUỐC TẾ 🌍", slug: "international" },
-    { name: "HTV x HTVC 🧬", slug: "htv-htvc" },
-    { name: "SCTV 🎫", slug: "sctv" },
-    { name: "ĐỊA PHƯƠNG 📺", slug: "local" },
-    { name: "BACKUP 📌", slug: "backup" }
+    { name: "VTV", slug: "vtv" },
+    { name: "VTVcab", slug: "vtvcab" },
+    { name: "TV360", slug: "tv360" },
+    { name: "VTVPrime", slug: "vtvprime" },
+    { name: "QUỐC TẾ", slug: "international" },
+    { name: "HTV x HTVC", slug: "htv-htvc" },
+    { name: "SCTV", slug: "sctv" },
+    { name: "ĐỊA PHƯƠNG", slug: "local" },
+    { name: "BACKUP", slug: "backup" }
   ]);
 }
 

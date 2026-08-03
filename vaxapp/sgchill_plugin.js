@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "sgchill",
     name: "SGCHILL",
-    version: "1.0.0",
+    version: "1.0.1",
     baseUrl: "https://sgchill.duckdns.org/",
     iconUrl: "https://sgchill.duckdns.org/favicon.ico",
     isEnabled: true,
@@ -32,14 +32,14 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "VTV ⭐", slug: "vtv" },
-    { name: "VTVcab 💎", slug: "vtvcab" },
-    { name: "TV360 📡", slug: "tv360" },
-    { name: "VTVPrime 🛰️", slug: "vtvprime" },
-    { name: "QUỐC TẾ 🌍", slug: "international" },
-    { name: "HTV x HTVC 🧬", slug: "htv-htvc" },
-    { name: "SCTV 🎫", slug: "sctv" },
-    { name: "ĐỊA PHƯƠNG 📺", slug: "local" }
+    { name: "VTV", slug: "vtv" },
+    { name: "VTVcab", slug: "vtvcab" },
+    { name: "TV360", slug: "tv360" },
+    { name: "VTVPrime", slug: "vtvprime" },
+    { name: "QUỐC TẾ", slug: "international" },
+    { name: "HTV x HTVC", slug: "htv-htvc" },
+    { name: "SCTV", slug: "sctv" },
+    { name: "ĐỊA PHƯƠNG", slug: "local" }
   ]);
 }
 

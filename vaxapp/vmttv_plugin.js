@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vmttv",
     name: "VMTTV",
-    version: "1.0.0",
+    version: "1.0.1",
     baseUrl: "https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/vmttv",
     iconUrl: "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
     isEnabled: true,
@@ -41,22 +41,22 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "🔴 ASEAN HUYNDAI CUP 2026", slug: "event" },
-    { name: "VTV ⭐", slug: "vtv" },
-    { name: "VTVcab 💎", slug: "vtvcab" },
-    { name: "TV360 📡", slug: "tv360" },
-    { name: "VTVPrime 🛰️", slug: "vtvprime" },
-    { name: "FPTPlay 🏷️", slug: "fptplay" },
-    { name: "QUỐC TẾ 🌍", slug: "international" },
-    { name: "HTV x HTVC 🧬", slug: "htv-htvc" },
-    { name: "SCTV 🎫", slug: "sctv" },
-    { name: "ĐỊA PHƯƠNG 📺", slug: "local" },
-    { name: "International Sport 👑", slug: "international-sport" },
-    { name: "Radio 📻", slug: "radio" },
-    { name: "Israel 🌐", slug: "israel" },
-    { name: "Hàn Quốc 🌐", slug: "korea" },
-    { name: "Trung Quốc 🌐", slug: "china" },
-    { name: "VOD 🎞️", slug: "vod" }
+    { name: "ASEAN HUYNDAI CUP 2026", slug: "event" },
+    { name: "VTV", slug: "vtv" },
+    { name: "VTVcab", slug: "vtvcab" },
+    { name: "TV360", slug: "tv360" },
+    { name: "VTVPrime", slug: "vtvprime" },
+    { name: "FPTPlay", slug: "fptplay" },
+    { name: "QUỐC TẾ", slug: "international" },
+    { name: "HTV x HTVC", slug: "htv-htvc" },
+    { name: "SCTV", slug: "sctv" },
+    { name: "ĐỊA PHƯƠNG", slug: "local" },
+    { name: "International Sport", slug: "international-sport" },
+    { name: "Radio", slug: "radio" },
+    { name: "Israel", slug: "israel" },
+    { name: "Hàn Quốc", slug: "korea" },
+    { name: "Trung Quốc", slug: "china" },
+    { name: "VOD", slug: "vod" }
   ]);
 }
 
