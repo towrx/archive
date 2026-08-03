@@ -446,11 +446,10 @@ function getClearKey(html, licenseKey) {
   } catch (error) { // clearKey does not require fetching.
     console.log("ℹ️ [getClearKey in vietanhtv_plugin.js] clearKey does NOT require fetching - ", licenseKey);
     // Hex format "KID:KEY" (e.g. license_key=aabb...:ccdd...)
-    if (licenseKey && licenseKey.includes(":")) {
+    if (licenseKey && licenseKey.includes(":") && licenseKey.split(":").length === 2) {
       const parts = licenseKey.split(":");
 
       if (
-        parts.length === 2 &&
         /^[0-9a-fA-F]+$/.test(parts[0]) &&
         /^[0-9a-fA-F]+$/.test(parts[1])
       ) {
