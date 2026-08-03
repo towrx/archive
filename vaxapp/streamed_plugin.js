@@ -18,7 +18,8 @@ function getManifest() {
     isAdult: false,
     type: "MOVIE",
     layoutType: "HORIZONTAL",
-    playerType: "embedtoexoplay"
+    playerType: "embedtoexoplay",
+    debug: true
   });
 }
 
@@ -163,8 +164,7 @@ function parseMovieDetail(html, apiUrl) {
         backdropUrl: FALLBACK_POSTER_URL,
         servers: []
       });
-    const data = JSON.parse(decodeURIComponent(extractPluginPipeData(apiUrl)));
-    const description = data.description + SELECTION_GUIDE;
+    const data = JSON.parse(decodeURIComponent(getPipeData(apiUrl)));
     const episodes = [];
     const serverName = streams[0].source?.toUpperCase();
 
@@ -178,7 +178,6 @@ function parseMovieDetail(html, apiUrl) {
         slug: `${stream.id.split("?")[0]}-${index + 1}`
       });
     });
-    const servers = [{ name: serverName, episodes: episodes }];
 
     return JSON.stringify({
       id: getPath(apiUrl, `/stream/`),
@@ -186,9 +185,9 @@ function parseMovieDetail(html, apiUrl) {
       posterUrl: data.posterUrl,
       backdropUrl: data.posterUrl,
       lang: serverName,
-      description: description,
+      description: data.description + SELECTION_GUIDE,
       quality: data.category,
-      servers: servers
+      servers: [{ name: serverName, episodes: episodes }]
     });
   } catch (error) {
       console.log("⛔ [parseMovieDetail in streamed_plugin.js] ERROR MESSAGE: ", error);
@@ -294,4 +293,16 @@ function getPath(apiUrl, keyword) {
 
   if (!keyword || index === -1) return "";
   return apiUrl.substring(index);
+}
+
+function getPipeData(apiUrl) {
+    if (!apiUrl) return "";
+    const index = apiUrl.indexOf("|");
+
+    if (index < 0) return "";
+    var res = apiUrl.substring(index + 1).replace(/^\s+/, "");
+    // Remove the prefix "data:" if present (case-insensitive)
+    if (res.toLowerCase().indexOf("data:") === 0) return res.substring(5);
+    
+    return res;
 }
