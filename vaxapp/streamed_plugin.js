@@ -11,7 +11,7 @@ function getManifest() {
   return JSON.stringify({
     id: "streamed",
     name: "Streamed",
-    version: "1.3.5",
+    version: "1.3.6",
     baseUrl: "https://streamed.pk",
     iconUrl: "https://i.ibb.co/N2mkkD4N/streamed-logo.png",
     isEnabled: true,
@@ -107,31 +107,27 @@ function parseListResponse(html, apiUrl) {
     let streams = JSON.parse(html);
     const items = [];
     const keyword = extractParamFromUrl(apiUrl, "search");
-
     streams = filterStreams(streams, keyword);
 
     streams.forEach((stream) => {
-      const title = stream?.title?.trim();
+      const title = stream.title?.trim();
       const posterUrl = getPosterUrl(stream);
-      const streamLabel =
-        Date.now() >= stream?.date ? "LIVE" : formatDateTime(stream?.date);
-      const category = stream?.category?.toUpperCase() || "";
+      const category = stream.category?.toUpperCase();
 
       for (const item of stream.sources) {
-        const serverName = item?.source?.toUpperCase();
+        const serverName = item.source?.toUpperCase();
         //remove server echo
-        if (serverName === "ECHO") break;
+        if (serverName === "ECHO") continue;
         const description = `Event "${title}" is hosted on server ${serverName}.`;
         const encodedData = encodeURIComponent(JSON.stringify({ title, posterUrl, category, description }));
-        const path = `/stream/${item?.source}/${item?.id}|${encodedData}`;
 
         items.push({
-          id: path,
-          title: title,
-          description: description,
-          posterUrl: posterUrl,
+          id: `/stream/${item.source}/${item.id}|data:${encodedData}`,
+          title,
+          description,
+          posterUrl,
           backdropUrl: posterUrl,
-          quality: streamLabel,
+          quality: Date.now() >= stream.date ? "LIVE" : formatDateTime(stream.date),
           episode_current: serverName,
           lang: category
         });
@@ -143,11 +139,11 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (error) {
-    console.log("⛔ [parseListResponse] ERROR MESSAGE: ", error);
-    return JSON.stringify({
-      items: [],
-      pagination: { currentPage: 1, totalPages: 1 }
-    });
+      console.log("⛔ [parseListResponse in streamed_plugin.js] ERROR MESSAGE: ", error);
+      return JSON.stringify({
+        items: [],
+        pagination: { currentPage: 1, totalPages: 1 }
+      });
   }
 }
 
@@ -167,44 +163,36 @@ function parseMovieDetail(html, apiUrl) {
         backdropUrl: FALLBACK_POSTER_URL,
         servers: []
       });
-
-    const id = getPath(apiUrl, `/stream/`);
-    const data = JSON.parse(decodeURIComponent(apiUrl.split("|")[1]));
-    const { title, posterUrl, category } = data;
+    const data = JSON.parse(decodeURIComponent(extractPluginPipeData(apiUrl)));
     const description = data.description + SELECTION_GUIDE;
     const episodes = [];
     const serverName = streams[0].source?.toUpperCase();
 
     streams.forEach((stream, index) => {
-      const embedUrl = stream?.embedUrl;
-      const quality = stream?.hd ? "HD" : "SD";
-      const viewers = formatViewerCount(stream?.viewers);
-      const language = stream.language;
-      const name = `${quality}${viewers ? " - 🔴 " + viewers : ""}${language ? " - " + language : ""}`;
-      const path = `${id.split("?")[0]}-${index + 1}`;
+      const quality = stream.hd ? "HD" : "SD";
+      const viewers = formatViewerCount(stream.viewers);
 
       episodes.push({
-        id: embedUrl,
-        name: name,
-        slug: path
+        id: stream.embedUrl,
+        name: `${quality}${viewers ? " - 🔴 " + viewers : ""}${stream.language ? " - " + stream.language : ""}`,
+        slug: `${stream.id.split("?")[0]}-${index + 1}`
       });
     });
-
     const servers = [{ name: serverName, episodes: episodes }];
 
     return JSON.stringify({
-      id: id,
-      title: title,
-      posterUrl: posterUrl,
-      backdropUrl: posterUrl,
+      id: getPath(apiUrl, `/stream/`),
+      title: data.title,
+      posterUrl: data.posterUrl,
+      backdropUrl: data.posterUrl,
       lang: serverName,
       description: description,
-      quality: category,
+      quality: data.category,
       servers: servers
     });
   } catch (error) {
-    console.log("⛔ [parseMovieDetail] ERROR MESSAGE: ", error);
-    return "{}";
+      console.log("⛔ [parseMovieDetail in streamed_plugin.js] ERROR MESSAGE: ", error);
+      return "{}";
   }
 }
 
@@ -228,8 +216,8 @@ function parseDetailResponse(html, embedUrl) {
       isEmbed: true
     });
   } catch (error) {
-    console.log("⛔ [parseDetailResponse] ERROR MESSAGE: ", error);
-    return "{}";
+      console.log("⛔ [parseDetailResponse in streamed_plugin.js] ERROR MESSAGE: ", error);
+      return "{}";
   }
 }
 
@@ -247,23 +235,17 @@ function parseYearsResponse(html) {
 // NHÓM 4: HELPERS
 // =============================================================================
 
-function getPosterUrl(item) {
-  try {
-    if (item?.poster)
-      return (
-        BASE_API_URL + item.poster.substring(item.poster.indexOf("/api/") + 4)
-      );
-    const homeTeamLogoSlug = item?.teams?.home?.badge;
-    const awayTeamLogoSlug = item?.teams?.away?.badge;
-    if (homeTeamLogoSlug && awayTeamLogoSlug)
-      return (
-        BASE_API_URL +
-        `/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`
-      );
-    return FALLBACK_POSTER_URL;
-  } catch (e) {
-    return "";
-  }
+function getPosterUrl(stream) {
+  if (stream?.poster) return BASE_API_URL + stream.poster.substring(stream.poster.indexOf("/api/") + 4);
+  const teams = stream.teams;
+  
+  if(!teams) return FALLBACK_POSTER_URL;
+  const homeTeamLogoSlug = teams.home?.badge;
+  const awayTeamLogoSlug = teams.away?.badge;
+
+  if (homeTeamLogoSlug && awayTeamLogoSlug) 
+    return `${BASE_API_URL}/images/poster/${homeTeamLogoSlug}/${awayTeamLogoSlug}.webp`;
+  return FALLBACK_POSTER_URL;
 }
 
 function formatDateTime(timestamp) {
@@ -271,7 +253,6 @@ function formatDateTime(timestamp) {
   if (timestamp < 1e12) {
     timestamp *= 1000;
   }
-
   const date = new Date(timestamp);
   const hh = String(date.getHours()).padStart(2, "0");
   const mm = String(date.getMinutes()).padStart(2, "0");
@@ -293,6 +274,7 @@ function formatViewerCount(viewerCount) {
 function extractParamFromUrl(url, param) {
   if (!url) return "";
   var match = url.match(new RegExp("[?&]" + param + "=([^&]+)"));
+
   return match ? decodeURIComponent(match[1]) : "";
 }
 
@@ -300,7 +282,7 @@ function filterStreams(streams, keyword) {
   if (keyword) {
     streams = streams.filter((stream) => {
       return (
-        stream?.title?.toLowerCase()?.indexOf(keyword.toLowerCase() || "") >= 0
+        stream.title?.toLowerCase()?.indexOf(keyword.toLowerCase() || "") >= 0
       );
     });
   }
@@ -309,6 +291,7 @@ function filterStreams(streams, keyword) {
 
 function getPath(apiUrl, keyword) {
   const index = apiUrl.indexOf(keyword);
+
   if (!keyword || index === -1) return "";
   return apiUrl.substring(index);
 }
