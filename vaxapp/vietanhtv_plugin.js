@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vietanhtv",
     name: "VietAnhTV",
-    version: "1.0.3",
+    version: "1.0.4",
     baseUrl: "https://tv.vietanhtv.top/tv",
     iconUrl: "https://i.ibb.co/b8dVqVt/vietanhtv-logo.jpg",
     isEnabled: true,
