@@ -1,35 +1,3 @@
-const BASE_URL = "https://tv.vietanhtv.top/tv";
-const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
-let channelList = [];
-
-// Use GROUP_MAP to rename and merge the channel into tvg-group.
-const GROUP_MAP = {
-  VTV: "VTV ⭐",
-  VTVcab: "VTVcab 💎",
-  "In The Box": "QUỐC TẾ 🌍",
-  "Quốc Tế": "QUỐC TẾ 🌍",
-  HTV: "HTV x HTVC 🧬",
-  SCTV: "SCTV 🎫",
-  "Địa Phương": "ĐỊA PHƯƠNG 📺",
-  "Dự phòng": "BACKUP 📌",
-  "Sự Kiện TV360": "TV360 📡",
-  "Rạp Phim": "TV360 📡",
-  "Sự Kiện VTVPrime": "VTVPrime 🛰️"
-};
-
-// Use CATEGORY_MAP to convert the slug to tvg-group.
-const CATEGORY_MAP = {
-  vtv: "VTV ⭐",
-  vtvcab: "VTVcab 💎",
-  tv360: "TV360 📡",
-  vtvprime: "VTVPrime 🛰️",
-  international: "QUỐC TẾ 🌍",
-  "htv-htvc": "HTV x HTVC 🧬",
-  sctv: "SCTV 🎫",
-  local: "ĐỊA PHƯƠNG 📺",
-  backup: "BACKUP 📌"
-};
-
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
 // =============================================================================
@@ -90,7 +58,7 @@ function getUrlList(slug, filtersJson) {
   return `${BASE_URL}?category=${slug}`;
 }
 
-function getUrlSearch(keyword, filtersJson) {
+function getUrlSearch(keyword = "", filtersJson) {
   return `${BASE_URL}?search=${encodeURIComponent(keyword?.trim())}`;
 }
 
@@ -152,10 +120,10 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (error) {
-    console.log("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
+    console.error("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
     return JSON.stringify({
-      items: [],
-      pagination: { currentPage: 1, totalPages: 1 }
+        items: [],
+        pagination: { currentPage: 1, totalPages: 1 }
     });
   }
 }
@@ -237,7 +205,7 @@ function parseDetailResponse(html, apiUrl) {
       });
     }
   } catch (error) {
-    console.log("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
+    console.error("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
     return "{}";
   }
 }
@@ -256,6 +224,44 @@ function parseYearsResponse(html) {
 // NHÓM 4: HELPERS
 // =============================================================================
 
+// ======================================
+// VARIABLES
+// ======================================
+
+const BASE_URL = "https://tv.vietanhtv.top/tv";
+const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
+let channelList = [];
+// Use GROUP_MAP to rename and merge the channel into tvg-group.
+const GROUP_MAP = {
+  VTV: "VTV ⭐",
+  VTVcab: "VTVcab 💎",
+  "In The Box": "QUỐC TẾ 🌍",
+  "Quốc Tế": "QUỐC TẾ 🌍",
+  HTV: "HTV x HTVC 🧬",
+  SCTV: "SCTV 🎫",
+  "Địa Phương": "ĐỊA PHƯƠNG 📺",
+  "Dự phòng": "BACKUP 📌",
+  "Sự Kiện TV360": "TV360 📡",
+  "Rạp Phim": "TV360 📡",
+  "Sự Kiện VTVPrime": "VTVPrime 🛰️"
+};
+// Use CATEGORY_MAP to convert the slug to tvg-group.
+const CATEGORY_MAP = {
+  vtv: "VTV ⭐",
+  vtvcab: "VTVcab 💎",
+  tv360: "TV360 📡",
+  vtvprime: "VTVPrime 🛰️",
+  international: "QUỐC TẾ 🌍",
+  "htv-htvc": "HTV x HTVC 🧬",
+  sctv: "SCTV 🎫",
+  local: "ĐỊA PHƯƠNG 📺",
+  backup: "BACKUP 📌"
+};
+
+// ======================================
+// FUNCTIONS
+// ======================================
+
 function extractParamFromUrl(url, param) {
   if (!url) return "";
   var match = url.match(new RegExp("[?&]" + param + "=([^&]+)"));
@@ -263,8 +269,6 @@ function extractParamFromUrl(url, param) {
 }
 
 function filterChannels(channels, [filterKey, filterValue]) {
-  const result = [];
-
   // filter channels by category
   if (filterValue && filterKey === "category") {
     return channels.filter(
@@ -278,8 +282,6 @@ function filterChannels(channels, [filterKey, filterValue]) {
       return name.indexOf(filterValue) >= 0;
     });
   }
-
-  return channels;
 }
 
 function getChannel(channels, channelId) {

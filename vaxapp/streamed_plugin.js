@@ -1,8 +1,3 @@
-const BACKUP_DOMAINS = "https://strmd.link";
-const BASE_API_URL = "https://streamed.pk/api";
-const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
-const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
-
 // =============================================================================
 // NHÓM 1: CẤU HÌNH (Config & Metadata)
 // =============================================================================
@@ -79,7 +74,7 @@ function getUrlList(slug, filtersJson) {
   return `${BASE_API_URL}/matches/${slug}`;
 }
 
-function getUrlSearch(keyword, filtersJson) {
+function getUrlSearch(keyword = "", filtersJson) {
   return `${BASE_API_URL}/matches/all?search=${encodeURIComponent(keyword.trim())}`;
 }
 
@@ -140,7 +135,7 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (error) {
-      console.log("⛔ [parseListResponse in streamed_plugin.js] ERROR MESSAGE: ", error);
+      console.error("⛔ [parseListResponse in streamed_plugin.js] ERROR MESSAGE: ", error);
       return JSON.stringify({
         items: [],
         pagination: { currentPage: 1, totalPages: 1 }
@@ -154,28 +149,22 @@ function parseSearchResponse(html, apiUrl) {
 
 function parseMovieDetail(html, apiUrl) {
   try {
-    const streams = JSON.parse(html);
+    const stream = JSON.parse(html);
 
-    if (!Array.isArray(streams) || streams.length === 0)
-      return JSON.stringify({
-        id: "",
-        title: "⚠️ Stream Link Not Found!",
-        posterUrl: FALLBACK_POSTER_URL,
-        backdropUrl: FALLBACK_POSTER_URL,
-        servers: []
-      });
+    if (!Array.isArray(stream) || stream.length === 0) return EMPTY_MOVIE_DETAIL;
+      
     const data = JSON.parse(decodeURIComponent(getPipeData(apiUrl)));
     const episodes = [];
-    const serverName = streams[0].source?.toUpperCase();
+    const serverName = stream[0].source?.toUpperCase();
 
-    streams.forEach((stream, index) => {
-      const quality = stream.hd ? "HD" : "SD";
-      const viewers = formatViewerCount(stream.viewers);
+    stream.forEach((item, index) => {
+      const quality = item.hd ? "HD" : "SD";
+      const viewers = formatViewerCount(item.viewers);
 
       episodes.push({
-        id: stream.embedUrl,
-        name: `${quality}${viewers ? " - 🔴 " + viewers : ""}${stream.language ? " - " + stream.language : ""}`,
-        slug: `${stream.id.split("?")[0]}-${index + 1}`
+        id: item.embedUrl,
+        name: `${quality}${viewers ? " - 🔴 " + viewers : ""}${item.language ? " - " + item.language : ""}`,
+        slug: `${item.id.split("?")[0]}-${index + 1}`
       });
     });
 
@@ -190,8 +179,8 @@ function parseMovieDetail(html, apiUrl) {
       servers: [{ name: serverName, episodes: episodes }]
     });
   } catch (error) {
-      console.log("⛔ [parseMovieDetail in streamed_plugin.js] ERROR MESSAGE: ", error);
-      return "{}";
+      console.error("⛔ [parseMovieDetail in streamed_plugin.js] ERROR MESSAGE: ", error);
+      return EMPTY_MOVIE_DETAIL;
   }
 }
 
@@ -215,7 +204,7 @@ function parseDetailResponse(html, embedUrl) {
       isEmbed: true
     });
   } catch (error) {
-      console.log("⛔ [parseDetailResponse in streamed_plugin.js] ERROR MESSAGE: ", error);
+      console.error("⛔ [parseDetailResponse in streamed_plugin.js] ERROR MESSAGE: ", error);
       return "{}";
   }
 }
@@ -233,6 +222,26 @@ function parseYearsResponse(html) {
 // =============================================================================
 // NHÓM 4: HELPERS
 // =============================================================================
+
+// ======================================
+// VARIABLES
+// ======================================
+
+const BACKUP_DOMAINS = "https://strmd.link";
+const BASE_API_URL = "https://streamed.pk/api";
+const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
+const EMPTY_MOVIE_DETAIL = JSON.stringify({
+  id: "",
+  title: "⚠️ Stream Link Not Found!",
+  posterUrl: FALLBACK_POSTER_URL,
+  backdropUrl: FALLBACK_POSTER_URL,
+  servers: []
+});
+const SELECTION_GUIDE = `\n\n✅The format of each live event link is: [VideoQuality - ConcurrentViewers].\n✅Video quality: Prefer at least HD.\n✅Concurrent viewers: higher is better, 1N = 1000 concurrent viewers.`;
+
+// ======================================
+// FUNCTIONS
+// ======================================
 
 function getPosterUrl(stream) {
   if (stream?.poster) return BASE_API_URL + stream.poster.substring(stream.poster.indexOf("/api/") + 4);
