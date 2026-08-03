@@ -8,7 +8,7 @@ function getManifest() {
     name: "HOIQUANCLICK",
     version: "1.0.0",
     baseUrl: "https://raw.githubusercontent.com/hoiquanclick/hoiquan/refs/heads/main/vip.m3u",
-    iconUrl: "https://i.ibb.co/nqYkqwj1/hoiquan-logo.png",
+    iconUrl: "https://i.ibb.co/HpXFPKxL/hoiquanclick-logo.png",
     isEnabled: true,
     isAdult: false,
     type: "IPTV",
