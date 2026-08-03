@@ -38,14 +38,15 @@ function getManifest() {
   return JSON.stringify({
     id: "vietanhtv",
     name: "VietAnhTV",
-    version: "1.0.2",
-    baseUrl: BASE_URL,
+    version: "1.0.3",
+    baseUrl: "https://tv.vietanhtv.top/tv",
     iconUrl: "https://i.ibb.co/b8dVqVt/vietanhtv-logo.jpg",
     isEnabled: true,
     isAdult: false,
     type: "IPTV",
     layoutType: "HORIZONTAL",
-    playerType: "exoplayer"
+    playerType: "exoplayer",
+    debug: true
   });
 }
 
@@ -121,15 +122,13 @@ function parseListResponse(html, apiUrl) {
     if (channelList.length === 0) channelList = parseM3U(html);
     const category = extractParamFromUrl(apiUrl, "category");
     const keyword = extractParamFromUrl(apiUrl, "search");
+
     if (category)
       channels = filterChannels(channelList, ["category", category]);
     else if (keyword) channels = filterChannels(channelList, ["search", keyword]);
 
     channels.forEach((channel) => {
       const {
-        name,
-        tvgLogo,
-        channelId,
         props: {
           "inputstream.adaptive.manifest_type": manifestType,
           "inputstream.adaptive.license_type": licenseType,
@@ -137,26 +136,14 @@ function parseListResponse(html, apiUrl) {
         }
       } = channel;
 
-      const description = `Channel "${name}" is hosted on server VIETANHTV.`;
-      const tRInfo = manifestType
-        ? `${licenseType.toUpperCase()} - DASH`
-        : "HSL";
-      const tLInfo = "LIVE 24/7";
-      const path = licenseKey
-        ? licenseKey +
-          "&channelId=" +
-          channelId +
-          "|User-Agent=Dalvik/2.1.0&Referer=https://tv.vietanhtv.top/"
-        : "?channelId=" + channelId;
-
       items.push({
-        id: path,
-        title: name,
-        description: description,
-        posterUrl: tvgLogo || FALLBACK_POSTER_URL,
-        backdropUrl: tvgLogo || FALLBACK_POSTER_URL,
-        quality: tLInfo,
-        episode_current: tRInfo
+        id: licenseKey ? licenseKey + "&channelId=" + channel.channelId + "|User-Agent=Dalvik/2.1.0&Referer=https://tv.vietanhtv.top/" : "?channelId=" + channel.channelId,
+        title: channel.name,
+        description: `Channel "${channel.name}" is hosted on server VIETANHTV.`,
+        posterUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
+        backdropUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
+        quality: "LIVE",
+        episode_current: manifestType ? `DASH - ${licenseType.toUpperCase()}` : "HLS"
       });
     });
 
@@ -165,7 +152,7 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (error) {
-    console.log("⛔ [parseDetailResponse] ERROR MESSAGE: ", error);
+    console.log("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
     return JSON.stringify({
       items: [],
       pagination: { currentPage: 1, totalPages: 1 }
@@ -193,43 +180,16 @@ function parseDetailResponse(html, apiUrl) {
         "inputstream.adaptive.license_key": licenseKey
       }
     } = getChannel(channelList, channelId);
-
-    // Handle license_type and
+    
+    console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Name: ", name);
+    // Handle license_type and manifest_type
     // Value manifest_type = dash or mdp
     // Value license_type = clearkey
     if (licenseType === "clearkey") {
-      const clearKey = {};
-      try {
-        // JSON format {"keys":[{"kid":"...","k":"..."}]}
-        const keyData = JSON.parse(html);
-        if (keyData.keys && Array.isArray(keyData.keys)) {
-          keyData.keys.forEach((k) => {
-            clearKey.drmKid = base64ToHex(k.kid);
-            clearKey.drmKey = base64ToHex(k.k);
-          });
-          // JSON format {"kid":"...","k":"..."}
-        } else if (keyData.kid && keyData.k) {
-          clearKey.drmKid = base64ToHex(keyData.kid);
-          clearKey.drmKey = base64ToHex(keyData.k);
-        }
-      } catch (e) {
-        console.log("Error message [parseDetailResponse]: ", e);
-        // Hex format "KID:KEY" (e.g. license_key=aabb...:ccdd...)
-        if (licenseKey && licenseKey.includes(":")) {
-          const parts = licenseKey.split(":");
-          if (
-            parts.length === 2 &&
-            /^[0-9a-fA-F]+$/.test(parts[0]) &&
-            /^[0-9a-fA-F]+$/.test(parts[1])
-          ) {
-            clearKey.drmKid = parts[0].toLowerCase();
-            clearKey.drmKey = parts[1].toLowerCase();
-          }
-        }
-      }
-      console.log("Name: ", name);
-      console.log("ClearKey:", clearKey);
-      console.log("URL:", url);
+      const clearKey = getClearKey(html, licenseKey);
+    
+      console.log(`ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Manifest type DASH (MPD) - ClearKey: `, clearKey);
+      console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -244,13 +204,11 @@ function parseDetailResponse(html, apiUrl) {
         }
       });
     }
-    // Value manifest_type = dash or mdp
-    // Value license_type = widevine
-    else if (licenseType === "widevine") {
+    else if (licenseType === "widevine") { // Value manifest_type = dash or mdp, Value license_type = widevine
       const licenseUrl = apiUrl.substring(0, apiUrl.indexOf("&channelId"));
-      console.log("Name: ", name);
-      console.log("Widevine:", apiUrl);
-      console.log("URL:", url);
+      
+      console.log(`ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Manifest type DASH (MPD) - Widevine: `, apiUrl);
+      console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -264,11 +222,9 @@ function parseDetailResponse(html, apiUrl) {
         }
       });
     }
-    // No manifest_type and licenseType,
-    // Normal HSL (m3u8)
-    else {
-      console.log("Name: ", name);
-      console.log("URL:", url);
+    else { // No manifest_type and licenseType, Normal HLS (m3u8)
+      console.log(`ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Manifest type HLS (M3U8)`);
+      console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -281,7 +237,7 @@ function parseDetailResponse(html, apiUrl) {
       });
     }
   } catch (error) {
-    console.log("⛔ [parseDetailResponse] ERROR MESSAGE: ", error);
+    console.log("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
     return "{}";
   }
 }
@@ -467,4 +423,53 @@ function atob(input) {
   }
 
   return output;
+}
+
+// The getClearKey function is used for multiple IPTV sources.
+function getClearKey(html, licenseKey) {
+  const clearKey = {}
+  try { // clearKey needs to be fetched.
+    // JSON format {"keys":[{"kid":"...","k":"..."}]}
+    const keyData = JSON.parse(html);
+    console.log("ℹ️ [getClearKey in vietanhtv_plugin.js] clearKey NEEDS to be fetched - ", keyData);
+    if (keyData.keys && Array.isArray(keyData.keys)) {
+      keyData.keys.forEach((k) => {
+        clearKey.drmKid = base64ToHex(k.kid);
+        clearKey.drmKey = base64ToHex(k.k);
+      });
+    } else if (keyData.kid && keyData.k) { // JSON format {"kid":"...","k":"..."}
+      clearKey.drmKid = base64ToHex(keyData.kid);
+      clearKey.drmKey = base64ToHex(keyData.k);
+    }
+  } catch (error) { // clearKey does not require fetching.
+    console.log("ℹ️ [getClearKey in vietanhtv_plugin.js] clearKey does NOT require fetching - ", licenseKey);
+    // Hex format "KID:KEY" (e.g. license_key=aabb...:ccdd...)
+    if (licenseKey && licenseKey.includes(":")) {
+      const parts = licenseKey.split(":");
+
+      if (
+        parts.length === 2 &&
+        /^[0-9a-fA-F]+$/.test(parts[0]) &&
+        /^[0-9a-fA-F]+$/.test(parts[1])
+      ) {
+        clearKey.drmKid = parts[0].toLowerCase();
+        clearKey.drmKey = parts[1].toLowerCase();
+      }
+    }
+    else {
+      const keyData = JSON.parse(licenseKey);
+      // JSON format {"keys":[{"kid":"...","k":"..."}]}
+      if (keyData.keys && Array.isArray(keyData.keys)) {
+      keyData.keys.forEach((k) => {
+        clearKey.drmKid = base64ToHex(k.kid);
+        clearKey.drmKey = base64ToHex(k.k);
+      });
+      } else if (keyData.kid && keyData.k) { // JSON format {"kid":"...","k":"..."}
+        clearKey.drmKid = base64ToHex(keyData.kid);
+        clearKey.drmKey = base64ToHex(keyData.k);
+      }
+    }
+  }
+
+  return clearKey
 }
