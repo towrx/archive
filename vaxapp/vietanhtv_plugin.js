@@ -287,7 +287,6 @@ function filterChannels(channels, [filterKey, filterValue]) {
 function getChannel(channels, channelId) {
   if (channelId === undefined || channelId === null || channelId === "") return {};
   const numId = parseInt(channelId, 10);
-  if (!isNaN(numId) && channels[numId]) return channels[numId];
   return channels.find(channel => String(channel.channelId) === String(channelId)) || {};
 }
 
