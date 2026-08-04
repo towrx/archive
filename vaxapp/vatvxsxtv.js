@@ -4,11 +4,11 @@
 
 function getManifest() {
   return JSON.stringify({
-    id: "vietanhtv",
-    name: "VietAnhTV",
-    version: "1.0.5",
+    id: "vatvxsxtv",
+    name: "VATVxSXTV",
+    version: "1.0.6",
     baseUrl: "https://tv.vietanhtv.top/tv",
-    iconUrl: "https://i.ibb.co/b8dVqVt/vietanhtv-logo.jpg",
+    iconUrl: "https://i.ibb.co/GyFwhPJ/vatvxsxtv-logo.jpg",
     isEnabled: true,
     isAdult: false,
     type: "IPTV",
@@ -28,7 +28,8 @@ function getHomeSections() {
     { slug: "htv-htvc", title: "HTV x HTVC 🧬", type: "Horizontal", path: "" },
     { slug: "sctv", title: "SCTV 🎫", type: "Horizontal", path: "" },
     { slug: "local", title: "ĐỊA PHƯƠNG 📺", type: "Horizontal", path: "" },
-    { slug: "backup", title: "BACKUP 📌", type: "Horizontal", path: "" }
+    { slug: "backup", title: "BACKUP 📌", type: "Horizontal", path: "" },
+    { slug: "illegal-socolive", title: "Socolive ⚽", type: "Grid", path: "" }
   ]);
 }
 
@@ -42,7 +43,8 @@ function getPrimaryCategories() {
     { name: "HTV x HTVC", slug: "htv-htvc" },
     { name: "SCTV", slug: "sctv" },
     { name: "ĐỊA PHƯƠNG", slug: "local" },
-    { name: "BACKUP", slug: "backup" }
+    { name: "BACKUP", slug: "backup" },
+    { name: "Socolive", slug: "illegal-socolive" }
   ]);
 }
 
@@ -96,6 +98,7 @@ function parseListResponse(html, apiUrl) {
     else if (keyword) channels = filterChannels(channelList, ["search", keyword]);
 
     channels.forEach((channel) => {
+      let matchInfo = "";
       const {
         props: {
           "inputstream.adaptive.manifest_type": manifestType,
@@ -103,15 +106,17 @@ function parseListResponse(html, apiUrl) {
           "inputstream.adaptive.license_key": licenseKey
         }
       } = channel;
-
+      if(channel.tvgGroup === "Socolive ⚽") 
+        matchInfo = parseChannelName(channel.name);
       items.push({
         id: licenseKey ? licenseKey + "&channelId=" + channel.channelId + "|User-Agent=Dalvik/2.1.0&Referer=https://tv.vietanhtv.top/" : "?channelId=" + channel.channelId,
-        title: channel.name,
-        description: `Channel "${channel.name}" is hosted on server VIETANHTV.`,
+        title: matchInfo.title ? matchInfo.title : channel.name,
+        description: `Channel "${channel.name}" is hosted on server VATV x SXTV.`,
         posterUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
         backdropUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
-        quality: "LIVE",
-        episode_current: manifestType ? `DASH - ${licenseType.toUpperCase()}` : "HLS"
+        quality: matchInfo.dateTime ? (isLive(matchInfo.dateTime) ? "LIVE" : matchInfo.dateTime) : "LIVE",
+        episode_current: matchInfo.commentator ? `BLV ${matchInfo.commentator}` : (manifestType ? `DASH - ${licenseType.toUpperCase()}` : "HLS"),
+        lang: matchInfo.competition
       });
     });
 
@@ -120,7 +125,7 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (error) {
-    console.error("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
+    console.error("⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ", error);
     return JSON.stringify({
         items: [],
         pagination: { currentPage: 1, totalPages: 1 }
@@ -149,15 +154,15 @@ function parseDetailResponse(html, apiUrl) {
       }
     } = getChannel(channelList, channelId);
     
-    console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Name: ", name);
+    console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] Name: ", name);
     // Handle license_type and manifest_type
     // Value manifest_type = dash or mdp
     // Value license_type = clearkey
     if (licenseType === "clearkey") {
       const clearKey = getClearKey(html, licenseKey);
     
-      console.log(`ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Manifest type DASH (MPD) - ClearKey: `, clearKey);
-      console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] URL:", url);
+      console.log(`ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - ClearKey: `, clearKey);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -175,8 +180,8 @@ function parseDetailResponse(html, apiUrl) {
     else if (licenseType === "widevine") { // Value manifest_type = dash or mdp, Value license_type = widevine
       const licenseUrl = apiUrl.substring(0, apiUrl.indexOf("&channelId"));
       
-      console.log(`ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Manifest type DASH (MPD) - Widevine: `, apiUrl);
-      console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] URL:", url);
+      console.log(`ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - Widevine: `, apiUrl);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -191,8 +196,8 @@ function parseDetailResponse(html, apiUrl) {
       });
     }
     else { // No manifest_type and licenseType, Normal HLS (m3u8)
-      console.log(`ℹ️ [parseDetailResponse in vietanhtv_plugin.js] Manifest type HLS (M3U8)`);
-      console.log("ℹ️ [parseDetailResponse in vietanhtv_plugin.js] URL:", url);
+      console.log(`ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type HLS (M3U8)`);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -205,7 +210,7 @@ function parseDetailResponse(html, apiUrl) {
       });
     }
   } catch (error) {
-    console.error("⛔ [parseDetailResponse in vietanhtv_plugin.js] ERROR MESSAGE: ", error);
+    console.error("⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ", error);
     return "{}";
   }
 }
@@ -233,17 +238,18 @@ const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 let channelList = [];
 // Use GROUP_MAP to rename and merge the channel into tvg-group.
 const GROUP_MAP = {
-  VTV: "VTV ⭐",
-  VTVcab: "VTVcab 💎",
-  "In The Box": "QUỐC TẾ 🌍",
-  "Quốc Tế": "QUỐC TẾ 🌍",
-  HTV: "HTV x HTVC 🧬",
-  SCTV: "SCTV 🎫",
-  "Địa Phương": "ĐỊA PHƯƠNG 📺",
-  "Dự phòng": "BACKUP 📌",
-  "Sự Kiện TV360": "TV360 📡",
-  "Rạp Phim": "TV360 📡",
-  "Sự Kiện VTVPrime": "VTVPrime 🛰️"
+  vtv: "VTV ⭐",
+  vtvcab: "VTVcab 💎",
+  "in the box": "QUỐC TẾ 🌍",
+  "quốc tế": "QUỐC TẾ 🌍",
+  htv: "HTV x HTVC 🧬",
+  sctv: "SCTV 🎫",
+  "địa phương": "ĐỊA PHƯƠNG 📺",
+  "dự phòng": "BACKUP 📌",
+  "sự kiện tv360": "TV360 📡",
+  "rạp phim": "TV360 📡",
+  "sự kiện vtvprime": "VTVPrime 🛰️",
+  "socolive": "Socolive ⚽"
 };
 // Use CATEGORY_MAP to convert the slug to tvg-group.
 const CATEGORY_MAP = {
@@ -255,7 +261,8 @@ const CATEGORY_MAP = {
   "htv-htvc": "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
   local: "ĐỊA PHƯƠNG 📺",
-  backup: "BACKUP 📌"
+  backup: "BACKUP 📌",
+  "illegal-socolive": "Socolive ⚽"
 };
 
 // ======================================
@@ -319,8 +326,8 @@ function parseM3U(text) {
 
       const groupMatch = line.match(/group-title="([^"]+)"/i);
       if (groupMatch && groupMatch[1])
-        currentChannel.tvgGroup = GROUP_MAP[groupMatch[1]]
-          ? GROUP_MAP[groupMatch[1]]
+        currentChannel.tvgGroup = GROUP_MAP[groupMatch[1].toLowerCase()]
+          ? GROUP_MAP[groupMatch[1].toLowerCase()]
           : groupMatch[1];
 
       const idMatch = line.match(/tvg-id="([^"]+)"/i);
@@ -432,7 +439,7 @@ function getClearKey(html, licenseKey) {
   try { // clearKey needs to be fetched.
     // JSON format {"keys":[{"kid":"...","k":"..."}]}
     const keyData = JSON.parse(html);
-    console.log("ℹ️ [getClearKey in vietanhtv_plugin.js] clearKey NEEDS to be fetched - ", keyData);
+    console.log("ℹ️ [getClearKey in vatvxsxtv.js] clearKey NEEDS to be fetched - ", keyData);
     if (keyData.keys && Array.isArray(keyData.keys)) {
       keyData.keys.forEach((k) => {
         clearKey.drmKid = base64ToHex(k.kid);
@@ -443,7 +450,7 @@ function getClearKey(html, licenseKey) {
       clearKey.drmKey = base64ToHex(keyData.k);
     }
   } catch (error) { // clearKey does not require fetching.
-    console.log("ℹ️ [getClearKey in vietanhtv_plugin.js] clearKey does NOT require fetching - ", licenseKey);
+    console.log("ℹ️ [getClearKey in vatvxsxtv.js] clearKey does NOT require fetching - ", licenseKey);
     // Hex format "KID:KEY" (e.g. license_key=aabb...:ccdd...)
     if (licenseKey && licenseKey.includes(":") && licenseKey.split(":").length === 2) {
       const parts = licenseKey.split(":");
@@ -472,4 +479,107 @@ function getClearKey(html, licenseKey) {
   }
 
   return clearKey
+}
+
+function parseChannelName(channelName) {
+  const result = {
+    dateTime: "",
+    title: "",
+    competition: "",
+    commentator: "",
+  };
+
+  const dateMatch = channelName.match(/^(\d{1,2}:\d{2}-\d{2}\/\d{2}):\s*(.*)$/);
+
+  if (!dateMatch) {
+    return result;
+  }
+  result.dateTime = dateMatch[1];
+  let content = dateMatch[2].trim();
+  const commentatorMatch = content.match(/\s-\s([^-]+)$/);
+
+  if (commentatorMatch) {
+    result.commentator = commentatorMatch[1].trim();
+    content = content.slice(0, commentatorMatch.index).trim();
+  }
+  const competitionMatch = content.match(/\(([^)]+)\)\s*$/);
+
+  if (competitionMatch) {
+    result.competition = competitionMatch[1].trim();
+    content = content
+      .slice(0, competitionMatch.index)
+      .trim();
+  }
+  result.title = content;
+
+  return result;
+}
+
+function isLive(dateTime) {
+  // dateTime format: "22:30-05/08"
+  var match = /^(\d{2}):(\d{2})-(\d{2})\/(\d{2})$/.exec(dateTime);
+
+  if (!match) {
+    return false;
+  }
+  var hour = Number(match[1]);
+  var minute = Number(match[2]);
+  var day = Number(match[3]);
+  var month = Number(match[4]);
+  var now = new Date();
+  var year = now.getUTCFullYear();
+  // GMT+7 -> UTC
+  var eventTime = Date.UTC(
+    year,
+    month - 1,
+    day,
+    hour - 7,
+    minute
+  );
+
+  return eventTime <= Date.now();
+}
+
+function isLive(dateTime) {
+  // dateTime format: "22:30-05/08" hoặc "3:30-05/08"
+  // Mặc định GMT+7
+  var match = /^(\d{1,2}):(\d{2})-(\d{2})\/(\d{2})$/.exec(dateTime);
+
+  if (!match) {
+    return false;
+  }
+  var hour = Number(match[1]);
+  var minute = Number(match[2]);
+  var day = Number(match[3]);
+  var month = Number(match[4]);
+
+  // Validate
+  if (
+    hour < 0 ||
+    hour > 23 ||
+    minute < 0 ||
+    minute > 59 ||
+    month < 1 ||
+    month > 12 ||
+    day < 1 ||
+    day > 31
+  ) {
+    return false;
+  }
+  // Lấy năm hiện tại theo UTC
+  var now = new Date();
+  var year = now.getUTCFullYear();
+  // GMT+7 -> UTC
+  var eventTimestamp = Date.UTC(
+    year,
+    month - 1,
+    day,
+    hour - 7,
+    minute,
+    0,
+    0
+  );
+
+  // So sánh timestamp hiện tại (UTC)
+  return eventTimestamp <= Date.now();
 }
