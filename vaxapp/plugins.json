@@ -9,18 +9,18 @@
       "iconUrl": "https://i.ibb.co/N2mkkD4N/streamed-logo.png"
     },
     {
-      "id": "timstreams",
-      "name": "Timstreams",
-      "version": "1.2.5",
-      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/timstreams_plugin.js",
-      "iconUrl": "https://i.ibb.co/qYJ3gnwZ/timstreams-logo.png"
-    },
-    {
       "id": "ppv",
       "name": "PPV",
       "version": "1.2.0",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/ppv_plugin.js",
       "iconUrl": "https://i.ibb.co/BHQSwhLX/ppv-logo.png"
+    },
+    {
+      "id": "timstreams",
+      "name": "Timstreams",
+      "version": "1.2.5",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/timstreams_plugin.js",
+      "iconUrl": "https://i.ibb.co/qYJ3gnwZ/timstreams-logo.png"
     },
     {
       "id": "embedhd",
