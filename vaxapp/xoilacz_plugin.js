@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "xoilacz",
     name: "XOILACZ",
-    version: "1.0.1",
+    version: "1.0.2",
     baseUrl: "https://xoilacz.io",
     iconUrl: "https://i.ibb.co/m5rVgxZB/xoilacz-plugin.png",
     isEnabled: true,
