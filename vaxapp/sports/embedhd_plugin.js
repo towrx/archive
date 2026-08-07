@@ -109,7 +109,7 @@ function parseListResponse(html, apiUrl) {
           title: stream.dataTitle,
           posterUrl: stream.leagueLogo,
           backdropUrl: stream.leagueLogo,
-          description: `Event "${stream.title}" is hosted on server EmbedHD`,
+          description: `Event "${stream.dataTitle}" is hosted on server EmbedHD`,
           quality: tLInfo,
           episode_current: "HD",
           lang: `${stream.dataCat} - ${stream.leagueTitle}`.toUpperCase()
