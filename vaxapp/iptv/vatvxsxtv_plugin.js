@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vatvxsxtv",
     name: "VATVxSXTV",
-    version: "1.0.7",
+    version: "1.0.8",
     baseUrl: "https://tv.vietanhtv.top/tv",
     iconUrl: "https://i.ibb.co/GyFwhPJ/vatvxsxtv-logo.jpg",
     isEnabled: true,
@@ -20,6 +20,7 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
+    { slug: "event", title: "Event 🎉", type: "Horizontal", path: "" },
     { slug: "vtv", title: "VTV ⭐", type: "Horizontal", path: "" },
     { slug: "vtvcab", title: "VTVcab 💎", type: "Horizontal", path: "" },
     { slug: "tv360", title: "TV360 📡", type: "Horizontal", path: "" },
@@ -95,7 +96,8 @@ function parseListResponse(html, apiUrl) {
 
     if (category)
       channels = filterChannels(channelList, ["category", category]);
-    else if (keyword) channels = filterChannels(channelList, ["search", keyword]);
+    else if (keyword)
+      channels = filterChannels(channelList, ["search", keyword]);
 
     channels.forEach((channel) => {
       let matchInfo = "";
@@ -106,16 +108,31 @@ function parseListResponse(html, apiUrl) {
           "inputstream.adaptive.license_key": licenseKey
         }
       } = channel;
-      if(channel.tvgGroup === "Socolive ⚽") 
+      if (channel.tvgGroup === "Socolive ⚽")
         matchInfo = parseChannelName(channel.name);
       items.push({
-        id: licenseKey ? licenseKey + "&channelId=" + channel.channelId + "|User-Agent=Dalvik/2.1.0&Referer=https://tv.vietanhtv.top/" : "?channelId=" + channel.channelId,
+        id: licenseKey
+          ? licenseKey +
+            "&channelId=" +
+            channel.channelId +
+            "|User-Agent=Dalvik/2.1.0&Referer=https://tv.vietanhtv.top/"
+          : "?channelId=" + channel.channelId,
         title: matchInfo.title ? matchInfo.title : channel.name,
         description: `Channel "${channel.name}" is hosted on server VATVxSXTV.`,
         posterUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
         backdropUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
-        quality: matchInfo.dateTime ? (isLive(matchInfo.dateTime) ? "LIVE" : matchInfo.dateTime) : "LIVE",
-        episode_current: matchInfo.commentator ? `BLV ${matchInfo.commentator}` : (manifestType ? `DASH - ${licenseType.toUpperCase()}` : "HLS"),
+        quality: matchInfo.dateTime
+          ? isLive(matchInfo.dateTime)
+            ? "LIVE"
+            : matchInfo.dateTime
+          : "LIVE",
+        episode_current: matchInfo.commentator
+          ? `BLV ${matchInfo.commentator}`
+          : manifestType
+            ? `DASH - ${licenseType.toUpperCase()}`
+            : channel.url.includes(".mpd")
+              ? "DASH"
+              : "HLS",
         lang: matchInfo.competition
       });
     });
@@ -125,10 +142,13 @@ function parseListResponse(html, apiUrl) {
       pagination: { currentPage: 1, totalPages: 1 }
     });
   } catch (error) {
-    console.error("⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ", error);
+    console.error(
+      "⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ",
+      error
+    );
     return JSON.stringify({
-        items: [],
-        pagination: { currentPage: 1, totalPages: 1 }
+      items: [],
+      pagination: { currentPage: 1, totalPages: 1 }
     });
   }
 }
@@ -153,15 +173,17 @@ function parseDetailResponse(html, apiUrl) {
         "inputstream.adaptive.license_key": licenseKey
       }
     } = getChannel(channelList, channelId);
-    
+
     console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] Name: ", name);
-    // Handle license_type and manifest_type
-    // Value manifest_type = dash or mdp
-    // Value license_type = clearkey
+    // Handle license_type and manifest_type:  DASH (mpd|DRM[clearkey, widevine]), DASH (mpd|No DRM) and HSL (m3u8)
     if (licenseType === "clearkey") {
+      // Value manifest_type = dash or mdp, Value license_type = clearkey (DRM)
       const clearKey = getClearKey(html, licenseKey);
-    
-      console.log(`ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - ClearKey: `, clearKey);
+
+      console.log(
+        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - ClearKey: `,
+        clearKey
+      );
       console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
@@ -176,11 +198,14 @@ function parseDetailResponse(html, apiUrl) {
           Origin: origin || url
         }
       });
-    }
-    else if (licenseType === "widevine") { // Value manifest_type = dash or mdp, Value license_type = widevine
+    } else if (licenseType === "widevine") {
+      // Value manifest_type = dash or mdp, Value license_type = widevine (DRM)
       const licenseUrl = apiUrl.substring(0, apiUrl.indexOf("&channelId"));
-      
-      console.log(`ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - Widevine: `, apiUrl);
+
+      console.log(
+        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - Widevine: `,
+        apiUrl
+      );
       console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
@@ -194,9 +219,30 @@ function parseDetailResponse(html, apiUrl) {
           Origin: origin || url
         }
       });
-    }
-    else { // No manifest_type and licenseType, Normal HLS (m3u8)
-      console.log(`ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type HLS (M3U8)`);
+    } else if (url.includes(".mpd")) {
+      // No manifest_type and licenseType, DASH (No DRM)
+      console.log(
+        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH - No DRM`
+      );
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
+      return JSON.stringify({
+        isEmbed: false,
+        url: url,
+        mimeType: "application/dash+xml",
+        drmType: "",
+        drmKid: "",
+        drmKey: "",
+        headers: {
+          "User-Agent": userAgent || "Dalvik/2.1.0",
+          Referer: referrer || url,
+          Origin: origin || url
+        }
+      });
+    } else {
+      //  Normal HLS (m3u8)
+      console.log(
+        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type HLS (M3U8)`
+      );
       console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
@@ -210,7 +256,10 @@ function parseDetailResponse(html, apiUrl) {
       });
     }
   } catch (error) {
-    console.error("⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ", error);
+    console.error(
+      "⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ",
+      error
+    );
     return "{}";
   }
 }
@@ -249,7 +298,8 @@ const GROUP_MAP = {
   "sự kiện tv360": "TV360 📡",
   "rạp phim": "TV360 📡",
   "sự kiện vtvprime": "VTVPrime 🛰️",
-  "socolive": "Socolive ⚽"
+  socolive: "Socolive ⚽",
+  sk: "Event 🎉"
 };
 // Use CATEGORY_MAP to convert the slug to tvg-group.
 const CATEGORY_MAP = {
@@ -262,7 +312,8 @@ const CATEGORY_MAP = {
   sctv: "SCTV 🎫",
   local: "Địa Phương 📺",
   backup: "Backup 📌",
-  "illegal-socolive": "Socolive ⚽"
+  "illegal-socolive": "Socolive ⚽",
+  event: "Event 🎉"
 };
 
 // ======================================
@@ -292,9 +343,14 @@ function filterChannels(channels, [filterKey, filterValue]) {
 }
 
 function getChannel(channels, channelId) {
-  if (channelId === undefined || channelId === null || channelId === "") return {};
+  if (channelId === undefined || channelId === null || channelId === "")
+    return {};
   const numId = parseInt(channelId, 10);
-  return channels.find(channel => String(channel.channelId) === String(channelId)) || {};
+  return (
+    channels.find(
+      (channel) => String(channel.channelId) === String(channelId)
+    ) || {}
+  );
 }
 
 function parseM3U(text) {
@@ -435,50 +491,60 @@ function atob(input) {
 
 // The getClearKey function is used for multiple IPTV sources.
 function getClearKey(html, licenseKey) {
-  const clearKey = {}
-  try { // clearKey needs to be fetched.
+  const clearKey = {};
+  try {
+    // clearKey needs to be fetched.
     // JSON format {"keys":[{"kid":"...","k":"..."}]}
     const keyData = JSON.parse(html);
-    console.log("ℹ️ [getClearKey in vatvxsxtv.js] clearKey NEEDS to be fetched - ", keyData);
+    console.log(
+      "ℹ️ [getClearKey in vatvxsxtv.js] clearKey NEEDS to be fetched - ",
+      keyData
+    );
     if (keyData.keys && Array.isArray(keyData.keys)) {
       keyData.keys.forEach((k) => {
         clearKey.drmKid = base64ToHex(k.kid);
         clearKey.drmKey = base64ToHex(k.k);
       });
-    } else if (keyData.kid && keyData.k) { // JSON format {"kid":"...","k":"..."}
+    } else if (keyData.kid && keyData.k) {
+      // JSON format {"kid":"...","k":"..."}
       clearKey.drmKid = base64ToHex(keyData.kid);
       clearKey.drmKey = base64ToHex(keyData.k);
     }
-  } catch (error) { // clearKey does not require fetching.
-    console.log("ℹ️ [getClearKey in vatvxsxtv.js] clearKey does NOT require fetching - ", licenseKey);
+  } catch (error) {
+    // clearKey does not require fetching.
+    console.log(
+      "ℹ️ [getClearKey in vatvxsxtv.js] clearKey does NOT require fetching - ",
+      licenseKey
+    );
     // Hex format "KID:KEY" (e.g. license_key=aabb...:ccdd...)
-    if (licenseKey && licenseKey.includes(":") && licenseKey.split(":").length === 2) {
+    if (
+      licenseKey &&
+      licenseKey.includes(":") &&
+      licenseKey.split(":").length === 2
+    ) {
       const parts = licenseKey.split(":");
 
-      if (
-        /^[0-9a-fA-F]+$/.test(parts[0]) &&
-        /^[0-9a-fA-F]+$/.test(parts[1])
-      ) {
+      if (/^[0-9a-fA-F]+$/.test(parts[0]) && /^[0-9a-fA-F]+$/.test(parts[1])) {
         clearKey.drmKid = parts[0].toLowerCase();
         clearKey.drmKey = parts[1].toLowerCase();
       }
-    }
-    else {
+    } else {
       const keyData = JSON.parse(licenseKey);
       // JSON format {"keys":[{"kid":"...","k":"..."}]}
       if (keyData.keys && Array.isArray(keyData.keys)) {
-      keyData.keys.forEach((k) => {
-        clearKey.drmKid = base64ToHex(k.kid);
-        clearKey.drmKey = base64ToHex(k.k);
-      });
-      } else if (keyData.kid && keyData.k) { // JSON format {"kid":"...","k":"..."}
+        keyData.keys.forEach((k) => {
+          clearKey.drmKid = base64ToHex(k.kid);
+          clearKey.drmKey = base64ToHex(k.k);
+        });
+      } else if (keyData.kid && keyData.k) {
+        // JSON format {"kid":"...","k":"..."}
         clearKey.drmKid = base64ToHex(keyData.kid);
         clearKey.drmKey = base64ToHex(keyData.k);
       }
     }
   }
 
-  return clearKey
+  return clearKey;
 }
 
 function parseChannelName(channelName) {
@@ -486,7 +552,7 @@ function parseChannelName(channelName) {
     dateTime: "",
     title: "",
     competition: "",
-    commentator: "",
+    commentator: ""
   };
 
   const dateMatch = channelName.match(/^(\d{1,2}:\d{2}-\d{2}\/\d{2}):\s*(.*)$/);
@@ -506,9 +572,7 @@ function parseChannelName(channelName) {
 
   if (competitionMatch) {
     result.competition = competitionMatch[1].trim();
-    content = content
-      .slice(0, competitionMatch.index)
-      .trim();
+    content = content.slice(0, competitionMatch.index).trim();
   }
   result.title = content;
 
@@ -529,13 +593,7 @@ function isLive(dateTime) {
   var now = new Date();
   var year = now.getUTCFullYear();
   // GMT+7 -> UTC
-  var eventTime = Date.UTC(
-    year,
-    month - 1,
-    day,
-    hour - 7,
-    minute
-  );
+  var eventTime = Date.UTC(year, month - 1, day, hour - 7, minute);
 
   return eventTime <= Date.now();
 }
@@ -570,15 +628,7 @@ function isLive(dateTime) {
   var now = new Date();
   var year = now.getUTCFullYear();
   // GMT+7 -> UTC
-  var eventTimestamp = Date.UTC(
-    year,
-    month - 1,
-    day,
-    hour - 7,
-    minute,
-    0,
-    0
-  );
+  var eventTimestamp = Date.UTC(year, month - 1, day, hour - 7, minute, 0, 0);
 
   // So sánh timestamp hiện tại (UTC)
   return eventTimestamp <= Date.now();
