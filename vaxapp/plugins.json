@@ -25,7 +25,7 @@
     {
       "id": "embedhd",
       "name": "EmbedHD",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/embedhd_plugin.js",
       "iconUrl": "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg"
     },
