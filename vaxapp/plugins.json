@@ -25,7 +25,7 @@
     {
       "id": "embedhd",
       "name": "EmbedHD",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/embedhd_plugin.js",
       "iconUrl": "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg"
     }
