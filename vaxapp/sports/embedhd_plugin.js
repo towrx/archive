@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "embedhd",
     name: "EmbedHD",
-    version: "1.0.4",
+    version: "1.0.5",
     baseUrl: "https://embedhd.st",
     iconUrl: "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg",
     isEnabled: true,
@@ -90,10 +90,7 @@ function parseListResponse(html, apiUrl) {
       const cardsHtml = extractCardsHtml(html, pattern, "div");
       // console.log(cardsHtml)
       // extract item
-      cardsHtml.forEach((cardHtml) => {
-        const event = extractItem(cardHtml);
-        if (event) items.push(event);
-      });
+      cardsHtml.forEach((cardHtml) => { extractItem(cardHtml) });
     }
     let streams = null;
     const items = [];
