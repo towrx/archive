@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "sgchill",
     name: "SGCHILL",
-    version: "1.0.1",
+    version: "1.0.2",
     baseUrl: "https://sgchill.duckdns.org/",
     iconUrl: "https://sgchill.duckdns.org/favicon.ico",
     isEnabled: true,
@@ -23,10 +23,10 @@ function getHomeSections() {
     { slug: "vtv", title: "VTV ⭐", type: "Horizontal", path: "" },
     { slug: "vtvcab", title: "VTVcab 💎", type: "Horizontal", path: "" },
     { slug: "tv360", title: "TV360 📡", type: "Horizontal", path: "" },
-    { slug: "international", title: "QUỐC TẾ 🌍", type: "Horizontal", path: "" },
+    { slug: "international", title: "Quốc Tế 🌍", type: "Horizontal", path: "" },
     { slug: "htv-htvc", title: "HTV x HTVC 🧬", type: "Horizontal", path: "" },
     { slug: "sctv", title: "SCTV 🎫", type: "Horizontal", path: "" },
-    { slug: "local", title: "ĐỊA PHƯƠNG 📺", type: "Horizontal", path: "" }
+    { slug: "local", title: "Địa Phương 📺", type: "Horizontal", path: "" }
   ]);
 }
 
@@ -36,10 +36,10 @@ function getPrimaryCategories() {
     { name: "VTVcab", slug: "vtvcab" },
     { name: "TV360", slug: "tv360" },
     { name: "VTVPrime", slug: "vtvprime" },
-    { name: "QUỐC TẾ", slug: "international" },
+    { name: "Quốc Tế", slug: "international" },
     { name: "HTV x HTVC", slug: "htv-htvc" },
     { name: "SCTV", slug: "sctv" },
-    { name: "ĐỊA PHƯƠNG", slug: "local" }
+    { name: "Địa Phương", slug: "local" }
   ]);
 }
 
@@ -232,12 +232,12 @@ let channelList = [];
 const GROUP_MAP = {
   vtv: "VTV ⭐",
   vtvcab: "VTVcab 💎",
-  "in the box": "QUỐC TẾ 🌍",
-  "quốc tế": "QUỐC TẾ 🌍",
+  "in the box": "Quốc Tế 🌍",
+  "quốc tế": "Quốc Tế 🌍",
   htv: "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
-  "địa phương": "ĐỊA PHƯƠNG 📺",
-  "dự phòng": "BACKUP 📌",
+  "địa phương": "Địa Phương 📺",
+  "dự phòng": "Backup 📌",
   "sự kiện tv360": "TV360 📡",
   "rạp phim": "TV360 📡",
   "sự kiện vtvprime": "VTVPrime 🛰️",
@@ -251,11 +251,11 @@ const CATEGORY_MAP = {
   vtvcab: "VTVcab 💎",
   tv360: "TV360 📡",
   vtvprime: "VTVPrime 🛰️",
-  international: "QUỐC TẾ 🌍",
+  international: "Quốc Tế 🌍",
   "htv-htvc": "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
-  local: "ĐỊA PHƯƠNG 📺",
-  backup: "BACKUP 📌"
+  local: "Địa Phương 📺",
+  backup: "Backup 📌"
 };
 
 // ======================================

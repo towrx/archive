@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vmttv",
     name: "VMTTV",
-    version: "1.0.1",
+    version: "1.0.2",
     baseUrl: "https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/vmttv",
     iconUrl: "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
     isEnabled: true,
@@ -26,15 +26,18 @@ function getHomeSections() {
     { slug: "tv360", title: "TV360 📡", type: "Horizontal", path: "" },
     { slug: "vtvprime", title: "VTVPrime 🛰️", type: "Horizontal", path: "" },
     { slug: "fptplay", title: "FPTPlay 🏷️", type: "Horizontal", path: "" },
-    { slug: "international", title: "QUỐC TẾ 🌍", type: "Horizontal", path: "" },
+    { slug: "international", title: "Quốc Tế 🌍", type: "Horizontal", path: "" },
     { slug: "htv-htvc", title: "HTV x HTVC 🧬", type: "Horizontal", path: "" },
     { slug: "sctv", title: "SCTV 🎫", type: "Horizontal", path: "" },
-    { slug: "local", title: "ĐỊA PHƯƠNG 📺", type: "Horizontal", path: "" },
+    { slug: "local", title: "Địa Phương 📺", type: "Horizontal", path: "" },
     { slug: "international-sport", title: "International Sport 👑", type: "Horizontal", path: "" },
     { slug: "radio", title: "Radio 📻", type: "Horizontal", path: "" },
     { slug: "israel", title: "Israel 🌐", type: "Horizontal", path: "" },
     { slug: "korea", title: "Hàn Quốc 🌐", type: "Horizontal", path: "" },
     { slug: "china", title: "Trung Quốc 🌐", type: "Horizontal", path: "" },
+    { slug: "thailand", title: "Thái Lan 🌐", type: "Horizontal", path: "" },
+    { slug: "capuchia", title: "Campuchia 🌐", type: "Horizontal", path: "" },
+    { slug: "illegal-colatv", title: "Cola TV 🔴 ⚽", type: "Horizontal", path: "" },
     { slug: "vod", title: "VOD 🎞️", type: "Grid", path: "" }
   ]);
 }
@@ -47,15 +50,17 @@ function getPrimaryCategories() {
     { name: "TV360", slug: "tv360" },
     { name: "VTVPrime", slug: "vtvprime" },
     { name: "FPTPlay", slug: "fptplay" },
-    { name: "QUỐC TẾ", slug: "international" },
+    { name: "Quốc Tế", slug: "international" },
     { name: "HTV x HTVC", slug: "htv-htvc" },
     { name: "SCTV", slug: "sctv" },
-    { name: "ĐỊA PHƯƠNG", slug: "local" },
+    { name: "Địa Phương", slug: "local" },
     { name: "International Sport", slug: "international-sport" },
     { name: "Radio", slug: "radio" },
     { name: "Israel", slug: "israel" },
     { name: "Hàn Quốc", slug: "korea" },
-    { name: "Trung Quốc", slug: "china" },
+    { name: "Thái Lan", slug: "thailand" },
+    { name: "Campuchia", slug: "capuchia" },
+    { name: "Cola TV", slug: "illegal-colatv" },
     { name: "VOD", slug: "vod" }
   ]);
 }
@@ -249,13 +254,13 @@ let channelList = [];
 const GROUP_MAP = {
   vtv: "VTV ⭐",
   vtvcab: "VTVcab 💎",
-  "in the box": "QUỐC TẾ 🌍",
-  "📦| in the box": "QUỐC TẾ 🌍",
-  "quốc tế": "QUỐC TẾ 🌍",
+  "in the box": "Quốc Tế 🌍",
+  "📦| in the box": "Quốc Tế 🌍",
+  "quốc tế": "Quốc Tế 🌍",
   htv: "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
-  "địa phương": "ĐỊA PHƯƠNG 📺",
-  "dự phòng": "BACKUP 📌",
+  "địa phương": "Địa Phương 📺",
+  "dự phòng": "Backup 📌",
   "sự kiện tv360": "TV360 📡",
   "rạp phim": "TV360 📡",
   "sự kiện vtvprime": "VTVPrime 🛰️",
@@ -271,6 +276,9 @@ const GROUP_MAP = {
   "israel": "Israel 🌐",
   "🇰🇷| hàn quốc": "Hàn Quốc 🌐",
   "🇨🇳| trung quốc": "Trung Quốc 🌐",
+  "🇹🇭| thái lan":"Thái Lan 🌐",
+  "🇰🇭| campuchia":"Campuchia 🌐",
+  "🔴 ⚽ cola tv":"Cola TV 🔴 ⚽"
 };
 // Use CATEGORY_MAP to convert the slug to tvg-group.
 const CATEGORY_MAP = {
@@ -278,11 +286,11 @@ const CATEGORY_MAP = {
   vtvcab: "VTVcab 💎",
   tv360: "TV360 📡",
   vtvprime: "VTVPrime 🛰️",
-  international: "QUỐC TẾ 🌍",
+  international: "Quốc Tế 🌍",
   "htv-htvc": "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
-  local: "ĐỊA PHƯƠNG 📺",
-  backup: "BACKUP 📌",
+  local: "Địa Phương 📺",
+  backup: "Backup 📌",
   "international-sport": "International Sport 👑",
   "event": "🔴 ASEAN HUYNDAI CUP 2026",
   "vod": "VOD 🎞️",
@@ -291,6 +299,9 @@ const CATEGORY_MAP = {
   "israel": "Israel 🌐",
   "korea": "Hàn Quốc 🌐",
   "china": "Trung Quốc 🌐",
+  "thailand": "Thái Lan 🌐",
+  "capuchia": "Campuchia 🌐",
+  "illegal-colatv": "Cola TV 🔴 ⚽",
 };
 
 // ======================================

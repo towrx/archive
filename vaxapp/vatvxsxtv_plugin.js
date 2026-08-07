@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vatvxsxtv",
     name: "VATVxSXTV",
-    version: "1.0.6",
+    version: "1.0.7",
     baseUrl: "https://tv.vietanhtv.top/tv",
     iconUrl: "https://i.ibb.co/GyFwhPJ/vatvxsxtv-logo.jpg",
     isEnabled: true,
@@ -24,11 +24,11 @@ function getHomeSections() {
     { slug: "vtvcab", title: "VTVcab 💎", type: "Horizontal", path: "" },
     { slug: "tv360", title: "TV360 📡", type: "Horizontal", path: "" },
     { slug: "vtvprime", title: "VTVPrime 🛰️", type: "Horizontal", path: "" },
-    { slug: "international", title: "QUỐC TẾ 🌍", type: "Horizontal", path: "" },
+    { slug: "international", title: "Quốc Tế 🌍", type: "Horizontal", path: "" },
     { slug: "htv-htvc", title: "HTV x HTVC 🧬", type: "Horizontal", path: "" },
     { slug: "sctv", title: "SCTV 🎫", type: "Horizontal", path: "" },
-    { slug: "local", title: "ĐỊA PHƯƠNG 📺", type: "Horizontal", path: "" },
-    { slug: "backup", title: "BACKUP 📌", type: "Horizontal", path: "" },
+    { slug: "local", title: "Địa Phương 📺", type: "Horizontal", path: "" },
+    { slug: "backup", title: "Backup 📌", type: "Horizontal", path: "" },
     { slug: "illegal-socolive", title: "Socolive ⚽", type: "Grid", path: "" }
   ]);
 }
@@ -39,11 +39,11 @@ function getPrimaryCategories() {
     { name: "VTVcab", slug: "vtvcab" },
     { name: "TV360", slug: "tv360" },
     { name: "VTVPrime", slug: "vtvprime" },
-    { name: "QUỐC TẾ", slug: "international" },
+    { name: "Quốc Tế", slug: "international" },
     { name: "HTV x HTVC", slug: "htv-htvc" },
     { name: "SCTV", slug: "sctv" },
-    { name: "ĐỊA PHƯƠNG", slug: "local" },
-    { name: "BACKUP", slug: "backup" },
+    { name: "Địa Phương", slug: "local" },
+    { name: "Backup", slug: "backup" },
     { name: "Socolive", slug: "illegal-socolive" }
   ]);
 }
@@ -111,7 +111,7 @@ function parseListResponse(html, apiUrl) {
       items.push({
         id: licenseKey ? licenseKey + "&channelId=" + channel.channelId + "|User-Agent=Dalvik/2.1.0&Referer=https://tv.vietanhtv.top/" : "?channelId=" + channel.channelId,
         title: matchInfo.title ? matchInfo.title : channel.name,
-        description: `Channel "${channel.name}" is hosted on server VATV x SXTV.`,
+        description: `Channel "${channel.name}" is hosted on server VATVxSXTV.`,
         posterUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
         backdropUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
         quality: matchInfo.dateTime ? (isLive(matchInfo.dateTime) ? "LIVE" : matchInfo.dateTime) : "LIVE",
@@ -240,12 +240,12 @@ let channelList = [];
 const GROUP_MAP = {
   vtv: "VTV ⭐",
   vtvcab: "VTVcab 💎",
-  "in the box": "QUỐC TẾ 🌍",
-  "quốc tế": "QUỐC TẾ 🌍",
+  "in the box": "Quốc Tế 🌍",
+  "quốc tế": "Quốc Tế 🌍",
   htv: "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
-  "địa phương": "ĐỊA PHƯƠNG 📺",
-  "dự phòng": "BACKUP 📌",
+  "địa phương": "Địa Phương 📺",
+  "dự phòng": "Backup 📌",
   "sự kiện tv360": "TV360 📡",
   "rạp phim": "TV360 📡",
   "sự kiện vtvprime": "VTVPrime 🛰️",
@@ -257,11 +257,11 @@ const CATEGORY_MAP = {
   vtvcab: "VTVcab 💎",
   tv360: "TV360 📡",
   vtvprime: "VTVPrime 🛰️",
-  international: "QUỐC TẾ 🌍",
+  international: "Quốc Tế 🌍",
   "htv-htvc": "HTV x HTVC 🧬",
   sctv: "SCTV 🎫",
-  local: "ĐỊA PHƯƠNG 📺",
-  backup: "BACKUP 📌",
+  local: "Địa Phương 📺",
+  backup: "Backup 📌",
   "illegal-socolive": "Socolive ⚽"
 };
 
