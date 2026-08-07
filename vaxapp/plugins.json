@@ -29,5 +29,13 @@
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/embedhd_plugin.js",
       "iconUrl": "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg"
     }
+    },
+    {
+      "id": "methstreams",
+      "name": "MethStreams",
+      "version": "1.0.0",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/methstreams_plugin.js",
+      "iconUrl": "https://i.ibb.co/2Rv6bzP/methstreams-logo.png"
+    }
   ]
 }
