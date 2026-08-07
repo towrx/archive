@@ -4,11 +4,11 @@
 
 function getManifest() {
   return JSON.stringify({
-    id: "methstreams",
-    name: "MethStreams",
+    id: "crackstreams",
+    name: "CrackStreams",
     version: "1.0.0",
-    baseUrl: "https://methstreams.gs",
-    iconUrl: "https://i.ibb.co/2Rv6bzP/methstreams-logo.png",
+    baseUrl: "https://crackstreams.mx",
+    iconUrl: "https://i.ibb.co/Mxg5183D/crackstreams-logo.png",
     isEnabled: true,
     isAdult: false,
     type: "MOVIE",
@@ -21,18 +21,16 @@ function getManifest() {
 function getHomeSections() {
   return JSON.stringify([
     { slug: "mmastreams", title: "MMA Streams 🥊", type: "Horizontal", path: "" },
-    { slug: "boxingstreams", title: "Boxing Streams 🥊", type: "Horizontal", path: "" },
+    { slug: "boxingcasino", title: "Boxing Streams 🥊", type: "Horizontal", path: "" },
     { slug: "nflstreams", title: "NFL Streams 🏈", type: "Horizontal", path: "" },
-    { slug: "nbastreams", title: "NBA Streams 🏀", type: "Horizontal", path: "" },
-    { slug: "mlbstreams", title: "MLB Streams ⚾", type: "Horizontal", path: "" },
+    { slug: "nbaregular66", title: "NBA Streams 🏀", type: "Horizontal", path: "" },
+    { slug: "mlbwildcard", title: "MLB Streams ⚾", type: "Horizontal", path: "" },
     { slug: "wnbastreams", title: "WNBA Streams 🏀", type: "Horizontal", path: "" },
     { slug: "f1streams", title: "F1 Streams 🏎️", type: "Horizontal", path: "" },
-    { slug: "cfbstreams", title: "CFB Streams 🏈", type: "Horizontal", path: "" },
     { slug: "nhlstreams", title: "NHL Streams 🏒", type: "Horizontal", path: "" },
     { slug: "ncaab", title: "NCAAB Streams 🏀", type: "Horizontal", path: "" },
+    { slug: "ncaa", title: "NCAA Streams 🏀", type: "Horizontal", path: "" },
     { slug: "wwestreams", title: "WWE Streams 🤼", type: "Horizontal", path: "" },
-    { slug: "tna", title: "TNA Streams 🤼", type: "Horizontal", path: "" },
-    { slug: "aew", title: "AEW Streams 🤼", type: "Horizontal", path: "" }
   ]);
 }
 
@@ -40,17 +38,15 @@ function getPrimaryCategories() {
   return JSON.stringify([
     { name: "NFL Streams", slug: "nflstreams" },
     { name: "MMA Streams", slug: "mmastreams" },
-    { name: "Boxing Streams", slug: "boxingstreams" },
-    { name: "NBA Streams", slug: "nbastreams" },
-    { name: "MLB Streams", slug: "mlbstreams" },
+    { name: "Boxing Streams", slug: "boxingcasino" },
+    { name: "NBA Streams", slug: "nbaregular66" },
+    { name: "MLB Streams", slug: "mlbwildcard" },
     { name: "WNBA Streams", slug: "wnbastreams" },
     { name: "F1 Streams", slug: "f1streams" },
-    { name: "CFB Streams", slug: "cfbstreams" },
     { name: "NHL Streams", slug: "nhlstreams" },
     { name: "NCAAB Streams", slug: "ncaab" },
+    { name: "NCAAB Streams", slug: "ncaa" },
     { name: "WWE Streams", slug: "wwestreams" },
-    { name: "TNA Streams", slug: "tna" },
-    { name: "AEW Streams", slug: "aew" }
   ]);
 }
 
@@ -120,12 +116,10 @@ function parseListResponse(html, apiUrl) {
           title: stream.dataTitle,
           posterUrl: stream.dataLogo,
           backdropUrl: stream.dataLogo,
-          description: `Event "${stream.dataTitle}" is hosted on server MethStreams`,
+          description: `Event "${stream.dataTitle}" is hosted on server CrackStreams`,
           quality: tLInfo,
           episode_current: "HD",
-          lang: stream.dataCat
-            .substring(0, stream.dataCat.indexOf("streams"))
-            .toUpperCase()
+          lang: stream.dataCat.toUpperCase()
         })
       );
 
@@ -136,9 +130,7 @@ function parseListResponse(html, apiUrl) {
         backdropUrl: stream.dataLogo,
         quality: tLInfo,
         episode_current: "HD",
-        lang: stream.dataCat
-          .substring(0, stream.dataCat.indexOf("streams"))
-          .toUpperCase()
+        lang: stream.dataCat.toUpperCase()
       });
     });
 
@@ -148,7 +140,7 @@ function parseListResponse(html, apiUrl) {
     });
   } catch (error) {
     console.error(
-      "⛔ [parseListResponse in methstreams_plugin.js] ERROR MESSAGE: ",
+      "⛔ [parseListResponse in crackstreams_plugin.js] ERROR MESSAGE: ",
       error
     );
     return EMPTY_LIST_RESPONSE;
@@ -200,7 +192,7 @@ function parseMovieDetail(html, apiUrl) {
     return EMPTY_ITEM_DETAIL;
   } catch (error) {
     console.error(
-      "⛔ [parseMovieDetail in methstreams_plugin.js] ERROR MESSAGE: ",
+      "⛔ [parseMovieDetail in crackstreams_plugin.js] ERROR MESSAGE: ",
       error
     );
     return EMPTY_ITEM_DETAIL;
@@ -209,7 +201,7 @@ function parseMovieDetail(html, apiUrl) {
 
 function parseDetailResponse(html, embedUrl) {
   console.log(
-    "✅ [parseDetailResponse in methstreams_plugin.js] embed url: ",
+    "✅ [parseDetailResponse in crackstreams_plugin.js] embed url: ",
     embedUrl
   );
   try {
@@ -232,7 +224,7 @@ function parseDetailResponse(html, embedUrl) {
     });
   } catch (error) {
     console.error(
-      "⛔ [parseDetailResponse in methstreams_plugin.js] ERROR MESSAGE: ",
+      "⛔ [parseDetailResponse in crackstreams_plugin.js] ERROR MESSAGE: ",
       error
     );
     return "{}";
@@ -257,7 +249,7 @@ function parseYearsResponse(html) {
 // VARIABLES
 // ======================================
 
-const BASE_DOMAIN = "https://methstreams.gs";
+const BASE_DOMAIN = "https://crackstreams.mx";
 const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 const EMPTY_ITEM_DETAIL = JSON.stringify({
   id: "",
