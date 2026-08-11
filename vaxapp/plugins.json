@@ -25,21 +25,21 @@
     {
       "id": "embedhd",
       "name": "EmbedHD",
-      "version": "1.0.6",
+      "version": "1.0.7",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/embedhd_plugin.js",
       "iconUrl": "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg"
     },
     {
       "id": "methstreams",
       "name": "MethStreams",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/methstreams_plugin.js",
       "iconUrl": "https://i.ibb.co/2Rv6bzP/methstreams-logo.png"
     },
     {
       "id": "crackstreams",
       "name": "CrackStreams",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/crackstreams_plugin.js",
       "iconUrl": "https://i.ibb.co/Mxg5183D/crackstreams-logo.png"
     }
