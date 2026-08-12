@@ -6,8 +6,8 @@ function getManifest() {
   return JSON.stringify({
     id: "hoiquanclick",
     name: "HoiQuanClick",
-    version: "1.0.1",
-    baseUrl: "https://raw.githubusercontent.com/hoiquanclick/hoiquan/refs/heads/main/vip.m3u",
+    version: "1.0.2",
+    baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/HpXFPKxL/hoiquanclick-logo.png",
     isEnabled: true,
     isAdult: false,

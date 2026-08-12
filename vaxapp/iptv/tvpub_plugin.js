@@ -6,8 +6,8 @@ function getManifest() {
   return JSON.stringify({
     id: "tvpub",
     name: "TVPub",
-    version: "1.0.1",
-    baseUrl: "https://raw.githubusercontent.com/quanlehong539/TVPub/refs/heads/main/TVPub%20IPTV",
+    version: "1.0.2",
+    baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/KjVv0WRP/tvpub-logo.jpg",
     isEnabled: true,
     isAdult: false,

@@ -4,42 +4,42 @@
     {
       "id": "streamed",
       "name": "Streamed",
-      "version": "1.3.8",
+      "version": "1.3.9",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/streamed_plugin.js",
       "iconUrl": "https://i.ibb.co/N2mkkD4N/streamed-logo.png"
     },
     {
       "id": "ppv",
       "name": "PPV",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/ppv_plugin.js",
       "iconUrl": "https://i.ibb.co/BHQSwhLX/ppv-logo.png"
     },
     {
       "id": "timstreams",
       "name": "Timstreams",
-      "version": "1.2.7",
+      "version": "1.2.8",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/timstreams_plugin.js",
       "iconUrl": "https://i.ibb.co/qYJ3gnwZ/timstreams-logo.png"
     },
     {
       "id": "embedhd",
       "name": "EmbedHD",
-      "version": "1.0.7",
+      "version": "1.0.8",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/embedhd_plugin.js",
       "iconUrl": "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg"
     },
     {
       "id": "methstreams",
       "name": "MethStreams",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/methstreams_plugin.js",
       "iconUrl": "https://i.ibb.co/2Rv6bzP/methstreams-logo.png"
     },
     {
       "id": "crackstreams",
       "name": "CrackStreams",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/crackstreams_plugin.js",
       "iconUrl": "https://i.ibb.co/Mxg5183D/crackstreams-logo.png"
     }

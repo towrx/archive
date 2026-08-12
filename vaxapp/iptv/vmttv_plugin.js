@@ -6,8 +6,8 @@ function getManifest() {
   return JSON.stringify({
     id: "vmttv",
     name: "VMTTV",
-    version: "1.0.2",
-    baseUrl: "https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/vmttv",
+    version: "1.0.3",
+    baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
     isEnabled: true,
     isAdult: false,
@@ -167,15 +167,17 @@ function parseDetailResponse(html, apiUrl) {
         "inputstream.adaptive.license_key": licenseKey
       }
     } = getChannel(channelList, channelId);
-    
+
     console.log("ℹ️ [parseDetailResponse in vmttv_plugin.js] Name: ", name);
-    // Handle license_type and manifest_type
-    // Value manifest_type = dash or mdp
-    // Value license_type = clearkey
+    // Handle license_type and manifest_type:  DASH (mpd|DRM[clearkey, widevine]), DASH (mpd|No DRM) and HSL (m3u8)
     if (licenseType === "clearkey") {
+      // Value manifest_type = dash or mdp, Value license_type = clearkey (DRM)
       const clearKey = getClearKey(html, licenseKey);
-    
-      console.log(`ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type DASH (MPD) - ClearKey: `, clearKey);
+
+      console.log(
+        `ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type DASH (MPD) - ClearKey: `,
+        clearKey
+      );
       console.log("ℹ️ [parseDetailResponse in vmttv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
@@ -190,11 +192,14 @@ function parseDetailResponse(html, apiUrl) {
           Origin: origin || url
         }
       });
-    }
-    else if (licenseType === "widevine") { // Value manifest_type = dash or mdp, Value license_type = widevine
+    } else if (licenseType === "widevine") {
+      // Value manifest_type = dash or mdp, Value license_type = widevine (DRM)
       const licenseUrl = apiUrl.substring(0, apiUrl.indexOf("&channelId"));
-      
-      console.log(`ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type DASH (MPD) - Widevine: `, apiUrl);
+
+      console.log(
+        `ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type DASH (MPD) - Widevine: `,
+        apiUrl
+      );
       console.log("ℹ️ [parseDetailResponse in vmttv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
@@ -208,9 +213,30 @@ function parseDetailResponse(html, apiUrl) {
           Origin: origin || url
         }
       });
-    }
-    else { // No manifest_type and licenseType, Normal HLS (m3u8)
-      console.log(`ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type HLS (M3U8)`);
+    } else if (url.includes(".mpd")) {
+      // No manifest_type and licenseType, DASH (No DRM)
+      console.log(
+        `ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type DASH (MPD) - No DRM`
+      );
+      console.log("ℹ️ [parseDetailResponse in vmttv_plugin.js] URL:", url);
+      return JSON.stringify({
+        isEmbed: false,
+        url: url,
+        mimeType: "application/dash+xml",
+        drmType: "",
+        drmKid: "",
+        drmKey: "",
+        headers: {
+          "User-Agent": userAgent || "Dalvik/2.1.0",
+          Referer: referrer || url,
+          Origin: origin || url
+        }
+      });
+    } else {
+      //  Normal HLS (m3u8)
+      console.log(
+        `ℹ️ [parseDetailResponse in vmttv_plugin.js] Manifest type HLS (M3U8)`
+      );
       console.log("ℹ️ [parseDetailResponse in vmttv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
@@ -224,7 +250,10 @@ function parseDetailResponse(html, apiUrl) {
       });
     }
   } catch (error) {
-    console.error("⛔ [parseDetailResponse in vmttv_plugin.js] ERROR MESSAGE: ", error);
+    console.error(
+      "⛔ [parseDetailResponse in vmttv_plugin.js] ERROR MESSAGE: ",
+      error
+    );
     return "{}";
   }
 }

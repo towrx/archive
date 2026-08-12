@@ -6,8 +6,8 @@ function getManifest() {
   return JSON.stringify({
     id: "vatvxsxtv",
     name: "VATVxSXTV",
-    version: "1.0.8",
-    baseUrl: "https://tv.vietanhtv.top/tv",
+    version: "1.0.9",
+    baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/GyFwhPJ/vatvxsxtv-logo.jpg",
     isEnabled: true,
     isAdult: false,
@@ -143,7 +143,7 @@ function parseListResponse(html, apiUrl) {
     });
   } catch (error) {
     console.error(
-      "⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ",
+      "⛔ [parseDetailResponse in vatvxsxtv_plugin.js] ERROR MESSAGE: ",
       error
     );
     return JSON.stringify({
@@ -174,17 +174,17 @@ function parseDetailResponse(html, apiUrl) {
       }
     } = getChannel(channelList, channelId);
 
-    console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] Name: ", name);
+    console.log("ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] Name: ", name);
     // Handle license_type and manifest_type:  DASH (mpd|DRM[clearkey, widevine]), DASH (mpd|No DRM) and HSL (m3u8)
     if (licenseType === "clearkey") {
       // Value manifest_type = dash or mdp, Value license_type = clearkey (DRM)
       const clearKey = getClearKey(html, licenseKey);
 
       console.log(
-        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - ClearKey: `,
+        `ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] Manifest type DASH (MPD) - ClearKey: `,
         clearKey
       );
-      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -203,10 +203,10 @@ function parseDetailResponse(html, apiUrl) {
       const licenseUrl = apiUrl.substring(0, apiUrl.indexOf("&channelId"));
 
       console.log(
-        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH (MPD) - Widevine: `,
+        `ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] Manifest type DASH (MPD) - Widevine: `,
         apiUrl
       );
-      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -222,9 +222,9 @@ function parseDetailResponse(html, apiUrl) {
     } else if (url.includes(".mpd")) {
       // No manifest_type and licenseType, DASH (No DRM)
       console.log(
-        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type DASH - No DRM`
+        `ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] Manifest type DASH (MPD) - No DRM`
       );
-      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -241,9 +241,9 @@ function parseDetailResponse(html, apiUrl) {
     } else {
       //  Normal HLS (m3u8)
       console.log(
-        `ℹ️ [parseDetailResponse in vatvxsxtv.js] Manifest type HLS (M3U8)`
+        `ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] Manifest type HLS (M3U8)`
       );
-      console.log("ℹ️ [parseDetailResponse in vatvxsxtv.js] URL:", url);
+      console.log("ℹ️ [parseDetailResponse in vatvxsxtv_plugin.js] URL:", url);
       return JSON.stringify({
         isEmbed: false,
         url: url,
@@ -257,7 +257,7 @@ function parseDetailResponse(html, apiUrl) {
     }
   } catch (error) {
     console.error(
-      "⛔ [parseDetailResponse in vatvxsxtv.js] ERROR MESSAGE: ",
+      "⛔ [parseDetailResponse in vatvxsxtv_plugin.js] ERROR MESSAGE: ",
       error
     );
     return "{}";
@@ -497,7 +497,7 @@ function getClearKey(html, licenseKey) {
     // JSON format {"keys":[{"kid":"...","k":"..."}]}
     const keyData = JSON.parse(html);
     console.log(
-      "ℹ️ [getClearKey in vatvxsxtv.js] clearKey NEEDS to be fetched - ",
+      "ℹ️ [getClearKey in vatvxsxtv_plugin.js] clearKey NEEDS to be fetched - ",
       keyData
     );
     if (keyData.keys && Array.isArray(keyData.keys)) {
@@ -513,7 +513,7 @@ function getClearKey(html, licenseKey) {
   } catch (error) {
     // clearKey does not require fetching.
     console.log(
-      "ℹ️ [getClearKey in vatvxsxtv.js] clearKey does NOT require fetching - ",
+      "ℹ️ [getClearKey in vatvxsxtv_plugin.js] clearKey does NOT require fetching - ",
       licenseKey
     );
     // Hex format "KID:KEY" (e.g. license_key=aabb...:ccdd...)

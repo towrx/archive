@@ -6,8 +6,8 @@ function getManifest() {
   return JSON.stringify({
     id: "sgchill",
     name: "SGCHILL",
-    version: "1.0.2",
-    baseUrl: "https://sgchill.duckdns.org/",
+    version: "1.0.3",
+    baseUrl: BASE_DOMAIN,
     iconUrl: "https://sgchill.duckdns.org/favicon.ico",
     isEnabled: true,
     isAdult: false,
@@ -52,17 +52,17 @@ function getFilterConfig() {
 // =============================================================================
 
 function getUrlList(slug, filtersJson) {
-  return `${BASE_URL}?category=${slug}`;
+  return `${BASE_DOMAIN}?category=${slug}`;
 }
 
 function getUrlSearch(keyword = "", filtersJson) {
-  return `${BASE_URL}?search=${encodeURIComponent(keyword?.trim())}`;
+  return `${BASE_DOMAIN}?search=${encodeURIComponent(keyword?.trim())}`;
 }
 
 function getUrlDetail(path) {
   if (!path) return "";
   if (path.indexOf("http") === 0) return path;
-  return `${BASE_URL}${path}`;
+  return `${BASE_DOMAIN}${path}`;
 }
 
 function getUrlCategories() {
@@ -102,7 +102,7 @@ function parseListResponse(html, apiUrl) {
       } = channel;
 
       items.push({
-        id: licenseKey ? licenseKey + "&channelId=" + channel.channelId + `|User-Agent=Dalvik/2.1.0&Referer=${BASE_URL}` : "?channelId=" + channel.channelId,
+        id: licenseKey ? licenseKey + "&channelId=" + channel.channelId + `|User-Agent=Dalvik/2.1.0&Referer=${BASE_DOMAIN}` : "?channelId=" + channel.channelId,
         title: channel.name,
         description: `Channel "${channel.name}" is hosted on server SGCHILL.`,
         posterUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
@@ -225,7 +225,7 @@ function parseYearsResponse(html) {
 // VARIABLES
 // ======================================
 
-const BASE_URL = "https://sgchill.duckdns.org/";
+const BASE_DOMAIN = "https://sgchill.duckdns.org";
 const FALLBACK_POSTER_URL = "https://i.ibb.co/rKHf363x/fallback-thumbnail.webp";
 let channelList = [];
 // Use GROUP_MAP to rename and merge the channel into tvg-group.
