@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "id": "vatvxsxtv",
+      "name": "VATVxSXTV",
+      "version": "1.0.9",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/vatvxsxtv_plugin.js",
+      "iconUrl": "https://i.ibb.co/GyFwhPJ/vatvxsxtv-logo.jpg",
+      "info": "Vietnam IPTV and Sports"
+    },
+    {
+      "id": "vmttv",
+      "name": "VMTTV",
+      "version": "1.0.3",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/vmttv_plugin.js",
+      "iconUrl": "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
+      "info": "Vietnam IPTV, International IPTV and VOD"
+    },
+    {
+      "id": "hoiquanclick",
+      "name": "HOIQUANCLICK",
+      "version": "1.0.2",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/hoiquanclick_plugin.js",
+      "iconUrl": "https://i.ibb.co/HpXFPKxL/hoiquanclick-logo.png",
+      "info": "Vietnam IPTV, International IPTV, Sports, and many more channel categories."
+    },
+    {
+      "id": "tvpub",
+      "name": "TVPUB",
+      "version": "1.0.2",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/tvpub_plugin.js",
+      "iconUrl": "https://i.ibb.co/KjVv0WRP/tvpub-logo.jpg",
+      "info": "Vietnam IPTV and Sports"
+    },
+    {
+      "id": "sgchill",
+      "name": "SGCHILL",
+      "version": "1.0.3",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/sgchill_plugin.js",
+      "iconUrl": "https://sgchill.duckdns.org/favicon.ico",
+      "info": "Vietnam IPTV"
+    }
+  ]
+}
