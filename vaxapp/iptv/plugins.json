@@ -34,6 +34,14 @@
       "info": "Vietnam IPTV and Sports"
     },
     {
+      "id": "kubolive",
+      "name": "KuboLive",
+      "version": "1.0.0",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/kubolive_plugin.js",
+      "iconUrl": "https://i.ibb.co/Y4GSdp1k/kubolive-logo.png",
+      "info": "Vietnam IPTV"
+    },
+    {
       "id": "sgchill",
       "name": "SGCHILL",
       "version": "1.0.3",
