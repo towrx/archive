@@ -152,9 +152,9 @@ function parseSearchResponse(html, apiUrl) {
   return parseListResponse(html, apiUrl);
 }
 
-function parseMovieDetail(html, apiUrl) {
+function parseMovieDetail(html, apiUrl, datasend) {
   try {
-    const data = JSON.parse(decodeURIComponent(getPipeData(apiUrl)));
+    const data = JSON.parse(decodeURIComponent(getPipeData(datasend)));
     const episodes = [];
     const category = extractParamFromUrl(apiUrl.split("|")[0], "category");
     const id = extractParamFromUrl(apiUrl.split("|")[0], "id");
@@ -433,16 +433,11 @@ function isLive(dateTime) {
   return eventTimestamp <= Date.now();
 }
 
-function getPipeData(apiUrl) {
-  if (!apiUrl) return "";
-  const index = apiUrl.indexOf("|");
-
-  if (index < 0) return "";
-  var res = apiUrl.substring(index + 1).replace(/^\s+/, "");
+function getPipeData(datasend) {
+  if (!datasend) return "";
   // Remove the prefix "data:" if present (case-insensitive)
-  if (res.toLowerCase().indexOf("data:") === 0) return res.substring(5);
-
-  return res;
+  if (datasend.toLowerCase().indexOf("data:") === 0) return datasend.substring(5);
+  return datasend;
 }
 
 function filterStreams(streamList, [filterKey, filterValue]) {
