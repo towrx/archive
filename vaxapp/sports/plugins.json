@@ -28,7 +28,7 @@
     {
       "id": "embedhd",
       "name": "EmbedHD",
-      "version": "1.0.8",
+      "version": "1.0.9",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/embedhd_plugin.js",
       "iconUrl": "https://i.ibb.co/wrrMVcwk/embedhd-logo.jpg",
       "info": "MULTI-SPORTS (HD quality with stable streaming): Football, Soccer, Tennis, Basketball, Hockey, Baseball, Fight Sports, Motorsports, and Other Sports"
