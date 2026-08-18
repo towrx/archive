@@ -19,8 +19,8 @@
     },
     {
       "id": "vmttvbackup",
-      "name": "VMTTVBACKUP",
-      "version": "1.0.3",
+      "name": "VMTTVBackup",
+      "version": "1.0.0",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/vmttvbackup_plugin.js",
       "iconUrl": "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
       "info": "Vietnam IPTV, International IPTV and VOD (VMTTV Backup)"
@@ -44,7 +44,7 @@
     {
       "id": "tinhlagitv",
       "name": "TinhLaGiTV",
-      "version": "1.0.2",
+      "version": "1.0.0",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/iptv/tinhlagitv_plugin.js",
       "iconUrl": "https://i.ibb.co/FPQzZM1/tinhlagi-logo.jpg",
       "info": "Vietnam IPTV and Sports"

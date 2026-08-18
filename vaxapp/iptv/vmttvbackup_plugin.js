@@ -5,7 +5,7 @@
 function getManifest() {
   return JSON.stringify({
     id: "vmttvbackup",
-    name: "VMTTVBACKUP",
+    name: "VMTTVBackup",
     version: "1.0.0",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
@@ -132,7 +132,7 @@ function parseListResponse(html, apiUrl) {
             `|User-Agent=${userAgent || "Dalvik/2.1.0"}&Referer=${BASE_URL}`
           : "?channelId=" + channel.channelId,
         title: matchInfo.title ? matchInfo.title : channel.name,
-        description: `Channel "${channel.name}" is hosted on server VMTTVBACKUP.`,
+        description: `Channel "${channel.name}" is hosted on server VMTTVBackup.`,
         posterUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
         backdropUrl: channel.tvgLogo || FALLBACK_POSTER_URL,
         quality: matchInfo.dateTime

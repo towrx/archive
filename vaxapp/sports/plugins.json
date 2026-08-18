@@ -64,6 +64,22 @@
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/xoilac365_plugin.js",
       "iconUrl": "https://i.ibb.co/dwWmVjh0/xoilac365-logo.png",
       "info": "SPORTS, REPLAYS and HIGHLIGHTS (XOILACZ Backup)"
+    },
+    {
+      "id": "tinhlagisports",
+      "name": "TinhLaGiSports",
+      "version": "1.0.0",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/tinhlagisports_plugin.js",
+      "iconUrl": "https://i.ibb.co/FPQzZM1/tinhlagi-logo.jpg",
+      "info": "VIETNAMESE SPORTS HUB"
+    },
+    {
+      "id": "ththethao",
+      "name": "THTheThao",
+      "version": "1.0.0",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/ththethao_plugin.js",
+      "iconUrl": "https://i.ibb.co/m5rVgxZB/xoilacz-plugin.png",
+      "info": "VIETNAMESE SPORTS HUB"
     }
   ]
 }
