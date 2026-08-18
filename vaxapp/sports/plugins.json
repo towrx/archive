@@ -66,19 +66,19 @@
       "info": "SPORTS, REPLAYS and HIGHLIGHTS (XOILACZ Backup)"
     },
     {
+      "id": "ththethao",
+      "name": "THTheThao",
+      "version": "1.0.0",
+      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/ththethao_plugin.js",
+      "iconUrl": "https://i.ibb.co/cSrQ5y7K/ththethao-logo.png",
+      "info": "VIETNAMESE SPORTS HUB"
+    },
+    {
       "id": "tinhlagisports",
       "name": "TinhLaGiSports",
       "version": "1.0.0",
       "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/tinhlagisports_plugin.js",
       "iconUrl": "https://i.ibb.co/FPQzZM1/tinhlagi-logo.jpg",
-      "info": "VIETNAMESE SPORTS HUB"
-    },
-    {
-      "id": "ththethao",
-      "name": "THTheThao",
-      "version": "1.0.0",
-      "scriptUrl": "https://raw.githubusercontent.com/towrx/archive/refs/heads/main/vaxapp/sports/ththethao_plugin.js",
-      "iconUrl": "https://i.ibb.co/m5rVgxZB/xoilacz-plugin.png",
       "info": "VIETNAMESE SPORTS HUB"
     }
   ]
