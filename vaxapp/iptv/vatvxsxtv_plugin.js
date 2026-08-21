@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vatvxsxtv",
     name: "VATVxSXTV",
-    version: "1.0.9",
+    version: "1.1.0",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/GyFwhPJ/vatvxsxtv-logo.jpg",
     isEnabled: true,
@@ -21,6 +21,7 @@ function getManifest() {
 function getHomeSections() {
   return JSON.stringify([
     { slug: "event", title: "Event 🎉", type: "Horizontal", path: "" },
+    { slug: "epl", title: "EPL 🧧", type: "Horizontal", path: "" },
     { slug: "vtv", title: "VTV ⭐", type: "Horizontal", path: "" },
     { slug: "vtvcab", title: "VTVcab 💎", type: "Horizontal", path: "" },
     { slug: "tv360", title: "TV360 📡", type: "Horizontal", path: "" },
@@ -299,7 +300,8 @@ const GROUP_MAP = {
   "rạp phim": "TV360 📡",
   "sự kiện vtvprime": "VTVPrime 🛰️",
   socolive: "Socolive ⚽",
-  sk: "Event 🎉"
+  sk: "Event 🎉",
+  epl: "EPL 🧧",
 };
 // Use CATEGORY_MAP to convert the slug to tvg-group.
 const CATEGORY_MAP = {
@@ -313,7 +315,8 @@ const CATEGORY_MAP = {
   local: "Địa Phương 📺",
   backup: "Backup 📌",
   "illegal-socolive": "Socolive ⚽",
-  event: "Event 🎉"
+  event: "Event 🎉",
+  epl: "EPL 🧧",
 };
 
 // ======================================

@@ -6,7 +6,7 @@ function getManifest() {
   return JSON.stringify({
     id: "vmttv",
     name: "VMTTV",
-    version: "1.0.3",
+    version: "1.0.4",
     baseUrl: BASE_URL,
     iconUrl: "https://i.ibb.co/nq4ns7bd/vmttv-logo.jpg",
     isEnabled: true,
@@ -20,7 +20,6 @@ function getManifest() {
 
 function getHomeSections() {
   return JSON.stringify([
-    { slug: "event", title: "🔴 ASEAN HUYNDAI CUP 2026", type: "Horizontal", path: "" },
     { slug: "vtv", title: "VTV ⭐", type: "Horizontal", path: "" },
     { slug: "vtvcab", title: "VTVcab 💎", type: "Horizontal", path: "" },
     { slug: "tv360", title: "TV360 📡", type: "Horizontal", path: "" },
@@ -44,7 +43,6 @@ function getHomeSections() {
 
 function getPrimaryCategories() {
   return JSON.stringify([
-    { name: "ASEAN HUYNDAI CUP 2026", slug: "event" },
     { name: "VTV", slug: "vtv" },
     { name: "VTVcab", slug: "vtvcab" },
     { name: "TV360", slug: "tv360" },
@@ -297,7 +295,6 @@ const GROUP_MAP = {
   "🌐| thiết yếu": "VTV ⭐",
   "htv/c": "HTV x HTVC 🧬",
   "thể thao quốc tế": "International Sport 👑",
-  "asean huyndai cup 2026": "🔴 ASEAN HUYNDAI CUP 2026",
   "live events 🔴": "VOD 🎞️",
   "sự kiện fpt play": "FPTPlay 🏷️",
   "radio": "Radio 📻",
@@ -321,7 +318,6 @@ const CATEGORY_MAP = {
   local: "Địa Phương 📺",
   backup: "Backup 📌",
   "international-sport": "International Sport 👑",
-  "event": "🔴 ASEAN HUYNDAI CUP 2026",
   "vod": "VOD 🎞️",
   "fptplay": "FPTPlay 🏷️",
   "radio": "Radio 📻",
