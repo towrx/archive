@@ -744,6 +744,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
             <i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500 fill-yellow-500/20"></i> Nguồn phát nhanh
           </label>
           <div class="grid grid-cols-2 gap-2">
+            <!-- IPTV -->
             <button
               onclick="
                 loadPredefinedUrl(
@@ -757,24 +758,41 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
               </span>
             </button>
             <button
-              onclick="loadPredefinedUrl('https://kubolive.ddns.net/kubo1/')"
+              onclick="loadPredefinedUrl('https://raw.githubusercontent.com/vuminhthanh12/vuminhthanh12/refs/heads/main/vmttv')"
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-orange-500/10 border border-white/5 hover:border-orange-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
               <span class="text-[12px] font-bold text-white group-hover:text-orange-400 transition-colors"
-                >KUBO LIVE</span
+                >VMTTV</span
               >
             </button>
             <button
-              onclick="loadPredefinedUrl('https://vpsttt.vietanhtv.top/tv/')"
+              onclick="loadPredefinedUrl('https://tv.vietanhtv.top/tv/')"
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-fuchsia-500/10 border border-white/5 hover:border-fuchsia-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
               <span class="text-[12px] font-bold text-white group-hover:text-fuchsia-400 transition-colors"
-                >VIETANH TV</span
+                >VATVxSXTV</span
               >
             </button>
             <button
+              onclick="loadPredefinedUrl('https://raw.githubusercontent.com/quanlehong539/TVPub/refs/heads/main/TVPub%20IPTV')"
+              class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-fuchsia-500/10 border border-white/5 hover:border-fuchsia-500/30 rounded-xl transition-all group flex items-center justify-center"
+            >
+              <span class="text-[12px] font-bold text-white group-hover:text-fuchsia-400 transition-colors"
+                >TVPub</span
+              >
+            </button>
+            <button
+              onclick="loadPredefinedUrl('https://tinhlagi.pro/tv.json')"
+              class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-fuchsia-500/10 border border-white/5 hover:border-fuchsia-500/30 rounded-xl transition-all group flex items-center justify-center"
+            >
+              <span class="text-[12px] font-bold text-white group-hover:text-fuchsia-400 transition-colors"
+                >TinhLaGiaTV</span
+              >
+            </button>
+            <!-- Sport -->
+            <button
               onclick="
-                loadPredefinedUrl('https://raw.githubusercontent.com/thcoban/ththethao/refs/heads/main/ttthethao.m3u')
+                loadPredefinedUrl('https://thcoban.github.io/ththethao/ttthethao.m3u')
               "
               class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 rounded-xl transition-all group flex items-center justify-center"
             >
@@ -790,6 +808,14 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
                 HAILAB
               </span>
             </button> -->
+            <button
+              onclick="loadPredefinedUrl('https://tinhlagi.pro/s.m3u')"
+              class="px-3 py-2.5 bg-[#1a1a1a] hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 rounded-xl transition-all group flex items-center justify-center"
+            >
+              <span class="text-[12px] font-bold text-white group-hover:text-emerald-400 transition-colors">
+                TinhLaGiSports
+              </span>
+            </button>
             <button
               onclick="
                 loadPredefinedUrl(
@@ -903,7 +929,7 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
       let bufferCleanupInterval = null;
 
       // EPG State
-      const DEFAULT_EPG_URL = "https://vnepg.site/epgu.xml";
+      const DEFAULT_EPG_URL = "https://epg.io.vn/epgu.xml";
       // const DEFAULT_EPG_URL = "https://lichphatsong.site/schedule/epg.xml";
       let epgData = new Map(); // channelId -> [programs]
       let epgChannels = new Map(); // channelId -> name
@@ -2203,8 +2229,8 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
 
             try {
               // Attempt 1: JSON format {"keys":[{"kid":"...","k":"..."}]} or {"kid":"...","k":"..."}
-              // Nếu keyString phải lấy qua qua url
-              if (/^http/.test(keyString)) {
+              // Nếu keyString phải lấy qua url
+              if (/^http/.test(keyString)) { // clearKey needs to be fetched.
                 keyString =
                   "https://iptv-player.nupakachi.dpdns.org/proxy.php?url=" +
                   encodeURIComponent(keyString) +
@@ -2225,13 +2251,23 @@ https://cdn.jsdelivr.net/npm/shaka-player@5.1.10/dist/shaka-player.compiled.min.
               } else if (keyData.kid && keyData.k) {
                 clearKeys[base64ToHex(keyData.kid)] = base64ToHex(keyData.k);
               }
-            } catch (e) {
+            } catch (e) { // clearKey does not require fetching.
               console.log(`Handle ClearKey DRM failed: ${e}`);
               // Attempt 2: Hex format "KID:KEY" (e.g. "aabb...:ccdd...")
-              if (keyString && keyString.includes(":")) {
+              if (keyString && keyString.includes(":") && keyString.split(":").length === 2) {
                 const parts = keyString.split(":");
                 if (parts.length === 2 && /^[0-9a-fA-F]+$/.test(parts[0]) && /^[0-9a-fA-F]+$/.test(parts[1])) {
                   clearKeys[parts[0].toLowerCase()] = parts[1].toLowerCase();
+                }
+              } else {
+                // JSON format {"keys":[{"kid":"...","k":"..."}]}
+                const keyData = JSON.parse(keyString);
+                if (keyData.keys && Array.isArray(keyData.keys)) {
+                  keyData.keys.forEach((k) => {
+                    clearKeys[base64ToHex(k.kid)] = base64ToHex(k.k);
+                  });
+                } else if (keyData.kid && keyData.k) {
+                  clearKeys[base64ToHex(keyData.kid)] = base64ToHex(keyData.k);
                 }
               }
             }
